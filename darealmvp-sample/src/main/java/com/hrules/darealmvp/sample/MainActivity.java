@@ -3,12 +3,14 @@ package com.hrules.darealmvp.sample;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.hrules.darealmvp.DRAppCompatActivity;
 
 public class MainActivity extends DRAppCompatActivity<SamplePresenter, SampleView>
     implements SampleView {
 
-  private TextView message;
+  @Bind(R.id.message) TextView message;
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -19,7 +21,7 @@ public class MainActivity extends DRAppCompatActivity<SamplePresenter, SampleVie
   }
 
   @Override public void initializeViews() {
-    message = (TextView) findViewById(R.id.message);
+    ButterKnife.bind(this);
   }
 
   @Override public void showToast() {
