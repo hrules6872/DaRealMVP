@@ -1,3 +1,7 @@
 <resources>
   <string name="app_name">DaRealMVP-sample</string>
+  <string name="welcome">Welcome</string>
+  <string name="try_rotate">Try to rotate the device :)</string>
+  <string name="showListActivity">Show ListActivity</string>
+  <string name="showMessage">Show message</string>
 </resources>

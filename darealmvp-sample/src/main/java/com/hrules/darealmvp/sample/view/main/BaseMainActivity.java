@@ -1,18 +1,17 @@
-package com.hrules.darealmvp.sample;
+package com.hrules.darealmvp.sample.view.main;
 
 import android.os.Bundle;
-import android.widget.TextView;
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.DRAppCompatActivity;
+import com.hrules.darealmvp.sample.R;
+import com.hrules.darealmvp.sample.presentation.MainPresenter;
 
-public abstract class BaseMainActivity extends DRAppCompatActivity<SamplePresenter, SampleView>
-    implements SampleView {
-
-  @Bind(R.id.message) TextView message;
+public abstract class BaseMainActivity
+    extends DRAppCompatActivity<MainPresenter, MainPresenter.MainView>
+    implements MainPresenter.MainView {
 
   @Override public void onCreate(Bundle savedInstanceState) {
-    setPresenter(new SamplePresenter());
+    setPresenter(new MainPresenter());
     super.onCreate(savedInstanceState);
   }
 
