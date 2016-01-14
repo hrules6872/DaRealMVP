@@ -2,9 +2,8 @@ package com.hrules.darealmvp;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import com.hrules.darealmvp.base.BaseDRPresenter;
 
-public abstract class DRPresenter<V extends DRView> implements BaseDRPresenter<V> {
+public abstract class DRPresenter<V extends DRView> {
   protected V view;
 
   public void bind(@NonNull V view) {
