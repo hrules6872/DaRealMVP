@@ -14,6 +14,9 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    preSetContentView();
+    setContentView(getLayoutResource());
+
     try {
       Type mySuperclass = getClass().getGenericSuperclass();
       Type tType = ((ParameterizedType) mySuperclass).getActualTypeArguments()[0];
@@ -30,6 +33,9 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
     if (savedInstanceState != null) {
       presenter.onLoadState(savedInstanceState);
     }
+
+    initializeViews();
+    presenter.onViewReady();
   }
 
   @NonNull public P getPresenter() {
@@ -61,4 +67,11 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
     presenter.unbind();
     presenter.onDestroy();
   }
+
+  public void preSetContentView() {
+  }
+
+  public abstract int getLayoutResource();
+
+  public abstract void initializeViews();
 }

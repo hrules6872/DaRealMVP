@@ -24,12 +24,10 @@ public class SamplePresenter extends DRPresenter<SampleView> {
   }
 
   @Override public void onSaveState(Bundle outState) {
-    super.onSaveState(outState);
     outState.putBoolean("messageShowed", messageShowed);
   }
 
   @Override public void onLoadState(Bundle savedState) {
-    super.onLoadState(savedState);
     messageShowed = savedState.getBoolean("messageShowed");
   }
 }

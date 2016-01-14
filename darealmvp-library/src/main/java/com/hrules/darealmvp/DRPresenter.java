@@ -32,4 +32,7 @@ public abstract class DRPresenter<V extends DRView> implements BaseDRPresenter<V
 
   public void onDestroy() {
   }
+
+  public void onViewReady() {
+  }
 }

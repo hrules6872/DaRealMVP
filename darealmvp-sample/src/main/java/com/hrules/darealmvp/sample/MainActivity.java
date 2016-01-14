@@ -7,9 +7,19 @@ import com.hrules.darealmvp.DRAppCompatActivity;
 
 public class MainActivity extends DRAppCompatActivity<SamplePresenter, SampleView>
     implements SampleView {
+
+  private TextView message;
+
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+  }
+
+  @Override public int getLayoutResource() {
+    return R.layout.activity_main;
+  }
+
+  @Override public void initializeViews() {
+    message = (TextView) findViewById(R.id.message);
   }
 
   @Override public void showToast() {
@@ -17,6 +27,6 @@ public class MainActivity extends DRAppCompatActivity<SamplePresenter, SampleVie
   }
 
   @Override public void changeMessage(String message) {
-    ((TextView) findViewById(R.id.message)).setText(message);
+    this.message.setText(message);
   }
 }

@@ -18,4 +18,10 @@ public interface BaseAppCompatActivity<P extends DRPresenter<V>, V extends DRVie
   void onSaveInstanceState(Bundle outState);
 
   P getPresenter();
+
+  void preSetContentView();
+
+  int getLayoutResource();
+
+  void initializeViews();
 }

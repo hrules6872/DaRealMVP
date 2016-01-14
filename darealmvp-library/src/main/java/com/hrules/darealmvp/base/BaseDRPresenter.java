@@ -19,4 +19,6 @@ public interface BaseDRPresenter<V extends DRView> {
   void onStop();
 
   void onDestroy();
+
+  void onViewReady();
 }
