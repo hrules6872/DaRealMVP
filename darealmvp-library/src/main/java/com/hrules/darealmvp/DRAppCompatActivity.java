@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DRView>
     extends AppCompatActivity implements DRView {
 
-  protected P presenter;
+  private P presenter;
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
