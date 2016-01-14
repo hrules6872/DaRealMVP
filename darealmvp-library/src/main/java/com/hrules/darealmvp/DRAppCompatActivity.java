@@ -3,15 +3,16 @@ package com.hrules.darealmvp;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import com.hrules.darealmvp.base.BaseAppCompatActivity;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DRView>
-    extends AppCompatActivity implements DRView {
-  
+    extends AppCompatActivity implements BaseAppCompatActivity, DRView {
+
   protected P presenter;
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
+  @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     try {
       Type mySuperclass = getClass().getGenericSuperclass();
@@ -25,9 +26,39 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
     } catch (IllegalAccessException e) {
       e.printStackTrace();
     }
+
+    if (savedInstanceState != null) {
+      presenter.onLoadState(savedInstanceState);
+    }
   }
 
   @NonNull public P getPresenter() {
     return presenter;
+  }
+
+  @Override public void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    presenter.onSaveState(outState);
+  }
+
+  @Override public void onResume() {
+    super.onResume();
+    presenter.onResume();
+  }
+
+  @Override public void onStart() {
+    super.onStart();
+    presenter.onStart();
+  }
+
+  @Override public void onStop() {
+    super.onStop();
+    presenter.onStop();
+  }
+
+  @Override public void onDestroy() {
+    super.onDestroy();
+    presenter.unbind();
+    presenter.onDestroy();
   }
 }
