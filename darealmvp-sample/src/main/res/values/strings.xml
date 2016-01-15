@@ -8,4 +8,5 @@
   <string name="prefs_gotoRepo">Go to GitHub repository</string>
   <string name="activity_preferences_title">Preferences</string>
   <string name="activity_list_title">List</string>
+  <string name="app_repository_url">https://github.com/hrules6872/DaRealMVP</string>
 </resources>
