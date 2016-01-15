@@ -1,15 +1,15 @@
 package com.hrules.darealmvp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DRView>
-    extends AppCompatActivity implements DRView {
+public abstract class DRActivity<P extends DRPresenter<V>, V extends DRView> extends Activity
+    implements DRView {
 
   private P presenter;
 

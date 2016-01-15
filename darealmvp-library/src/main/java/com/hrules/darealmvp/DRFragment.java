@@ -26,17 +26,7 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
     super.onViewCreated(view, savedInstanceState);
     if (presenter == null) {
       try {
-        Class clazz = getClass();
-        Type genericSuperclass;
-        for (; ; ) {
-          genericSuperclass = clazz.getGenericSuperclass();
-          if (genericSuperclass instanceof ParameterizedType) {
-            break;
-          }
-          clazz = clazz.getSuperclass();
-        }
-        Type presenterClass = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
-        presenter = (P) (Class.forName(presenterClass.toString().split(" ")[1]).newInstance());
+        presenter = internalGetPresenter();
       } catch (java.lang.InstantiationException | ClassNotFoundException | IllegalAccessException | ClassCastException e) {
         e.printStackTrace();
       }
@@ -49,6 +39,21 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
 
     initializeViews();
     presenter.onViewReady();
+  }
+
+  private P internalGetPresenter()
+      throws java.lang.InstantiationException, IllegalAccessException, ClassNotFoundException {
+    Class clazz = getClass();
+    Type genericSuperclass;
+    for (; ; ) {
+      genericSuperclass = clazz.getGenericSuperclass();
+      if (genericSuperclass instanceof ParameterizedType) {
+        break;
+      }
+      clazz = clazz.getSuperclass();
+    }
+    Type presenterClass = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
+    return (P) Class.forName(presenterClass.toString().split(" ")[1]).newInstance();
   }
 
   @Override public void onSaveInstanceState(Bundle outState) {

@@ -32,17 +32,7 @@ public abstract class DRPreferencesActivity<P extends DRPresenter<V>, V extends 
 
     if (presenter == null) {
       try {
-        Class clazz = getClass();
-        Type genericSuperclass;
-        for (; ; ) {
-          genericSuperclass = clazz.getGenericSuperclass();
-          if (genericSuperclass instanceof ParameterizedType) {
-            break;
-          }
-          clazz = clazz.getSuperclass();
-        }
-        Type presenterClass = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
-        presenter = (P) (Class.forName(presenterClass.toString().split(" ")[1]).newInstance());
+        presenter = internalGetPresenter();
       } catch (InstantiationException | ClassNotFoundException | IllegalAccessException | ClassCastException e) {
         e.printStackTrace();
       }
@@ -55,6 +45,21 @@ public abstract class DRPreferencesActivity<P extends DRPresenter<V>, V extends 
 
     initializeViews();
     presenter.onViewReady();
+  }
+
+  private P internalGetPresenter()
+      throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+    Class clazz = getClass();
+    Type genericSuperclass;
+    for (; ; ) {
+      genericSuperclass = clazz.getGenericSuperclass();
+      if (genericSuperclass instanceof ParameterizedType) {
+        break;
+      }
+      clazz = clazz.getSuperclass();
+    }
+    Type presenterClass = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
+    return (P) Class.forName(presenterClass.toString().split(" ")[1]).newInstance();
   }
 
   @NonNull public P getPresenter() {
