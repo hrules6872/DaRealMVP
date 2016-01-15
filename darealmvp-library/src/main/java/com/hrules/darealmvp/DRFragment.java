@@ -26,14 +26,18 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
     super.onViewCreated(view, savedInstanceState);
     if (presenter == null) {
       try {
-        Type mySuperclass = getClass().getGenericSuperclass();
-        Type tType = ((ParameterizedType) mySuperclass).getActualTypeArguments()[0];
-        presenter = (P) (Class.forName(tType.toString().split(" ")[1]).newInstance());
-      } catch (java.lang.InstantiationException e) {
-        e.printStackTrace();
-      } catch (ClassNotFoundException e) {
-        e.printStackTrace();
-      } catch (IllegalAccessException e) {
+        Class clazz = getClass();
+        Type genericSuperclass;
+        for (; ; ) {
+          genericSuperclass = clazz.getGenericSuperclass();
+          if (genericSuperclass instanceof ParameterizedType) {
+            break;
+          }
+          clazz = clazz.getSuperclass();
+        }
+        Type presenterClass = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
+        presenter = (P) (Class.forName(presenterClass.toString().split(" ")[1]).newInstance());
+      } catch (java.lang.InstantiationException | ClassNotFoundException | IllegalAccessException | ClassCastException e) {
         e.printStackTrace();
       }
     }
