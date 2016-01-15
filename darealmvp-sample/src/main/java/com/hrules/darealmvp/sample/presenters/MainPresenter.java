@@ -1,6 +1,5 @@
 package com.hrules.darealmvp.sample.presenters;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -62,8 +61,6 @@ public class MainPresenter extends DRPresenter<MainPresenter.IMainView> {
     void showToast();
 
     void changeMessage(String message);
-
-    Context getContext();
 
     void showListActivity();
 
