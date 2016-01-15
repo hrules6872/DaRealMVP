@@ -133,6 +133,11 @@ public abstract class DRPreferencesActivity<P extends DRPresenter<V>, V extends 
     presenter.onDestroy();
   }
 
+  @Override protected void onPause() {
+    super.onPause();
+    presenter.onPause();
+  }
+
   @Override protected void onStart() {
     super.onStart();
     presenter.onStart();

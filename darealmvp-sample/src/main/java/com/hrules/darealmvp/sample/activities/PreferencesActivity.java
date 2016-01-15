@@ -3,14 +3,14 @@ package com.hrules.darealmvp.sample.activities;
 import android.os.Bundle;
 import com.hrules.darealmvp.DRPreferencesActivity;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.presenters.PreferencesPresenter;
+import com.hrules.darealmvp.sample.presenters.PreferencesActivityPresenter;
 
-public abstract class PreferencesActivity
-    extends DRPreferencesActivity<PreferencesPresenter, PreferencesPresenter.IPreferencesView>
-    implements PreferencesPresenter.IPreferencesView {
+public abstract class PreferencesActivity extends
+    DRPreferencesActivity<PreferencesActivityPresenter, PreferencesActivityPresenter.IPreferencesView>
+    implements PreferencesActivityPresenter.IPreferencesView {
 
   @Override public void onCreate(Bundle savedInstanceState) {
-    setPresenter(new PreferencesPresenter());
+    setPresenter(new PreferencesActivityPresenter());
     super.onCreate(savedInstanceState);
   }
 

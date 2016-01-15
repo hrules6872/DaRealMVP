@@ -3,14 +3,14 @@ package com.hrules.darealmvp.sample.activities;
 import android.os.Bundle;
 import com.hrules.darealmvp.DRAppCompatActivity;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.presenters.ListPresenter;
+import com.hrules.darealmvp.sample.presenters.ListActivityPresenter;
 
 public abstract class ListActivity
-    extends DRAppCompatActivity<ListPresenter, ListPresenter.IListView>
-    implements ListPresenter.IListView {
+    extends DRAppCompatActivity<ListActivityPresenter, ListActivityPresenter.IListView>
+    implements ListActivityPresenter.IListView {
 
   @Override public void onCreate(Bundle savedInstanceState) {
-    setPresenter(new ListPresenter());
+    setPresenter(new ListActivityPresenter());
     super.onCreate(savedInstanceState);
   }
 

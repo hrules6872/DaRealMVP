@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import com.hrules.darealmvp.DRAppCompatActivity;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.presenters.MainPresenter;
+import com.hrules.darealmvp.sample.presenters.MainActivityPresenter;
 
 public abstract class MainActivity
-    extends DRAppCompatActivity<MainPresenter, MainPresenter.IMainView>
-    implements MainPresenter.IMainView {
+    extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.IMainView>
+    implements MainActivityPresenter.IMainView {
 
   @Override public void onCreate(Bundle savedInstanceState) {
-    setPresenter(new MainPresenter());
+    setPresenter(new MainActivityPresenter());
     super.onCreate(savedInstanceState);
   }
 

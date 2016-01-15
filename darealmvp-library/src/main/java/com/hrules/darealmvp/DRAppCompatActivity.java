@@ -71,6 +71,11 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
     presenter.onDestroy();
   }
 
+  @Override protected void onPause() {
+    super.onPause();
+    presenter.onPause();
+  }
+
   public void preSetContentView() {
   }
 

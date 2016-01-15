@@ -7,7 +7,7 @@ import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.R;
 
-public class MainPresenter extends DRPresenter<MainPresenter.IMainView> {
+public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMainView> {
   private static final String BUNDLE_MESSAGE_SHOWED = "BUNDLE_MESSAGE_SHOWED";
   private static final String BUNDLE_TOAST_SHOWED = "BUNDLE_TOAST_SHOWED";
 

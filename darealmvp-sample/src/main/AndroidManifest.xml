@@ -9,7 +9,7 @@
       android:label="@string/app_name"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".views.MainView">
+    <activity android:name=".views.MainActivityView">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -17,8 +17,8 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".views.ListView"/>
-    <activity android:name=".views.PreferenceView"/>
+    <activity android:name=".views.ListActivityView"/>
+    <activity android:name=".views.PreferenceActivityView"/>
   </application>
 
 </manifest>

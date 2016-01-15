@@ -12,7 +12,7 @@ import butterknife.OnClick;
 import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.activities.MainActivity;
 
-public class MainView extends MainActivity {
+public class MainActivityView extends MainActivity {
 
   @Bind(R.id.message) TextView message;
   @Bind(R.id.toolbar) Toolbar toolbar;
@@ -39,11 +39,11 @@ public class MainView extends MainActivity {
   }
 
   public void showListActivity() {
-    startActivity(new Intent(this, ListView.class));
+    startActivity(new Intent(this, ListActivityView.class));
   }
 
   @Override public void showPreferencesActivity() {
-    startActivity(new Intent(this, PreferenceView.class));
+    startActivity(new Intent(this, PreferenceActivityView.class));
   }
 
   @OnClick(R.id.showMessage) void onShowMessageClick(Button button) {

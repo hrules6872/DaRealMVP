@@ -17,6 +17,9 @@ public abstract class DRPresenter<V extends DRView> {
   public void onResume() {
   }
 
+  public void onPause() {
+  }
+
   public void onSaveState(Bundle outState) {
   }
 

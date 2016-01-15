@@ -4,15 +4,15 @@ import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.activities.ListActivity;
+import com.hrules.darealmvp.sample.activities.PreferencesActivity;
 
-public class ListView extends ListActivity {
+public class PreferenceActivityView extends PreferencesActivity {
   @Bind(R.id.toolbar) Toolbar toolbar;
 
   @Override public void initializeViews() {
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
-    getSupportActionBar().setTitle(getString(R.string.activity_list_title));
+    getSupportActionBar().setTitle(getString(R.string.activity_preferences_title));
     getSupportActionBar().setHomeButtonEnabled(true);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setDisplayShowTitleEnabled(true);
