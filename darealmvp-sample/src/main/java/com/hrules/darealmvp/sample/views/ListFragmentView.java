@@ -25,4 +25,8 @@ public class ListFragmentView extends ListFragment {
   @Override public void setAdapter(ListFragmentAdapter adapter) {
     recyclerView.setAdapter(adapter);
   }
+
+  @Override public void unbind() {
+    ButterKnife.unbind(this);
+  }
 }

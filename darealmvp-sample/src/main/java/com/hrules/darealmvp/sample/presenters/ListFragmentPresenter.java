@@ -39,7 +39,14 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
 
   }
 
+  @Override public void unbind() {
+    view.unbind();
+    super.unbind();
+  }
+
   public interface IListFragmentView extends DRView {
     void setAdapter(ListFragmentAdapter adapter);
+
+    void unbind();
   }
 }
