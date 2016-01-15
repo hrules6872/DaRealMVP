@@ -3,6 +3,7 @@ package com.hrules.darealmvp.sample.presenters;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
+import android.widget.Button;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.R;
@@ -47,13 +48,24 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMa
     messageShowed = true;
   }
 
-  public void showListActivity() {
-    view.showListActivity();
-  }
-
   public void onOptionsItemSelected(MenuItem item) {
     if (item.getItemId() == R.id.action_preferences) {
       view.showPreferencesActivity();
+    }
+  }
+
+  public void onClickButton(Button button) {
+    switch (button.getId()) {
+      case R.id.showMessage:
+        showMessage();
+        break;
+
+      case R.id.showListActivity:
+        view.showListActivity();
+        break;
+
+      default:
+        throw new UnsupportedOperationException();
     }
   }
 

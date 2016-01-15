@@ -46,11 +46,7 @@ public class MainActivityView extends MainActivity {
     startActivity(new Intent(this, PreferenceActivityView.class));
   }
 
-  @OnClick(R.id.showMessage) void onShowMessageClick(Button button) {
-    getPresenter().showMessage();
-  }
-
-  @OnClick(R.id.showListActivity) void onShowListActivityClick(Button button) {
-    getPresenter().showListActivity();
+  @OnClick({ R.id.showMessage, R.id.showListActivity }) void onClickButton(Button button) {
+    getPresenter().onClickButton(button);
   }
 }
