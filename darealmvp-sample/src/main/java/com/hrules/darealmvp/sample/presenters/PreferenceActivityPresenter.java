@@ -6,8 +6,8 @@ import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.views.PreferenceActivityView;
 
-public class PreferencesActivityPresenter
-    extends DRPresenter<PreferencesActivityPresenter.IPreferencesView> {
+public class PreferenceActivityPresenter
+    extends DRPresenter<PreferenceActivityPresenter.IPreferenceView> {
 
   public void onPreferenceClick(Preference preference) {
     if (preference.getKey().equals(PreferenceActivityView.KEY_PREFS_GOTOREPO)) {
@@ -15,7 +15,7 @@ public class PreferencesActivityPresenter
     }
   }
 
-  public interface IPreferencesView extends DRView {
+  public interface IPreferenceView extends DRView {
     void doGotoRepo(String url);
   }
 }

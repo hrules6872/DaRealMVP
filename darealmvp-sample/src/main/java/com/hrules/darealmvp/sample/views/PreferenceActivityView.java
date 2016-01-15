@@ -7,9 +7,9 @@ import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.activities.PreferencesActivity;
+import com.hrules.darealmvp.sample.activities.PreferenceActivity;
 
-public class PreferenceActivityView extends PreferencesActivity
+public class PreferenceActivityView extends PreferenceActivity
     implements Preference.OnPreferenceClickListener {
   public static final String KEY_PREFS_GOTOREPO = "prefs_gotoRepo";
 

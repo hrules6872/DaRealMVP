@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public abstract class DRPreferencesActivity<P extends DRPresenter<V>, V extends DRView>
+public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends DRView>
     extends PreferenceActivity implements DRView {
   private AppCompatDelegate appCompatDelegate;
 
