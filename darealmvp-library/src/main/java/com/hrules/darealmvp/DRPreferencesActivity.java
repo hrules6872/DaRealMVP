@@ -1,5 +1,6 @@
 package com.hrules.darealmvp;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -15,7 +16,7 @@ import android.view.ViewGroup;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends DRView>
+public abstract class DRPreferencesActivity<P extends DRPresenter<V>, V extends DRView>
     extends PreferenceActivity implements DRView {
   private AppCompatDelegate appCompatDelegate;
 
@@ -159,6 +160,10 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
       appCompatDelegate = AppCompatDelegate.create(this, null);
     }
     return appCompatDelegate;
+  }
+
+  public Context getContext() {
+    return this.getApplicationContext();
   }
 }
 

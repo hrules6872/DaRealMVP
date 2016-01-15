@@ -2,6 +2,10 @@
   <string name="app_name">DaRealMVP-sample</string>
   <string name="welcome">Welcome</string>
   <string name="try_rotate">Try to rotate the device :)</string>
-  <string name="showListActivity">Show ListActivity</string>
-  <string name="showMessage">Show message</string>
+  <string name="show_list_activity">Show ListActivity</string>
+  <string name="show_message">Show message</string>
+  <string name="action_preferences">Show PreferencesActivity</string>
+  <string name="prefs_gotoRepo">Go to GitHub repository</string>
+  <string name="activity_preferences_title">Preferences</string>
+  <string name="activity_list_title">List</string>
 </resources>
