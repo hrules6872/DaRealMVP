@@ -7,6 +7,7 @@ import android.widget.Button;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.R;
+import com.hrules.darealmvp.sample.commons.NotImplementedException;
 
 public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMainView> {
   private static final String BUNDLE_MESSAGE_SHOWED = "BUNDLE_MESSAGE_SHOWED";
@@ -49,8 +50,13 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMa
   }
 
   public void onOptionsItemSelected(MenuItem item) {
-    if (item.getItemId() == R.id.action_preferences) {
-      view.showPreferencesActivity();
+    switch (item.getItemId()) {
+      case R.id.action_preferences:
+        view.showPreferencesActivity();
+        break;
+
+      default:
+        throw new NotImplementedException();
     }
   }
 
@@ -65,7 +71,7 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMa
         break;
 
       default:
-        throw new UnsupportedOperationException();
+        throw new NotImplementedException();
     }
   }
 

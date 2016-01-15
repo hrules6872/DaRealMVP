@@ -24,7 +24,7 @@ publish {
   groupId = 'com.hrules'
   artifactId = 'darealmvp'
   version = '1.0.0'
-  description = 'Charter'
+  description = 'DaRealMVP'
   website = 'https://github.com/hrules6872/DaRealMVP'
   repository = "https://github.com/hrules6872/DaRealMVP.git"
 }

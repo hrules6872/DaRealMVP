@@ -4,14 +4,20 @@ import android.preference.Preference;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.R;
+import com.hrules.darealmvp.sample.commons.NotImplementedException;
 import com.hrules.darealmvp.sample.views.PreferenceActivityView;
 
 public class PreferenceActivityPresenter
     extends DRPresenter<PreferenceActivityPresenter.IPreferenceView> {
 
   public void onPreferenceClick(Preference preference) {
-    if (preference.getKey().equals(PreferenceActivityView.KEY_PREFS_GOTOREPO)) {
-      view.doGotoRepo(view.getContext().getString(R.string.app_repository_url));
+    switch (preference.getKey()) {
+      case PreferenceActivityView.KEY_PREFS_GOTOREPO:
+        view.doGotoRepo(view.getContext().getString(R.string.app_repository_url));
+        break;
+
+      default:
+        throw new NotImplementedException();
     }
   }
 
