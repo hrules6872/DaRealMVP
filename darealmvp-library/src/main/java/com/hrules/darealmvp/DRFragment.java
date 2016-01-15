@@ -37,7 +37,7 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
       presenter.onLoadState(savedInstanceState);
     }
 
-    initializeViews();
+    initializeViews(view);
     presenter.onViewReady();
   }
 
@@ -101,7 +101,7 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
 
   public abstract int getLayoutResource();
 
-  public abstract void initializeViews();
+  public abstract void initializeViews(View view);
 
   public Context getContext() {
     return getActivity().getApplicationContext();
