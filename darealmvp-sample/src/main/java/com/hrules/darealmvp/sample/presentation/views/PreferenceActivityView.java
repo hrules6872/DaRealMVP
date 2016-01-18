@@ -1,4 +1,4 @@
-package com.hrules.darealmvp.sample.views;
+package com.hrules.darealmvp.sample.presentation.views;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.activities.PreferenceActivity;
+import com.hrules.darealmvp.sample.presentation.activities.PreferenceActivity;
 
 public class PreferenceActivityView extends PreferenceActivity
     implements Preference.OnPreferenceClickListener {

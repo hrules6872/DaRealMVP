@@ -1,4 +1,4 @@
-package com.hrules.darealmvp.sample.presenters;
+package com.hrules.darealmvp.sample.presentation.presenters;
 
 import android.os.Bundle;
 import android.os.Handler;

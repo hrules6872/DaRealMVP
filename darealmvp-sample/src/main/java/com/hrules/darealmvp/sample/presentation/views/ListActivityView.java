@@ -1,4 +1,4 @@
-package com.hrules.darealmvp.sample.views;
+package com.hrules.darealmvp.sample.presentation.views;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -6,7 +6,7 @@ import android.widget.FrameLayout;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.activities.ListActivity;
+import com.hrules.darealmvp.sample.presentation.activities.ListActivity;
 
 public class ListActivityView extends ListActivity {
   @Bind(R.id.toolbar) Toolbar toolbar;

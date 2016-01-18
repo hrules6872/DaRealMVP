@@ -1,11 +1,11 @@
-package com.hrules.darealmvp.sample.presenters;
+package com.hrules.darealmvp.sample.presentation.presenters;
 
 import android.preference.Preference;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.commons.NotImplementedException;
-import com.hrules.darealmvp.sample.views.PreferenceActivityView;
+import com.hrules.darealmvp.sample.presentation.views.PreferenceActivityView;
 
 public class PreferenceActivityPresenter
     extends DRPresenter<PreferenceActivityPresenter.IPreferenceView> {

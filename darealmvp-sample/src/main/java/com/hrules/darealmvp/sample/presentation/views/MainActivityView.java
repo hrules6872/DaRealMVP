@@ -1,4 +1,4 @@
-package com.hrules.darealmvp.sample.views;
+package com.hrules.darealmvp.sample.presentation.views;
 
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
@@ -10,7 +10,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.activities.MainActivity;
+import com.hrules.darealmvp.sample.presentation.activities.MainActivity;
 
 public class MainActivityView extends MainActivity {
 

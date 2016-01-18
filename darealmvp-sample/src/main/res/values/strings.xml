@@ -9,4 +9,5 @@
   <string name="activity_preferences_title">Preferences</string>
   <string name="activity_list_title">List</string>
   <string name="app_repository_url">https://github.com/hrules6872/DaRealMVP</string>
+  <string name="item_clicked">clicked</string>
 </resources>

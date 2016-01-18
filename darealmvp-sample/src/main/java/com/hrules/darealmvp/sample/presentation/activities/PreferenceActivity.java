@@ -1,9 +1,9 @@
-package com.hrules.darealmvp.sample.activities;
+package com.hrules.darealmvp.sample.presentation.activities;
 
 import android.os.Bundle;
 import com.hrules.darealmvp.DRPreferenceActivity;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.presenters.PreferenceActivityPresenter;
+import com.hrules.darealmvp.sample.presentation.presenters.PreferenceActivityPresenter;
 
 public abstract class PreferenceActivity extends
     DRPreferenceActivity<PreferenceActivityPresenter, PreferenceActivityPresenter.IPreferenceView>
