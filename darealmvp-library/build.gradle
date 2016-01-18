@@ -8,8 +8,8 @@ android {
   defaultConfig {
     minSdkVersion 15
     targetSdkVersion 23
-    versionCode 100
-    versionName "1.0.0"
+    versionCode 1010
+    versionName "0.1.0"
   }
 }
 
@@ -23,7 +23,7 @@ publish {
   userOrg = 'hrules6872'
   groupId = 'com.hrules'
   artifactId = 'darealmvp'
-  version = '1.0.0'
+  version = '0.1.0'
   description = 'DaRealMVP'
   website = 'https://github.com/hrules6872/DaRealMVP'
   repository = "https://github.com/hrules6872/DaRealMVP.git"
