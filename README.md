@@ -56,11 +56,12 @@ Please refer to the [sample](darealmvp-sample) for seeing it in action.
 ##Importing to your project
 
 Add this dependency to your build.gradle file:
-    ```java
-    dependencies {
-        compile 'com.hrules:darealmvp:0.1.0'
-    }
-    ```
+
+```java
+dependencies {
+    compile 'com.hrules:darealmvp:0.1.0'
+}
+```
 
 
 Developed by
