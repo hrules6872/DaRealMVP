@@ -2,64 +2,66 @@ DaRealMVP
 =====
 ![image](meme.jpg)
 
-DaRealMVP is library to bring MVP pattern (under my point of view) to Android so easy and reducing the boilerplate-code.
+DaRealMVP is a library to bring MVP pattern (under my point of view) to your Android apps so easy and reducing the boilerplate-code.
 
 ##How to implement
 
 1. Activity
 
-```java
-public abstract class MainActivity
-    extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.IMainView>
-    implements MainActivityPresenter.IMainView {
-
-  @Override public void onCreate(Bundle savedInstanceState) {
-    setPresenter(new MainActivityPresenter());
-    super.onCreate(savedInstanceState);
-  }
-
-  @Override public int getLayoutResource() {
-    return R.layout.activity_main;
-  }
-}
-```
+    ```java
+    public abstract class MainActivity
+        extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.IMainView>
+        implements MainActivityPresenter.IMainView {
+    
+      @Override public void onCreate(Bundle savedInstanceState) {
+        setPresenter(new MainActivityPresenter());
+        super.onCreate(savedInstanceState);
+      }
+    
+      @Override public int getLayoutResource() {
+        return R.layout.activity_main;
+      }
+    }
+    ```
 
 2. View
 
-```java
-public class MainActivityView extends MainActivity {
-  @Override public void initializeViews() {   
-  }
-}
-```
+    ```java
+    public class MainActivityView extends MainActivity {
+      @Override public void initializeViews() {   
+      }
+    }
+    ```
 
 3. Presenter
 
-```java
-public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMainView> {
-    @Override public void onSaveState(Bundle outState) {
+    ```java
+    public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMainView> {
+        @Override public void onSaveState(Bundle outState) {
+        }
+    
+        @Override public void onLoadState(Bundle savedState) {
+        }
+    
+        public interface IMainView extends DRView {
+        }
     }
-
-    @Override public void onLoadState(Bundle savedState) {
-    }
-
-    public interface IMainView extends DRView {
-    }
-}
-```
+    ```
 
 ##Usage
 
 Please refer to the [sample](darealmvp-sample) for seeing it in action.
 
+
 ##Importing to your project
 
 Add this dependency to your build.gradle file:
-```java
-dependencies {
-    compile 'com.hrules:darealmvp:0.1.0'
-}
-```
+    ```java
+    dependencies {
+        compile 'com.hrules:darealmvp:0.1.0'
+    }
+    ```
+
 
 Developed by
 -------
