@@ -2,28 +2,28 @@ apply plugin: 'com.android.library'
 apply plugin: 'bintray-release'
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.2"
+  compileSdkVersion ANDROID_BUILD_COMPILE_SDK_VERSION
+  buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
 
   defaultConfig {
-    minSdkVersion 15
-    targetSdkVersion 23
-    versionCode 1010
-    versionName "0.1.0"
+    minSdkVersion ANDROID_BUILD_MIN_SDK_VERSION
+    targetSdkVersion ANDROID_BUILD_TARGET_SDK_VERSION
+    versionCode LIBRARY_VERSION_CODE.toInteger()
+    versionName LIBRARY_VERSION_NAME
   }
 }
 
 dependencies {
   testCompile 'junit:junit:4.12'
-  compile 'com.android.support:appcompat-v7:23.+'
-  compile 'com.android.support:support-annotations:23.+'
+  compile "com.android.support:appcompat-v7:${ANDROID_BUILD_TARGET_SDK_VERSION}.+"
+  compile "com.android.support:support-annotations:${ANDROID_BUILD_TARGET_SDK_VERSION}.+"
 }
 
 publish {
   userOrg = 'hrules6872'
   groupId = 'com.hrules'
   artifactId = 'darealmvp'
-  version = '0.1.0'
+  version = LIBRARY_VERSION_NAME
   description = 'DaRealMVP'
   website = 'https://github.com/hrules6872/DaRealMVP'
   repository = "https://github.com/hrules6872/DaRealMVP.git"
