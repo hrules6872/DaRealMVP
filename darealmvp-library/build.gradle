@@ -15,8 +15,8 @@ android {
 
 dependencies {
   testCompile 'junit:junit:4.12'
-  compile "com.android.support:appcompat-v7:${ANDROID_BUILD_TARGET_SDK_VERSION}.+"
-  compile "com.android.support:support-annotations:${ANDROID_BUILD_TARGET_SDK_VERSION}.+"
+  compile "com.android.support:appcompat-v7:${ANDROID_BUILD_SUPPORT_VERSION}"
+  compile "com.android.support:support-annotations:${ANDROID_BUILD_SUPPORT_VERSION}"
 }
 
 publish {
