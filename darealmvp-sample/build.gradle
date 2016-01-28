@@ -1,21 +1,21 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion ANDROID_BUILD_COMPILE_SDK_VERSION
-  buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
+  compileSdkVersion androidBuildCompileSDKVersion
+  buildToolsVersion androidBuildToolsVersion
 
   defaultConfig {
     applicationId "com.hrules.darealmvp.sample"
-    minSdkVersion ANDROID_BUILD_MIN_SDK_VERSION
-    targetSdkVersion ANDROID_BUILD_TARGET_SDK_VERSION
+    minSdkVersion androidBuildMinSDKVersion
+    targetSdkVersion androidBuildTargetSDKVersion
     versionCode 100
     versionName "1.0.0"
   }
 }
 
 dependencies {
-  compile "com.android.support:appcompat-v7:${ANDROID_BUILD_SUPPORT_VERSION}"
-  compile "com.android.support:recyclerview-v7:${ANDROID_BUILD_SUPPORT_VERSION}"
-  compile 'com.jakewharton:butterknife:7.+'
+  compile supportDependencies.appCompat
+  compile supportDependencies.recyclerView
+  compile projectDependencies.butterKnife
   compile project(':darealmvp-library')
 }
