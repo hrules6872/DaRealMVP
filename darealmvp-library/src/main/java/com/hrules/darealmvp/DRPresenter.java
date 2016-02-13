@@ -6,35 +6,35 @@ import android.support.annotation.NonNull;
 public abstract class DRPresenter<V extends DRView> {
   protected V view;
 
-  public void bind(@NonNull V view) {
+  protected void bind(@NonNull V view) {
     this.view = view;
   }
 
-  public void unbind() {
+  protected void unbind() {
     view = null;
   }
 
-  public void onResume() {
+  protected void onResume() {
   }
 
-  public void onPause() {
+  protected void onPause() {
   }
 
-  public void onSaveState(Bundle outState) {
+  protected void onSaveState(Bundle outState) {
   }
 
-  public void onLoadState(Bundle savedState) {
+  protected void onLoadState(Bundle savedState) {
   }
 
-  public void onStart() {
+  protected void onStart() {
   }
 
-  public void onStop() {
+  protected void onStop() {
   }
 
-  public void onDestroy() {
+  protected void onDestroy() {
   }
 
-  public void onViewReady() {
+  protected void onViewReady() {
   }
 }

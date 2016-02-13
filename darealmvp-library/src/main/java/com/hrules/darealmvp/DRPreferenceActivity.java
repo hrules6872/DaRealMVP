@@ -22,7 +22,8 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
 
   private P presenter;
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
+  @SuppressWarnings({ "unchecked", "deprecation" }) @Override
+  protected void onCreate(Bundle savedInstanceState) {
     getDelegate().installViewFactory();
     getDelegate().onCreate(savedInstanceState);
     preSetContentView();
@@ -47,7 +48,7 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
     presenter.onViewReady();
   }
 
-  private P internalGetPresenter()
+  @SuppressWarnings("unchecked") private P internalGetPresenter()
       throws InstantiationException, IllegalAccessException, ClassNotFoundException {
     Class clazz = getClass();
     Type genericSuperclass;
@@ -66,7 +67,7 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
     return presenter;
   }
 
-  @Override public void onSaveInstanceState(Bundle outState) {
+  @Override protected void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
     presenter.onSaveState(outState);
   }
@@ -93,7 +94,7 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
     getDelegate().setSupportActionBar(toolbar);
   }
 
-  @Override public MenuInflater getMenuInflater() {
+  @NonNull @Override public MenuInflater getMenuInflater() {
     return getDelegate().getMenuInflater();
   }
 
@@ -159,7 +160,7 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
   private void preSetContentView() {
   }
 
-  public abstract void initializeViews();
+  protected abstract void initializeViews();
 
   protected abstract int getPreferencesResource();
 

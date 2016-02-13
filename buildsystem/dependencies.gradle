@@ -5,8 +5,8 @@ ext {
   androidBuildCompileSDKVersion = 'android-23'
 
   // internal
-  libraryVersionCode = 1010
-  libraryVersionName = '0.1.0'
+  libraryVersionCode = 1011
+  libraryVersionName = '0.1.1'
 
   // support libraries
   supportLibraryVersion = '23.+'

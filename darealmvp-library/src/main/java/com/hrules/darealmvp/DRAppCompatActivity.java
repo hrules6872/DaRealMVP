@@ -13,7 +13,7 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
 
   private P presenter;
 
-  @Override public void onCreate(Bundle savedInstanceState) {
+  @SuppressWarnings("unchecked") @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     preSetContentView();
     setContentView(getLayoutResource());
@@ -35,7 +35,7 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
     presenter.onViewReady();
   }
 
-  private P internalGetPresenter()
+  @SuppressWarnings("unchecked") private P internalGetPresenter()
       throws InstantiationException, IllegalAccessException, ClassNotFoundException {
     Class clazz = getClass();
     Type genericSuperclass;
@@ -54,27 +54,27 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
     return presenter;
   }
 
-  @Override public void onSaveInstanceState(Bundle outState) {
+  @Override protected void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
     presenter.onSaveState(outState);
   }
 
-  @Override public void onResume() {
+  @Override protected void onResume() {
     super.onResume();
     presenter.onResume();
   }
 
-  @Override public void onStart() {
+  @Override protected void onStart() {
     super.onStart();
     presenter.onStart();
   }
 
-  @Override public void onStop() {
+  @Override protected void onStop() {
     super.onStop();
     presenter.onStop();
   }
 
-  @Override public void onDestroy() {
+  @Override protected void onDestroy() {
     super.onDestroy();
     presenter.unbind();
     presenter.onDestroy();
@@ -88,9 +88,9 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
   public void preSetContentView() {
   }
 
-  public abstract int getLayoutResource();
+  protected abstract int getLayoutResource();
 
-  public abstract void initializeViews();
+  protected abstract void initializeViews();
 
   public void setPresenter(P presenter) {
     this.presenter = presenter;

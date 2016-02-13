@@ -22,7 +22,8 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
     return inflater.inflate(getLayoutResource(), container, false);
   }
 
-  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+  @SuppressWarnings("unchecked") @Override
+  public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     if (presenter == null) {
       try {
@@ -41,7 +42,7 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
     presenter.onViewReady();
   }
 
-  private P internalGetPresenter()
+  @SuppressWarnings("unchecked") private P internalGetPresenter()
       throws java.lang.InstantiationException, IllegalAccessException, ClassNotFoundException {
     Class clazz = getClass();
     Type genericSuperclass;
@@ -99,9 +100,9 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
     this.presenter = presenter;
   }
 
-  public abstract int getLayoutResource();
+  protected abstract int getLayoutResource();
 
-  public abstract void initializeViews(View view);
+  protected abstract void initializeViews(View view);
 
   public Context getContext() {
     return getActivity().getApplicationContext();

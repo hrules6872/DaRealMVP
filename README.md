@@ -59,7 +59,7 @@ Add this dependency to your build.gradle file:
 
 ```java
 dependencies {
-    compile 'com.hrules:darealmvp:0.1.0'
+    compile 'com.hrules:darealmvp:0.1.1'
 }
 ```
 
