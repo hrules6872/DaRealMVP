@@ -6,34 +6,22 @@ DaRealMVP is a library to bring MVP pattern (under my point of view) to your And
 
 ##How to implement
 
-1. Activity
+1. View
 
     ```java
-    public abstract class MainActivity
-        extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.IMainView>
+    public class MainActivityView extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.IMainView>
         implements MainActivityPresenter.IMainView {
-    
-      @Override public void onCreate(Bundle savedInstanceState) {
-        setPresenter(new MainActivityPresenter());
-        super.onCreate(savedInstanceState);
-      }
-    
+        
       @Override public int getLayoutResource() {
         return R.layout.activity_main;
       }
-    }
-    ```
-
-2. View
-
-    ```java
-    public class MainActivityView extends MainActivity {
+      
       @Override public void initializeViews() {   
       }
     }
     ```
 
-3. Presenter
+2. Presenter
 
     ```java
     public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMainView> {
