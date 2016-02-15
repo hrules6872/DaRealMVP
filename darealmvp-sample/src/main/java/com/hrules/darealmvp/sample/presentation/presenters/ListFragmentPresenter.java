@@ -12,7 +12,6 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
     implements ListFragmentAdapterListener {
   private static final String BUNDLE_ITEMS = "BUNDLE_ITEMS";
 
-  private ListFragmentAdapter adapter;
   private List<String> items;
 
   @Override public void onResume() {
@@ -33,7 +32,7 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
 
   @Override public void onViewReady() {
     super.onViewReady();
-    adapter = new ListFragmentAdapter(new ArrayList<String>(), this);
+    ListFragmentAdapter adapter = new ListFragmentAdapter(new ArrayList<String>(), this);
     view.setAdapter(adapter);
   }
 

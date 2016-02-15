@@ -22,7 +22,7 @@ public class ColorDividerItemDecoration extends RecyclerView.ItemDecoration {
   private final boolean showFirstDivider;
   private final boolean showLastDivider;
   private final int size;
-  private Paint paint;
+  private final Paint paint;
 
   public ColorDividerItemDecoration() {
     this(DEFAULT_DIVIDER_COLOR, DEFAULT_DIVIDER_SIZE, DEFAULT_DIVIDER_SHOW_FIRST,

@@ -5,10 +5,13 @@ import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import com.hrules.darealmvp.DRAppCompatActivity;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.presentation.activities.ListActivity;
+import com.hrules.darealmvp.sample.presentation.presenters.ListActivityPresenter;
 
-public class ListActivityView extends ListActivity {
+public class ListActivityView
+    extends DRAppCompatActivity<ListActivityPresenter, ListActivityPresenter.IListView>
+    implements ListActivityPresenter.IListView {
   @Bind(R.id.toolbar) Toolbar toolbar;
   @Bind(R.id.container) FrameLayout container;
 
@@ -28,5 +31,9 @@ public class ListActivityView extends ListActivity {
     getSupportActionBar().setHomeButtonEnabled(true);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setDisplayShowTitleEnabled(true);
+  }
+
+  @Override public int getLayoutResource() {
+    return R.layout.activity_list;
   }
 }

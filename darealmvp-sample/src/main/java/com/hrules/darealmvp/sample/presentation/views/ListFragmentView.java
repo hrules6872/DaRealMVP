@@ -20,7 +20,7 @@ public class ListFragmentView extends ListFragment {
     return R.layout.fragment_list;
   }
 
-  @Override public void initializeViews(View view) {
+  @SuppressWarnings("deprecation") @Override public void initializeViews(View view) {
     ButterKnife.bind(this, view);
     recyclerView.setLayoutManager(
         new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

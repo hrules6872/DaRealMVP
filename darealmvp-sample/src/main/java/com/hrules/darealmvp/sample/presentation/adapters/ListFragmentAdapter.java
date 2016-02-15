@@ -16,8 +16,8 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
   private static ListFragmentAdapterListener listener;
 
   public ListFragmentAdapter(ArrayList<String> items, ListFragmentAdapterListener listener) {
-    this.items = items;
-    this.listener = listener;
+    ListFragmentAdapter.items = items;
+    ListFragmentAdapter.listener = listener;
   }
 
   @Override
@@ -51,7 +51,7 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
   }
 
   public void updateItems(List<String> items) {
-    this.items = items;
+    ListFragmentAdapter.items = items;
     notifyDataSetChanged();
   }
 }

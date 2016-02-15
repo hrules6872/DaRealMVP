@@ -6,16 +6,26 @@ import android.preference.Preference;
 import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import com.hrules.darealmvp.DRPreferenceActivity;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.presentation.activities.PreferenceActivity;
+import com.hrules.darealmvp.sample.presentation.presenters.PreferenceActivityPresenter;
 
-public class PreferenceActivityView extends PreferenceActivity
-    implements Preference.OnPreferenceClickListener {
+public class PreferenceActivityView extends
+    DRPreferenceActivity<PreferenceActivityPresenter, PreferenceActivityPresenter.IPreferenceView>
+    implements PreferenceActivityPresenter.IPreferenceView, Preference.OnPreferenceClickListener {
   public static final String KEY_PREFS_GOTOREPO = "prefs_gotoRepo";
 
   @Bind(R.id.toolbar) Toolbar toolbar;
 
-  @Override public void initializeViews() {
+  @Override public int getLayoutResource() {
+    return R.layout.activity_preference;
+  }
+
+  @Override protected int getPreferencesResource() {
+    return R.xml.preferences;
+  }
+
+  @SuppressWarnings("deprecation") @Override public void initializeViews() {
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
     getSupportActionBar().setTitle(getString(R.string.activity_preferences_title));
