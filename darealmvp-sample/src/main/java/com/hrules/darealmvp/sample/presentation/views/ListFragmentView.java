@@ -7,15 +7,15 @@ import android.view.View;
 import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import com.hrules.darealmvp.DRFragment;
+import com.hrules.darealmvp.DRFragmentV4;
 import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.presentation.adapters.ListFragmentAdapter;
 import com.hrules.darealmvp.sample.presentation.adapters.commons.ColorDividerItemDecoration;
 import com.hrules.darealmvp.sample.presentation.presenters.ListFragmentPresenter;
 import java.util.List;
 
-public class ListFragmentView
-    extends DRFragment<ListFragmentPresenter, ListFragmentPresenter.IListFragmentView>
+@SuppressWarnings("WeakerAccess") public class ListFragmentView
+    extends DRFragmentV4<ListFragmentPresenter, ListFragmentPresenter.IListFragmentView>
     implements ListFragmentPresenter.IListFragmentView {
   @Bind(R.id.recyclerView) RecyclerView recyclerView;
 

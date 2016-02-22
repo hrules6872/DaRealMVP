@@ -1,10 +1,10 @@
 package com.hrules.darealmvp;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> extends Fragment
+public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> extends Fragment
     implements DRView {
 
   private P presenter;

@@ -36,7 +36,7 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
     view.setAdapter(adapter);
   }
 
-  public ArrayList<String> retrieveItems() {
+  private ArrayList<String> retrieveItems() {
     ArrayList<String> items = new ArrayList<>();
     for (int i = 0; i < 100; i++) {
       items.add("Item" + i);

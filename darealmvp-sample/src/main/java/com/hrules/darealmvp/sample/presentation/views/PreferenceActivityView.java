@@ -15,7 +15,7 @@ public class PreferenceActivityView extends
     implements PreferenceActivityPresenter.IPreferenceView, Preference.OnPreferenceClickListener {
   public static final String KEY_PREFS_GOTOREPO = "prefs_gotoRepo";
 
-  @Bind(R.id.toolbar) Toolbar toolbar;
+  @SuppressWarnings("WeakerAccess") @Bind(R.id.toolbar) Toolbar toolbar;
 
   @Override public int getLayoutResource() {
     return R.layout.activity_preference;

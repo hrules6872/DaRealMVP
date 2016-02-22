@@ -44,7 +44,7 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMa
     toastShowed = savedState.getBoolean(BUNDLE_TOAST_SHOWED);
   }
 
-  public void showMessage() {
+  private void showMessage() {
     view.changeMessage(view.getContext().getString(R.string.try_rotate));
     messageShowed = true;
   }

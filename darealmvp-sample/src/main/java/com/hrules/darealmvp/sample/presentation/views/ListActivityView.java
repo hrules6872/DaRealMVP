@@ -9,7 +9,7 @@ import com.hrules.darealmvp.DRAppCompatActivity;
 import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.presentation.presenters.ListActivityPresenter;
 
-public class ListActivityView
+@SuppressWarnings("WeakerAccess") public class ListActivityView
     extends DRAppCompatActivity<ListActivityPresenter, ListActivityPresenter.IListView>
     implements ListActivityPresenter.IListView {
   @Bind(R.id.toolbar) Toolbar toolbar;
