@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.view.MenuItem;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -25,8 +24,11 @@ public abstract class DRActivity<P extends DRPresenter<V>, V extends DRView> ext
         e.printStackTrace();
       }
     }
-    presenter.bind((V) this);
+    if (presenter == null) {
+      throw new IllegalArgumentException();
+    }
 
+    presenter.bind((V) this);
     if (savedInstanceState != null) {
       presenter.onLoadState(savedInstanceState);
     }
@@ -50,39 +52,43 @@ public abstract class DRActivity<P extends DRPresenter<V>, V extends DRView> ext
     return (P) Class.forName(presenterClass.toString().split(" ")[1]).newInstance();
   }
 
-  @NonNull public P getPresenter() {
+  @SuppressWarnings("unchecked") public P getPresenter() {
     return presenter;
+  }
+
+  public void setPresenter(@NonNull P presenter) {
+    this.presenter = presenter;
   }
 
   @Override protected void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    presenter.onSaveState(outState);
+    getPresenter().onSaveState(outState);
   }
 
   @Override protected void onResume() {
     super.onResume();
-    presenter.onResume();
+    getPresenter().onResume();
   }
 
   @Override protected void onStart() {
     super.onStart();
-    presenter.onStart();
+    getPresenter().onStart();
   }
 
   @Override protected void onStop() {
     super.onStop();
-    presenter.onStop();
-  }
-
-  @Override protected void onDestroy() {
-    super.onDestroy();
-    presenter.unbind();
-    presenter.onDestroy();
+    getPresenter().onStop();
   }
 
   @Override protected void onPause() {
     super.onPause();
-    presenter.onPause();
+    getPresenter().onPause();
+  }
+
+  @Override protected void onDestroy() {
+    super.onDestroy();
+    getPresenter().unbind();
+    getPresenter().onDestroy();
   }
 
   public void preSetContentView() {
@@ -92,20 +98,7 @@ public abstract class DRActivity<P extends DRPresenter<V>, V extends DRView> ext
 
   protected abstract void initializeViews();
 
-  public void setPresenter(P presenter) {
-    this.presenter = presenter;
-  }
-
   public Context getContext() {
     return this.getApplicationContext();
-  }
-
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        onBackPressed();
-        break;
-    }
-    return super.onOptionsItemSelected(item);
   }
 }

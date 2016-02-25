@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import java.lang.reflect.ParameterizedType;
@@ -38,8 +37,11 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
         e.printStackTrace();
       }
     }
-    presenter.bind((V) this);
+    if (presenter == null) {
+      throw new IllegalArgumentException();
+    }
 
+    presenter.bind((V) this);
     if (savedInstanceState != null) {
       presenter.onLoadState(savedInstanceState);
     }
@@ -63,22 +65,17 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
     return (P) Class.forName(presenterClass.toString().split(" ")[1]).newInstance();
   }
 
-  @NonNull public P getPresenter() {
+  @SuppressWarnings("unchecked") @NonNull public P getPresenter() {
     return presenter;
+  }
+
+  public void setPresenter(@NonNull P presenter) {
+    this.presenter = presenter;
   }
 
   @Override protected void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    presenter.onSaveState(outState);
-  }
-
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        onBackPressed();
-        break;
-    }
-    return super.onOptionsItemSelected(item);
+    getPresenter().onSaveState(outState);
   }
 
   @Override protected void onPostCreate(Bundle savedInstanceState) {
@@ -117,7 +114,7 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
   @Override protected void onPostResume() {
     super.onPostResume();
     getDelegate().onPostResume();
-    presenter.onResume();
+    getPresenter().onResume();
   }
 
   @Override protected void onTitleChanged(CharSequence title, int color) {
@@ -133,24 +130,24 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
   @Override protected void onStop() {
     super.onStop();
     getDelegate().onStop();
-    presenter.onStop();
+    getPresenter().onStop();
+  }
+
+  @Override protected void onPause() {
+    super.onPause();
+    getPresenter().onPause();
+  }
+
+  @Override protected void onStart() {
+    super.onStart();
+    getPresenter().onStart();
   }
 
   @Override protected void onDestroy() {
     super.onDestroy();
     getDelegate().onDestroy();
-    presenter.unbind();
-    presenter.onDestroy();
-  }
-
-  @Override protected void onPause() {
-    super.onPause();
-    presenter.onPause();
-  }
-
-  @Override protected void onStart() {
-    super.onStart();
-    presenter.onStart();
+    getPresenter().unbind();
+    getPresenter().onDestroy();
   }
 
   public void invalidateOptionsMenu() {
@@ -166,10 +163,6 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
 
   protected abstract int getLayoutResource();
 
-  public void setPresenter(P presenter) {
-    this.presenter = presenter;
-  }
-
   private AppCompatDelegate getDelegate() {
     if (appCompatDelegate == null) {
       appCompatDelegate = AppCompatDelegate.create(this, null);
@@ -181,4 +174,3 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
     return this.getApplicationContext();
   }
 }
-

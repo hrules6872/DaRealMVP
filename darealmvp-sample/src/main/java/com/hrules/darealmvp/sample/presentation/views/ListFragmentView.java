@@ -1,6 +1,7 @@
 package com.hrules.darealmvp.sample.presentation.views;
 
 import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -31,6 +32,10 @@ import java.util.List;
     recyclerView.addItemDecoration(
         new ColorDividerItemDecoration(res.getColor(android.R.color.darker_gray),
             res.getDimension(R.dimen.list_divider_size)));
+  }
+
+  @NonNull @Override protected String getViewTag() {
+    return getClass().getName() + "@" + Integer.toHexString(hashCode());
   }
 
   @Override public void setAdapter(ListFragmentAdapter adapter) {

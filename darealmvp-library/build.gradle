@@ -14,7 +14,6 @@ android {
 }
 
 dependencies {
-  testCompile testDependencies.junit
   compile supportDependencies.appCompat
   compile supportDependencies.supportAnnotations
 }

@@ -6,10 +6,10 @@ ext {
 
   // internal
   libraryVersionCode = 1020
-  libraryVersionName = '0.2.0'
+  libraryVersionName = '0.3.0'
 
   // support libraries
-  supportLibraryVersion = '23.+'
+  supportLibraryVersion = '23.2.+'
   supportDependencies =
       [recyclerView      : "com.android.support:recyclerview-v7:${supportLibraryVersion}",
        appCompat         : "com.android.support:appcompat-v7:${supportLibraryVersion}",
@@ -17,7 +17,4 @@ ext {
 
   // project dependencies
   projectDependencies = [butterKnife: "com.jakewharton:butterknife:7.+"]
-
-  // test dependencies
-  testDependencies = [junit: "junit:junit:4.+"]
 }

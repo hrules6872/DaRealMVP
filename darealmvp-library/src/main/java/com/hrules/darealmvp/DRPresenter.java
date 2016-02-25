@@ -11,7 +11,7 @@ public abstract class DRPresenter<V extends DRView> {
   }
 
   protected void unbind() {
-    view = null;
+    this.view = null;
   }
 
   protected void onResume() {

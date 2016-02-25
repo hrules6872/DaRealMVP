@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.preference.Preference;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.DRPreferenceActivity;
@@ -43,5 +44,14 @@ public class PreferenceActivityView extends
 
   @Override public void doGotoRepo(String url) {
     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        break;
+    }
+    return super.onOptionsItemSelected(item);
   }
 }

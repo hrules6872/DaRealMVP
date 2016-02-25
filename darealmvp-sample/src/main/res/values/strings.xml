@@ -1,6 +1,6 @@
 <resources>
   <string name="app_name">DaRealMVP-sample</string>
-  <string name="welcome">Welcome</string>
+  <string name="app_welcome">Welcome</string>
   <string name="try_rotate">Try to rotate the device :)</string>
   <string name="show_list_activity">Show ListActivity</string>
   <string name="show_message">Show message</string>
@@ -10,4 +10,7 @@
   <string name="activity_list_title">List</string>
   <string name="app_repository_url">https://github.com/hrules6872/DaRealMVP</string>
   <string name="item_clicked">clicked</string>
+  <string name="pager_pageNumber">Page: %1$d</string>
+  <string name="show_pager_activity">Show PagerActivity</string>
+  <string name="activity_pager_title">Pager</string>
 </resources>

@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import java.lang.reflect.ParameterizedType;
@@ -32,8 +31,13 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
         e.printStackTrace();
       }
     }
-    presenter.bind((V) this);
 
+    if (presenter == null) {
+      throw new IllegalArgumentException();
+    }
+
+    PresenterCache.getInstance().put(getViewTag(), presenter);
+    presenter.bind((V) this);
     if (savedInstanceState != null) {
       presenter.onLoadState(savedInstanceState);
     }
@@ -57,47 +61,48 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
     return (P) Class.forName(presenterClass.toString().split(" ")[1]).newInstance();
   }
 
+  @SuppressWarnings("unchecked") @NonNull public P getPresenter() {
+    return presenter != null ? presenter : (P) PresenterCache.getInstance().get(getViewTag());
+  }
+
+  public void setPresenter(@NonNull P presenter) {
+    this.presenter = presenter;
+  }
+
   @Override public void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    presenter.onSaveState(outState);
+    getPresenter().onSaveState(outState);
   }
 
   @Override public void onResume() {
     super.onResume();
-    presenter.onResume();
+    getPresenter().onResume();
   }
 
   @Override public void onStart() {
     super.onStart();
-    presenter.onStart();
+    getPresenter().onStart();
   }
 
   @Override public void onStop() {
     super.onStop();
-    presenter.onStop();
+    getPresenter().onStop();
   }
 
   @Override public void onDestroy() {
     super.onDestroy();
-    presenter.onDestroy();
+    getPresenter().onDestroy();
   }
 
   @Override public void onPause() {
     super.onPause();
-    presenter.onPause();
+    getPresenter().onPause();
   }
 
   @Override public void onDestroyView() {
     super.onDestroyView();
-    presenter.unbind();
-  }
-
-  @NonNull public P getPresenter() {
-    return presenter;
-  }
-
-  public void setPresenter(P presenter) {
-    this.presenter = presenter;
+    getPresenter().unbind();
+    PresenterCache.getInstance().removePresenter(getViewTag());
   }
 
   protected abstract int getLayoutResource();
@@ -108,12 +113,5 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
     return getActivity().getApplicationContext();
   }
 
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        getActivity().onBackPressed();
-        break;
-    }
-    return super.onOptionsItemSelected(item);
-  }
+  protected abstract @NonNull String getViewTag();
 }

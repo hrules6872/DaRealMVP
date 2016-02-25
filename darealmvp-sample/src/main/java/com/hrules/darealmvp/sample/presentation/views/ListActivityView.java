@@ -2,6 +2,7 @@ package com.hrules.darealmvp.sample.presentation.views;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.FrameLayout;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,5 +36,14 @@ import com.hrules.darealmvp.sample.presentation.presenters.ListActivityPresenter
 
   @Override public int getLayoutResource() {
     return R.layout.activity_list;
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        break;
+    }
+    return super.onOptionsItemSelected(item);
   }
 }

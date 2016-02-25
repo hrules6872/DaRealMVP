@@ -42,7 +42,7 @@ import com.hrules.darealmvp.sample.presentation.presenters.MainActivityPresenter
   }
 
   @Override public void showToast() {
-    Toast.makeText(this, getString(R.string.welcome), Toast.LENGTH_LONG).show();
+    Toast.makeText(this, getString(R.string.app_welcome), Toast.LENGTH_LONG).show();
   }
 
   @Override public void changeMessage(String message) {
@@ -54,11 +54,16 @@ import com.hrules.darealmvp.sample.presentation.presenters.MainActivityPresenter
     startActivity(new Intent(this, ListActivityView.class));
   }
 
+  @Override public void showPagerActivity() {
+    startActivity(new Intent(this, PagerActivityView.class));
+  }
+
   @Override public void showPreferencesActivity() {
     startActivity(new Intent(this, PreferenceActivityView.class));
   }
 
-  @OnClick({ R.id.showMessage, R.id.showListActivity }) void onClickButton(Button button) {
+  @OnClick({ R.id.showMessage, R.id.showListActivity, R.id.showPagerActivity }) void onClickButton(
+      Button button) {
     getPresenter().onClickButton(button);
   }
 }
