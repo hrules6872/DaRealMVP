@@ -46,11 +46,6 @@ Fragments (extends DRFragment / DRFragmentV4):
 
         @Override public void initializeViews() {
         }
-
-        @NonNull @Override protected String getViewTag() {
-          // tag MUST be unique
-          return getClass().getName() + "@" + Integer.toHexString(hashCode());
-        }
     }
     ```
 
@@ -75,7 +70,7 @@ Add this dependency to your build.gradle file:
 
 ```java
 dependencies {
-  compile 'com.hrules:darealmvp:0.3.0'
+  compile 'com.hrules:darealmvp:0.4.0'
 }
 ```
 
