@@ -6,6 +6,8 @@ DaRealMVP is a library to bring MVP pattern (under my point of view) to your And
 
 ##How to implement
 
+Activities (extends DRActivity / DRAppCompatActivity / DRPreferenceActivity):
+
 1. View
 
     ```java
@@ -25,16 +27,42 @@ DaRealMVP is a library to bring MVP pattern (under my point of view) to your And
 
     ```java
     public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMainView> {
-        @Override public void onSaveState(Bundle outState) {
+      public interface IMainView extends DRView {
+      }
+    }
+    ```
+
+Fragments (extends DRFragment / DRFragmentV4):
+
+1. View
+
+    ```java
+    public class MainFragmentView extends DRFragmentV4<MainFragmentPresenter, MainFragmentPresenter.IMainView>
+        implements MainFragmentPresenter.IMainView {
+
+        @Override public int getLayoutResource() {
+          return R.layout.fragment_main;
         }
-    
-        @Override public void onLoadState(Bundle savedState) {
+
+        @Override public void initializeViews() {
         }
-    
+
+        @NonNull @Override protected String getViewTag() {
+          // tag MUST be unique
+          return getClass().getName() + "@" + Integer.toHexString(hashCode());
+        }
+    }
+    ```
+
+2. Presenter
+
+    ```java
+    public class MainFragmentPresenter extends DRPresenter<MainFragmentPresenter.IMainView> {
         public interface IMainView extends DRView {
         }
     }
     ```
+
 
 ##Usage
 
@@ -47,7 +75,7 @@ Add this dependency to your build.gradle file:
 
 ```java
 dependencies {
-    compile 'com.hrules:darealmvp:0.1.1'
+  compile 'com.hrules:darealmvp:0.3.0'
 }
 ```
 
