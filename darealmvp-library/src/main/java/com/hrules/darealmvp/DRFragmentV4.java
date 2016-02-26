@@ -36,13 +36,11 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
       throw new IllegalArgumentException();
     }
 
-    PresenterCache.getInstance().put(getViewTag(), presenter);
     presenter.bind((V) this);
+    initializeViews(view);
     if (savedInstanceState != null) {
       presenter.onLoadState(savedInstanceState);
     }
-
-    initializeViews(view);
     presenter.onViewReady();
   }
 
@@ -61,8 +59,8 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
     return (P) Class.forName(presenterClass.toString().split(" ")[1]).newInstance();
   }
 
-  @SuppressWarnings("unchecked") @NonNull public P getPresenter() {
-    return presenter != null ? presenter : (P) PresenterCache.getInstance().get(getViewTag());
+  @SuppressWarnings("unchecked") public P getPresenter() {
+    return presenter;
   }
 
   public void setPresenter(@NonNull P presenter) {
@@ -71,38 +69,51 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
 
   @Override public void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    getPresenter().onSaveState(outState);
+    if (presenter != null) {
+      presenter.onSaveState(outState);
+    }
   }
 
   @Override public void onResume() {
     super.onResume();
-    getPresenter().onResume();
+    if (presenter != null) {
+      presenter.onResume();
+    }
   }
 
   @Override public void onStart() {
     super.onStart();
-    getPresenter().onStart();
+    if (presenter != null) {
+      presenter.onStart();
+    }
   }
 
   @Override public void onStop() {
     super.onStop();
-    getPresenter().onStop();
+    if (presenter != null) {
+      presenter.onStop();
+    }
   }
 
   @Override public void onDestroy() {
     super.onDestroy();
-    getPresenter().onDestroy();
+    if (presenter != null) {
+      presenter.onDestroy();
+    }
   }
 
   @Override public void onPause() {
     super.onPause();
-    getPresenter().onPause();
+    if (presenter != null) {
+      presenter.onPause();
+    }
   }
 
   @Override public void onDestroyView() {
     super.onDestroyView();
-    getPresenter().unbind();
-    PresenterCache.getInstance().removePresenter(getViewTag());
+    if (presenter != null) {
+      presenter.unbind();
+    }
   }
 
   protected abstract int getLayoutResource();
@@ -112,6 +123,4 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
   public Context getContext() {
     return getActivity().getApplicationContext();
   }
-
-  protected abstract @NonNull String getViewTag();
 }

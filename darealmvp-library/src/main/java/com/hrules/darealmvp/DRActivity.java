@@ -29,11 +29,10 @@ public abstract class DRActivity<P extends DRPresenter<V>, V extends DRView> ext
     }
 
     presenter.bind((V) this);
+    initializeViews();
     if (savedInstanceState != null) {
       presenter.onLoadState(savedInstanceState);
     }
-
-    initializeViews();
     presenter.onViewReady();
   }
 

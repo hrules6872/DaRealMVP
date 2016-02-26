@@ -1,7 +1,6 @@
 package com.hrules.darealmvp.sample.presentation.views;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.Bind;
@@ -40,9 +39,5 @@ public class PageFragmentView
 
   @Override public void unbind() {
     ButterKnife.unbind(this);
-  }
-
-  @NonNull @Override protected String getViewTag() {
-    return getClass().getName() + "@" + Integer.toHexString(hashCode());
   }
 }

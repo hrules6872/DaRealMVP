@@ -42,11 +42,10 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
     }
 
     presenter.bind((V) this);
+    initializeViews();
     if (savedInstanceState != null) {
       presenter.onLoadState(savedInstanceState);
     }
-
-    initializeViews();
     presenter.onViewReady();
   }
 
@@ -154,6 +153,13 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
     getDelegate().invalidateOptionsMenu();
   }
 
+  private AppCompatDelegate getDelegate() {
+    if (appCompatDelegate == null) {
+      appCompatDelegate = AppCompatDelegate.create(this, null);
+    }
+    return appCompatDelegate;
+  }
+
   private void preSetContentView() {
   }
 
@@ -162,13 +168,6 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
   protected abstract int getPreferencesResource();
 
   protected abstract int getLayoutResource();
-
-  private AppCompatDelegate getDelegate() {
-    if (appCompatDelegate == null) {
-      appCompatDelegate = AppCompatDelegate.create(this, null);
-    }
-    return appCompatDelegate;
-  }
 
   public Context getContext() {
     return this.getApplicationContext();
