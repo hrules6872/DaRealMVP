@@ -8,6 +8,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.DRAppCompatActivity;
 import com.hrules.darealmvp.sample.R;
+import com.hrules.darealmvp.sample.commons.DebugLog;
 import com.hrules.darealmvp.sample.presentation.presenters.ListActivityPresenter;
 
 @SuppressWarnings("WeakerAccess") public class ListActivityView
@@ -25,13 +26,16 @@ import com.hrules.darealmvp.sample.presentation.presenters.ListActivityPresenter
     }
   }
 
-  @Override public void initializeViews() {
+  @SuppressWarnings("ConstantConditions") @Override public void initializeViews() {
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
-    getSupportActionBar().setTitle(getString(R.string.activity_list_title));
-    getSupportActionBar().setHomeButtonEnabled(true);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setDisplayShowTitleEnabled(true);
+    try {
+      getSupportActionBar().setTitle(getString(R.string.activity_list_title));
+      getSupportActionBar().setHomeButtonEnabled(true);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setDisplayShowTitleEnabled(true);
+    } catch (Exception ignored) {
+    }
   }
 
   @Override public int getLayoutResource() {
@@ -45,5 +49,9 @@ import com.hrules.darealmvp.sample.presentation.presenters.ListActivityPresenter
         break;
     }
     return super.onOptionsItemSelected(item);
+  }
+
+  @Override public void preSetContentView() {
+    DebugLog.d("preSetContentView() called");
   }
 }

@@ -6,7 +6,7 @@ ext {
 
   // internal
   libraryVersionCode = 1020
-  libraryVersionName = '0.4.0'
+  libraryVersionName = '0.4.1'
 
   // support libraries
   supportLibraryVersion = '23.2.+'

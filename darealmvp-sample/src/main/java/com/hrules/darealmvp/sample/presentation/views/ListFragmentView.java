@@ -9,6 +9,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.DRFragmentV4;
 import com.hrules.darealmvp.sample.R;
+import com.hrules.darealmvp.sample.commons.DebugLog;
 import com.hrules.darealmvp.sample.presentation.adapters.ListFragmentAdapter;
 import com.hrules.darealmvp.sample.presentation.adapters.commons.ColorDividerItemDecoration;
 import com.hrules.darealmvp.sample.presentation.presenters.ListFragmentPresenter;
@@ -43,6 +44,10 @@ import java.util.List;
 
   @Override public void updateItems(List<String> items) {
     ((ListFragmentAdapter) recyclerView.getAdapter()).updateItems(items);
+  }
+
+  @Override public void preCreateView() {
+    DebugLog.d("preCreateView() called");
   }
 
   @Override public void onClick(String item) {

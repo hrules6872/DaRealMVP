@@ -90,7 +90,7 @@ public abstract class DRActivity<P extends DRPresenter<V>, V extends DRView> ext
     getPresenter().onDestroy();
   }
 
-  public void preSetContentView() {
+  @SuppressWarnings("EmptyMethod") public void preSetContentView() {
   }
 
   protected abstract int getLayoutResource();

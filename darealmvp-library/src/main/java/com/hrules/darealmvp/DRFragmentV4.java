@@ -18,6 +18,7 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
 
   @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
+    preCreateView();
     return inflater.inflate(getLayoutResource(), container, false);
   }
 
@@ -114,6 +115,9 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
     if (presenter != null) {
       presenter.unbind();
     }
+  }
+
+  @SuppressWarnings("EmptyMethod") public void preCreateView() {
   }
 
   protected abstract int getLayoutResource();

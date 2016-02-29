@@ -21,13 +21,16 @@ public class PagerActivityView
     return R.layout.activity_pager;
   }
 
-  @Override protected void initializeViews() {
+  @SuppressWarnings("ConstantConditions") @Override protected void initializeViews() {
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
-    getSupportActionBar().setTitle(getString(R.string.activity_pager_title));
-    getSupportActionBar().setHomeButtonEnabled(true);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setDisplayShowTitleEnabled(true);
+    try {
+      getSupportActionBar().setTitle(getString(R.string.activity_pager_title));
+      getSupportActionBar().setHomeButtonEnabled(true);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setDisplayShowTitleEnabled(true);
+    } catch (Exception ignored) {
+    }
 
     Fragment[] fragments = new Fragment[] {
         PageFragmentView.newInstance(1), PageFragmentView.newInstance(2),
