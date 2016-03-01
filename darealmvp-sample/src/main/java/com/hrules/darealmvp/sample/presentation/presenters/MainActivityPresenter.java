@@ -28,7 +28,7 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMa
   private void showToast() {
     new Handler().postDelayed(new Runnable() {
       @Override public void run() {
-        view.showToast();
+        getView().showToast();
         toastShowed = true;
       }
     }, 1000);
@@ -45,14 +45,14 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMa
   }
 
   private void showMessage() {
-    view.changeMessage(view.getContext().getString(R.string.try_rotate));
+    getView().changeMessage(getViewContext().getString(R.string.try_rotate));
     messageShowed = true;
   }
 
   public void onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_preferences:
-        view.showPreferencesActivity();
+        getView().showPreferencesActivity();
         break;
 
       default:
@@ -67,11 +67,11 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMa
         break;
 
       case R.id.showListActivity:
-        view.showListActivity();
+        getView().showListActivity();
         break;
 
       case R.id.showPagerActivity:
-        view.showPagerActivity();
+        getView().showPagerActivity();
         break;
 
       default:

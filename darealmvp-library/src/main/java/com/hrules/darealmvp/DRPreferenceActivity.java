@@ -160,7 +160,7 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
     return appCompatDelegate;
   }
 
-  @SuppressWarnings("EmptyMethod") private void preSetContentView() {
+  @SuppressWarnings("EmptyMethod") protected void preSetContentView() {
   }
 
   protected abstract void initializeViews();

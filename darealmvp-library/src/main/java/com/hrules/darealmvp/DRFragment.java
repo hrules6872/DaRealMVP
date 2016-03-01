@@ -117,7 +117,7 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
     }
   }
 
-  @SuppressWarnings("EmptyMethod") public void preCreateView() {
+  @SuppressWarnings("EmptyMethod") protected void preCreateView() {
   }
 
   protected abstract int getLayoutResource();

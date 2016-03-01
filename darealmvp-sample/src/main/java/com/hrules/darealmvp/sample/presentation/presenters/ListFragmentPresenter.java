@@ -18,10 +18,10 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
 
   @Override public void onResume() {
     if (items != null) {
-      view.updateItems(items);
+      getView().updateItems(items);
     }
     ArrayList<String> newItems = retrieveItems();
-    view.updateItems(newItems);
+    getView().updateItems(newItems);
   }
 
   @Override public void onSaveState(Bundle outState) {
@@ -38,7 +38,7 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
   @Override public void onViewReady() {
     super.onViewReady();
     ListFragmentAdapter adapter = new ListFragmentAdapter(new ArrayList<String>(), this);
-    view.setAdapter(adapter);
+    getView().setAdapter(adapter);
   }
 
   private ArrayList<String> retrieveItems() {
@@ -50,12 +50,12 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
   }
 
   @Override public void unbind() {
-    view.unbind();
+    getView().unbind();
     super.unbind();
   }
 
   @Override public void onClick(String item) {
-    view.onClick(item);
+    getView().onClick(item);
   }
 
   public interface IListFragmentView extends DRView {

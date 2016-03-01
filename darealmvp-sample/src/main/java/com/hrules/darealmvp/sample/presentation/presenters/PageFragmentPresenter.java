@@ -9,7 +9,7 @@ public class PageFragmentPresenter extends DRPresenter<PageFragmentPresenter.IPa
   private static final String BUNDLE_TEST_BOOLEAN = "BUNDLE_TEST_BOOLEAN";
 
   @Override public void unbind() {
-    view.unbind();
+    getView().unbind();
     super.unbind();
   }
 

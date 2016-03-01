@@ -1,10 +1,11 @@
 package com.hrules.darealmvp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 public abstract class DRPresenter<V extends DRView> {
-  protected V view;
+  private V view;
 
   protected void bind(@NonNull V view) {
     this.view = view;
@@ -36,5 +37,13 @@ public abstract class DRPresenter<V extends DRView> {
   }
 
   protected void onViewReady() {
+  }
+
+  protected V getView() {
+    return view;
+  }
+
+  protected Context getViewContext() {
+    return view.getContext();
   }
 }
