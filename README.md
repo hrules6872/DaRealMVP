@@ -70,7 +70,7 @@ Add this dependency to your build.gradle file:
 
 ```java
 dependencies {
-  compile 'com.hrules:darealmvp:0.4.1'
+  compile 'com.hrules:darealmvp:0.5.0'
 }
 ```
 
