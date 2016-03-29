@@ -170,6 +170,6 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
   protected abstract int getLayoutResource();
 
   public Context getContext() {
-    return this.getApplicationContext();
+    return this;
   }
 }

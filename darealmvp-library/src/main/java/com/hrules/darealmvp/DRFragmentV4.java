@@ -124,7 +124,11 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
 
   protected abstract void initializeViews(View view);
 
-  public Context getContext() {
+  public Context getApplicationContext() {
     return getActivity().getApplicationContext();
+  }
+
+  public Context getContext() {
+    return getActivity();
   }
 }

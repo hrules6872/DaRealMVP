@@ -48,4 +48,8 @@ public abstract class DRPresenter<V extends DRView> {
   protected Context getViewContext() {
     return view.getContext();
   }
+
+  protected Context getApplicationContext() {
+    return view.getApplicationContext();
+  }
 }

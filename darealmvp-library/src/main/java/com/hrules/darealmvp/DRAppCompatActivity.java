@@ -98,6 +98,6 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
   protected abstract void initializeViews();
 
   public Context getContext() {
-    return this.getApplicationContext();
+    return this;
   }
 }
