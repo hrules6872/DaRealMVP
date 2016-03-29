@@ -10,7 +10,6 @@ public class PageFragmentPresenter extends DRPresenter<PageFragmentPresenter.IPa
 
   @Override public void unbind() {
     getView().unbind();
-    super.unbind();
   }
 
   @Override public void onSaveState(Bundle outState) {

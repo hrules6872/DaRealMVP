@@ -2,17 +2,18 @@ package com.hrules.darealmvp;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 
 public abstract class DRPresenter<V extends DRView> {
   private V view;
 
-  protected void bind(@NonNull V view) {
+  @CallSuper protected void bind(@NonNull V view) {
     this.view = view;
   }
 
   protected void unbind() {
-    this.view = null;
+
   }
 
   protected void onResume() {
@@ -33,7 +34,8 @@ public abstract class DRPresenter<V extends DRView> {
   protected void onStop() {
   }
 
-  protected void onDestroy() {
+  @CallSuper protected void onDestroy() {
+    this.view = null;
   }
 
   protected void onViewReady() {

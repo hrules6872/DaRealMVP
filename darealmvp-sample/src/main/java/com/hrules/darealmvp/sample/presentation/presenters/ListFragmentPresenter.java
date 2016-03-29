@@ -51,7 +51,6 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
 
   @Override public void unbind() {
     getView().unbind();
-    super.unbind();
   }
 
   @Override public void onClick(String item) {
