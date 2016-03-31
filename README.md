@@ -2,11 +2,11 @@ DaRealMVP
 =====
 [![image](meme.jpg)](https://www.youtube.com/watch?v=NmRJgKbibB8)
 
-DaRealMVP is a library to bring MVP pattern (under my point of view) to your Android apps so easy and reducing the boilerplate-code.
+DaRealMVP is a library to bring [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) pattern (under my point of view) to your Android apps so easy and reducing the boilerplate-code.
 
 ##How to implement
 
-Activities (extends DRActivity / DRAppCompatActivity / DRPreferenceActivity):
+Activities (extends DRActivity / [DRAppCompatActivity](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/MainActivityView.java) / [DRPreferenceActivity](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/PreferenceActivityView.java)):
 
 1. View
 
@@ -14,12 +14,12 @@ Activities (extends DRActivity / DRAppCompatActivity / DRPreferenceActivity):
     public class MainActivityView extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.IMainView>
         implements MainActivityPresenter.IMainView {
         
-      @Override public int getLayoutResource() {
-        return R.layout.activity_main;
-      }
-      
-      @Override public void initializeViews() {   
-      }
+        @Override public int getLayoutResource() {
+            return R.layout.activity_main;
+        }
+        
+        @Override public void initializeViews() {   
+        }
     }
     ```
 
@@ -27,12 +27,12 @@ Activities (extends DRActivity / DRAppCompatActivity / DRPreferenceActivity):
 
     ```java
     public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMainView> {
-      public interface IMainView extends DRView {
-      }
+        public interface IMainView extends DRView {
+        }
     }
     ```
 
-Fragments (extends DRFragment / DRFragmentV4):
+Fragments (extends DRFragment / [DRFragmentV4](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/MainActivityView.java)):
 
 1. View
 
@@ -41,10 +41,14 @@ Fragments (extends DRFragment / DRFragmentV4):
         implements MainFragmentPresenter.IMainView {
 
         @Override public int getLayoutResource() {
-          return R.layout.fragment_main;
+            return R.layout.fragment_main;
         }
-
+        
         @Override public void initializeViews() {
+        }
+        
+        @Override public void unbind() {
+            getView().unbind();
         }
     }
     ```
@@ -54,10 +58,46 @@ Fragments (extends DRFragment / DRFragmentV4):
     ```java
     public class MainFragmentPresenter extends DRPresenter<MainFragmentPresenter.IMainView> {
         public interface IMainView extends DRView {
+            void unbind();
         }
     }
     ```
 
+DialogFragments (extends DRDialogFragment / DRDialogFragmentV4 / [DRAppCompatDialogFragment](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/DialogFragmentView.java)):
+
+1. View
+
+    ```java
+    public class DialogFragmentView extends DRAppCompatDialogFragment<DialogFragmentPresenter, DialogFragmentPresenter.IDialogView>
+        implements DialogFragmentPresenter.IDialogView {
+
+        @Override protected AlertDialog.Builder getAlertDialog() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            return builder;
+        }
+        
+        @Override public int getLayoutResource() {
+            return R.layout.fragment_main;
+        }
+        
+        @Override public void initializeViews() {
+        }
+        
+        @Override public void unbind() {
+            getView().unbind();
+        }
+    }
+    ```
+
+2. Presenter
+
+    ```java
+    public class DialogFragmentPresenter extends DRPresenter<DialogFragmentPresenter.IDialogView> {
+        public interface IDialogView extends DRView {
+            void unbind();
+        }
+    }
+    ```
 
 ##Usage
 
@@ -69,9 +109,9 @@ Please refer to the [sample](darealmvp-sample) for seeing it in action.
 Add this dependency to your build.gradle file:
 
 ```java
-dependencies {
-  compile 'com.hrules:darealmvp:0.7.0'
-}
+    dependencies {
+        compile 'com.hrules:darealmvp:0.8.0'
+    }
 ```
 
 
