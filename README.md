@@ -46,10 +46,6 @@ Fragments (extends DRFragment / [DRFragmentV4](darealmvp-sample/src/main/java/co
         
         @Override public void initializeViews() {
         }
-        
-        @Override public void unbind() {
-            getView().unbind();
-        }
     }
     ```
 
@@ -57,6 +53,10 @@ Fragments (extends DRFragment / [DRFragmentV4](darealmvp-sample/src/main/java/co
 
     ```java
     public class MainFragmentPresenter extends DRPresenter<MainFragmentPresenter.IMainView> {
+        @Override public void unbind() {
+            getView().unbind();
+        }
+        
         public interface IMainView extends DRView {
             void unbind();
         }
@@ -82,10 +82,6 @@ DialogFragments (extends DRDialogFragment / DRDialogFragmentV4 / [DRAppCompatDia
         
         @Override public void initializeViews() {
         }
-        
-        @Override public void unbind() {
-            getView().unbind();
-        }
     }
     ```
 
@@ -93,6 +89,10 @@ DialogFragments (extends DRDialogFragment / DRDialogFragmentV4 / [DRAppCompatDia
 
     ```java
     public class DialogFragmentPresenter extends DRPresenter<DialogFragmentPresenter.IDialogView> {
+        @Override public void unbind() {
+            getView().unbind();
+        }
+        
         public interface IDialogView extends DRView {
             void unbind();
         }
@@ -109,9 +109,9 @@ Please refer to the [sample](darealmvp-sample) for seeing it in action.
 Add this dependency to your build.gradle file:
 
 ```java
-    dependencies {
-        compile 'com.hrules:darealmvp:0.8.0'
-    }
+dependencies {
+    compile 'com.hrules:darealmvp:0.8.0'
+}
 ```
 
 
