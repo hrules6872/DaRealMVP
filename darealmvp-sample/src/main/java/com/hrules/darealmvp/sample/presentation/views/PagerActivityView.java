@@ -25,7 +25,7 @@ public class PagerActivityView
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
     try {
-      getSupportActionBar().setTitle(getString(R.string.activity_pager_title));
+      getSupportActionBar().setTitle(getString(R.string.activity_pagerTitle));
       getSupportActionBar().setHomeButtonEnabled(true);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       getSupportActionBar().setDisplayShowTitleEnabled(true);

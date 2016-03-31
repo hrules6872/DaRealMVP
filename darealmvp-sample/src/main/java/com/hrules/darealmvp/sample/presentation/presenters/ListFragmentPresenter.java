@@ -1,6 +1,7 @@
 package com.hrules.darealmvp.sample.presentation.presenters;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.commons.DebugLog;
@@ -15,6 +16,10 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
   private static final String BUNDLE_TEST_BOOLEAN = "BUNDLE_TEST_BOOLEAN";
 
   private List<String> items;
+
+  @Override protected void bind(@NonNull IListFragmentView view) {
+    super.bind(view);
+  }
 
   @Override public void onResume() {
     if (items != null) {

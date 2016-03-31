@@ -41,7 +41,7 @@
         android:id="@+id/showListActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/show_list_activity"
+        android:text="@string/show_listActivity"
         android:layout_gravity="center"
         />
 
@@ -49,7 +49,15 @@
         android:id="@+id/showPagerActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/show_pager_activity"
+        android:text="@string/show_pagerActivity"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:id="@+id/showDialogFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/showDialogFragment"
         android:layout_gravity="center"
         />
 

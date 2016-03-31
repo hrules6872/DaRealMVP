@@ -62,8 +62,13 @@ import com.hrules.darealmvp.sample.presentation.presenters.MainActivityPresenter
     startActivity(new Intent(this, PreferenceActivityView.class));
   }
 
-  @OnClick({ R.id.showMessage, R.id.showListActivity, R.id.showPagerActivity }) void onClickButton(
-      Button button) {
+  @Override public void showDialogFragment() {
+    new DialogFragmentView().show(getSupportFragmentManager(), "DialogFragmentView");
+  }
+
+  @OnClick({
+      R.id.showMessage, R.id.showListActivity, R.id.showPagerActivity, R.id.showDialogFragment
+  }) void onClickButton(Button button) {
     getPresenter().onClickButton(button);
   }
 }

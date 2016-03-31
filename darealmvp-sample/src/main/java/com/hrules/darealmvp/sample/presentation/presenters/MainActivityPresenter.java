@@ -74,6 +74,10 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMa
         getView().showPagerActivity();
         break;
 
+      case R.id.showDialogFragment:
+        getView().showDialogFragment();
+        break;
+
       default:
         throw new NotImplementedException();
     }
@@ -89,5 +93,7 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMa
     void showPagerActivity();
 
     void showPreferencesActivity();
+
+    void showDialogFragment();
   }
 }

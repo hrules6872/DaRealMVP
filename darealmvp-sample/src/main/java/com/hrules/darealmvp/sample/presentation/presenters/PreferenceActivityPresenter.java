@@ -13,7 +13,7 @@ public class PreferenceActivityPresenter
   public void onPreferenceClick(Preference preference) {
     switch (preference.getKey()) {
       case PreferenceActivityView.KEY_PREFS_GOTOREPO:
-        getView().doGotoRepo(getViewContext().getString(R.string.app_repository_url));
+        getView().doGotoRepo(getViewContext().getString(R.string.app_repositoryUrl));
         break;
 
       default:

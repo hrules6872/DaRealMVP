@@ -29,7 +29,7 @@ public class PreferenceActivityView extends
   @SuppressWarnings("deprecation") @Override public void initializeViews() {
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
-    getSupportActionBar().setTitle(getString(R.string.activity_preferences_title));
+    getSupportActionBar().setTitle(getString(R.string.activity_preferencesTitle));
     getSupportActionBar().setHomeButtonEnabled(true);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setDisplayShowTitleEnabled(true);

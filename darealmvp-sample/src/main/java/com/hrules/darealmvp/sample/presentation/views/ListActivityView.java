@@ -30,7 +30,7 @@ import com.hrules.darealmvp.sample.presentation.presenters.ListActivityPresenter
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
     try {
-      getSupportActionBar().setTitle(getString(R.string.activity_list_title));
+      getSupportActionBar().setTitle(getString(R.string.activity_listTitle));
       getSupportActionBar().setHomeButtonEnabled(true);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       getSupportActionBar().setDisplayShowTitleEnabled(true);
