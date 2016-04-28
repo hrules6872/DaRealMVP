@@ -2,7 +2,7 @@ DaRealMVP
 =====
 [![image](meme.jpg)](https://www.youtube.com/watch?v=NmRJgKbibB8)
 
-DaRealMVP is a library to bring [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) pattern (under my point of view) to your Android apps so easy and reducing the boilerplate-code.
+DaRealMVP is a library to bring [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) pattern (from my point of view) to your Android apps so easy and reducing the boilerplate-code.
 
 ##How to implement
 
