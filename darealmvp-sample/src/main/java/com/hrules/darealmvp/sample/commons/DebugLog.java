@@ -28,33 +28,63 @@ public class DebugLog {
     return applicationId;
   }
 
-  public static void d(String message) {
+  public static void d(Object message) {
     if (isDebuggable()) {
-      Log.d(getApplicationId(), formatMessage(message));
+      Log.d(getApplicationId(), formatMessage(String.valueOf(message)));
     }
   }
 
-  public static void e(String message) {
+  public static void d(Object message, Throwable tr) {
     if (isDebuggable()) {
-      Log.e(getApplicationId(), formatMessage(message));
+      Log.d(getApplicationId(), formatMessage(String.valueOf(message)), tr);
     }
   }
 
-  public static void i(String message) {
+  public static void e(Object message) {
     if (isDebuggable()) {
-      Log.i(getApplicationId(), formatMessage(message));
+      Log.e(getApplicationId(), formatMessage(String.valueOf(message)));
     }
   }
 
-  public static void v(String message) {
+  public static void e(Object message, Throwable tr) {
     if (isDebuggable()) {
-      Log.v(getApplicationId(), formatMessage(message));
+      Log.e(getApplicationId(), formatMessage(String.valueOf(message)), tr);
     }
   }
 
-  public static void w(String message) {
+  public static void i(Object message) {
     if (isDebuggable()) {
-      Log.w(getApplicationId(), formatMessage(message));
+      Log.i(getApplicationId(), formatMessage(String.valueOf(message)));
+    }
+  }
+
+  public static void i(Object message, Throwable tr) {
+    if (isDebuggable()) {
+      Log.i(getApplicationId(), formatMessage(String.valueOf(message)), tr);
+    }
+  }
+
+  public static void v(Object message) {
+    if (isDebuggable()) {
+      Log.v(getApplicationId(), formatMessage(String.valueOf(message)));
+    }
+  }
+
+  public static void v(Object message, Throwable tr) {
+    if (isDebuggable()) {
+      Log.v(getApplicationId(), formatMessage(String.valueOf(message)), tr);
+    }
+  }
+
+  public static void w(Object message) {
+    if (isDebuggable()) {
+      Log.w(getApplicationId(), formatMessage(String.valueOf(message)));
+    }
+  }
+
+  public static void w(Object message, Throwable tr) {
+    if (isDebuggable()) {
+      Log.w(getApplicationId(), formatMessage(String.valueOf(message)), tr);
     }
   }
 }
