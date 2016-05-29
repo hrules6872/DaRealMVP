@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,18 +34,18 @@ public abstract class DRAppCompatDialogFragment<P extends DRPresenter<V>, V exte
     return null;
   }
 
-  @SuppressWarnings("unchecked") @Override
-  public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     initializePresenter(view, savedInstanceState);
   }
 
+  @SuppressWarnings("unchecked")
   private void initializePresenter(View view, @Nullable Bundle savedInstanceState) {
     if (presenter == null) {
       try {
         presenter = internalGetPresenter();
       } catch (java.lang.InstantiationException | ClassNotFoundException | IllegalAccessException | ClassCastException e) {
-        e.printStackTrace();
+        Log.e("DRAppCompatDialogF", e.getMessage(), e);
       }
     }
 
@@ -63,7 +64,7 @@ public abstract class DRAppCompatDialogFragment<P extends DRPresenter<V>, V exte
   }
 
   @SuppressWarnings("unchecked") private P internalGetPresenter()
-      throws java.lang.InstantiationException, IllegalAccessException, ClassNotFoundException {
+      throws IllegalAccessException, ClassNotFoundException, java.lang.InstantiationException {
     Class clazz = getClass();
     Type genericSuperclass;
     for (; ; ) {
@@ -134,7 +135,7 @@ public abstract class DRAppCompatDialogFragment<P extends DRPresenter<V>, V exte
     }
   }
 
-  @SuppressWarnings("EmptyMethod") protected void preCreateView() {
+  protected void preCreateView() {
   }
 
   protected abstract AlertDialog.Builder getAlertDialog();

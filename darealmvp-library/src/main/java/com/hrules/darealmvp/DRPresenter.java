@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -16,7 +17,7 @@ public abstract class DRPresenter<V extends DRView> {
     try {
       nullView = NullView.of(internalGetViewInterface());
     } catch (Exception e) {
-      e.printStackTrace();
+      Log.e("DRPresenter", e.getMessage(), e);
     }
   }
 
@@ -34,7 +35,7 @@ public abstract class DRPresenter<V extends DRView> {
   }
 
   @CallSuper protected void bind(@NonNull V view) {
-    this.view = new WeakReference<V>(view);
+    this.view = new WeakReference<>(view);
   }
 
   protected void unbind() {

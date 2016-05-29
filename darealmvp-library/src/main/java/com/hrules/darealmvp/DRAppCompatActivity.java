@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -21,7 +22,7 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
       try {
         presenter = internalGetPresenter();
       } catch (InstantiationException | ClassNotFoundException | IllegalAccessException | ClassCastException e) {
-        e.printStackTrace();
+        Log.e("DRAppCompatActivity", e.getMessage(), e);
       }
     }
     if (presenter == null) {
@@ -90,7 +91,7 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
     getPresenter().onDestroy();
   }
 
-  @SuppressWarnings("EmptyMethod") protected void preSetContentView() {
+  protected void preSetContentView() {
   }
 
   protected abstract int getLayoutResource();

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,18 +34,18 @@ public abstract class DRDialogFragment<P extends DRPresenter<V>, V extends DRVie
     return null;
   }
 
-  @SuppressWarnings("unchecked") @Override
-  public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     initializePresenter(view, savedInstanceState);
   }
 
+  @SuppressWarnings("unchecked")
   private void initializePresenter(View view, @Nullable Bundle savedInstanceState) {
     if (presenter == null) {
       try {
         presenter = internalGetPresenter();
       } catch (java.lang.InstantiationException | ClassNotFoundException | IllegalAccessException | ClassCastException e) {
-        e.printStackTrace();
+        Log.e("DRDialogFragment", e.getMessage(), e);
       }
     }
 
@@ -134,7 +135,7 @@ public abstract class DRDialogFragment<P extends DRPresenter<V>, V extends DRVie
     }
   }
 
-  @SuppressWarnings("EmptyMethod") protected void preCreateView() {
+  protected void preCreateView() {
   }
 
   protected abstract AlertDialog.Builder getAlertDialog();

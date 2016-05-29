@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,14 +23,18 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
     return inflater.inflate(getLayoutResource(), container, false);
   }
 
-  @SuppressWarnings("unchecked") @Override
-  public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+    initializePresenter(view, savedInstanceState);
+  }
+
+  @SuppressWarnings("unchecked")
+  private void initializePresenter(View view, @Nullable Bundle savedInstanceState) {
     if (presenter == null) {
       try {
         presenter = internalGetPresenter();
       } catch (java.lang.InstantiationException | ClassNotFoundException | IllegalAccessException | ClassCastException e) {
-        e.printStackTrace();
+        Log.e("DRFragment", e.getMessage(), e);
       }
     }
 
@@ -117,7 +122,7 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
     }
   }
 
-  @SuppressWarnings("EmptyMethod") protected void preCreateView() {
+  protected void preCreateView() {
   }
 
   protected abstract int getLayoutResource();
