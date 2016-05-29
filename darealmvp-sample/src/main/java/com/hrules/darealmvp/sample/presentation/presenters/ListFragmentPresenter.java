@@ -17,29 +17,34 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.Lis
   private static final String BUNDLE_TEST_BOOLEAN = "BUNDLE_TEST_BOOLEAN";
 
   private List<String> items;
+  private ListFragmentAdapter adapter;
 
   @Override protected void bind(@NonNull ListFragmentView view) {
     super.bind(view);
+    items = new ArrayList<>();
+    adapter = new ListFragmentAdapter((ArrayList<String>) items, this);
   }
 
   @Override public void onResume() {
-    if (items != null) {
+    if (!items.isEmpty()) {
+      getView().hideProgress();
       getView().updateItems(items);
     } else {
-      new AsyncTask<Void, Void, ArrayList<String>>() {
+      new AsyncTask<Void, Void, List<String>>() {
         @Override protected void onPreExecute() {
           getView().showProgress();
         }
 
-        @Override protected ArrayList<String> doInBackground(Void... params) {
+        @Override protected List<String> doInBackground(Void... params) {
           try {
             Thread.sleep(3000);
           } catch (InterruptedException ignored) {
           }
-          return retrieveItems();
+          items = retrieveItems();
+          return items;
         }
 
-        @Override protected void onPostExecute(ArrayList<String> newItems) {
+        @Override protected void onPostExecute(List<String> newItems) {
           getView().hideProgress();
           getView().updateItems(newItems);
         }
@@ -60,7 +65,6 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.Lis
 
   @Override public void onViewReady() {
     super.onViewReady();
-    ListFragmentAdapter adapter = new ListFragmentAdapter(new ArrayList<String>(), this);
     getView().setAdapter(adapter);
   }
 
