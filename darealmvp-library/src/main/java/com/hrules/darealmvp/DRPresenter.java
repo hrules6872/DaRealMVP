@@ -4,11 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
+import java.lang.ref.WeakReference;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 public abstract class DRPresenter<V extends DRView> {
-  private V view;
+  private WeakReference<V> view;
   private V nullView;
 
   public DRPresenter() {
@@ -33,7 +34,7 @@ public abstract class DRPresenter<V extends DRView> {
   }
 
   @CallSuper protected void bind(@NonNull V view) {
-    this.view = view;
+    this.view = new WeakReference<V>(view);
   }
 
   protected void unbind() {
@@ -67,17 +68,20 @@ public abstract class DRPresenter<V extends DRView> {
 
   protected V getView() {
     if (view != null) {
-      return view;
+      V viewReferent = view.get();
+      if (viewReferent != null) {
+        return viewReferent;
+      }
     }
 
     return nullView;
   }
 
   protected Context getViewContext() {
-    return view.getContext();
+    return getView().getContext();
   }
 
   protected Context getApplicationContext() {
-    return view.getApplicationContext();
+    return getView().getApplicationContext();
   }
 }
