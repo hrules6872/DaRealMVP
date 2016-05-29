@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -18,6 +19,7 @@ import java.util.List;
 @SuppressWarnings("WeakerAccess") public class ListFragmentView
     extends DRFragmentV4<ListFragmentPresenter, ListFragmentPresenter.IListFragmentView>
     implements ListFragmentPresenter.IListFragmentView {
+  @Bind(R.id.progress) ProgressBar progress;
   @Bind(R.id.recyclerView) RecyclerView recyclerView;
 
   @Override public int getLayoutResource() {
@@ -53,5 +55,15 @@ import java.util.List;
   @Override public void onClick(String item) {
     Toast.makeText(getActivity(), item + " " + getString(R.string.item_clicked), Toast.LENGTH_SHORT)
         .show();
+  }
+
+  @Override public void showProgress() {
+    progress.setVisibility(View.VISIBLE);
+    recyclerView.setVisibility(View.GONE);
+  }
+
+  @Override public void hideProgress() {
+    progress.setVisibility(View.GONE);
+    recyclerView.setVisibility(View.VISIBLE);
   }
 }

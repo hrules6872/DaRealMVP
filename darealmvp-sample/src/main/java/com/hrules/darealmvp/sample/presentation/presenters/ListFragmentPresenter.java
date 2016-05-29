@@ -1,5 +1,6 @@
 package com.hrules.darealmvp.sample.presentation.presenters;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import com.hrules.darealmvp.DRPresenter;
@@ -24,9 +25,26 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
   @Override public void onResume() {
     if (items != null) {
       getView().updateItems(items);
+    } else {
+      new AsyncTask<Void, Void, ArrayList<String>>() {
+        @Override protected void onPreExecute() {
+          getView().showProgress();
+        }
+
+        @Override protected ArrayList<String> doInBackground(Void... params) {
+          try {
+            Thread.sleep(3000);
+          } catch (InterruptedException ignored) {
+          }
+          return retrieveItems();
+        }
+
+        @Override protected void onPostExecute(ArrayList<String> newItems) {
+          getView().hideProgress();
+          getView().updateItems(newItems);
+        }
+      }.execute();
     }
-    ArrayList<String> newItems = retrieveItems();
-    getView().updateItems(newItems);
   }
 
   @Override public void onSaveState(Bundle outState) {
@@ -70,5 +88,9 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
     void updateItems(List<String> items);
 
     void onClick(String item);
+
+    void showProgress();
+
+    void hideProgress();
   }
 }
