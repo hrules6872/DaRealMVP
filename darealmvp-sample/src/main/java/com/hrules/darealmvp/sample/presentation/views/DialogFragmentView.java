@@ -11,8 +11,8 @@ import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.presentation.presenters.DialogFragmentPresenter;
 
 public class DialogFragmentView
-    extends DRAppCompatDialogFragment<DialogFragmentPresenter, DialogFragmentPresenter.IDialog>
-    implements DialogFragmentPresenter.IDialog {
+    extends DRAppCompatDialogFragment<DialogFragmentPresenter, DialogFragmentPresenter.Dialog>
+    implements DialogFragmentPresenter.Dialog {
   @Bind(R.id.text) TextView text;
 
   @Override protected AlertDialog.Builder getAlertDialog() {

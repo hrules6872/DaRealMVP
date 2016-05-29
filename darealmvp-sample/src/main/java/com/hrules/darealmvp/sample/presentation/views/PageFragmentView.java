@@ -10,8 +10,8 @@ import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.presentation.presenters.PageFragmentPresenter;
 
 public class PageFragmentView
-    extends DRFragmentV4<PageFragmentPresenter, PageFragmentPresenter.IPage>
-    implements PageFragmentPresenter.IPage {
+    extends DRFragmentV4<PageFragmentPresenter, PageFragmentPresenter.Page>
+    implements PageFragmentPresenter.Page {
   @Bind(R.id.text) TextView text;
 
   private static final String ARG_SECTION_NUMBER = "ARG_SECTION_NUMBER";

@@ -4,8 +4,8 @@ import android.support.annotation.NonNull;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 
-public class DialogFragmentPresenter extends DRPresenter<DialogFragmentPresenter.IDialog> {
-  @Override protected void bind(@NonNull IDialog view) {
+public class DialogFragmentPresenter extends DRPresenter<DialogFragmentPresenter.Dialog> {
+  @Override protected void bind(@NonNull Dialog view) {
     super.bind(view);
   }
 
@@ -13,7 +13,7 @@ public class DialogFragmentPresenter extends DRPresenter<DialogFragmentPresenter
     getView().unbind();
   }
 
-  public interface IDialog extends DRView {
+  public interface Dialog extends DRView {
     void unbind();
   }
 }

@@ -5,7 +5,7 @@ import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.commons.DebugLog;
 
-public class PageFragmentPresenter extends DRPresenter<PageFragmentPresenter.IPage> {
+public class PageFragmentPresenter extends DRPresenter<PageFragmentPresenter.Page> {
   private static final String BUNDLE_TEST_BOOLEAN = "BUNDLE_TEST_BOOLEAN";
 
   @Override public void unbind() {
@@ -21,7 +21,7 @@ public class PageFragmentPresenter extends DRPresenter<PageFragmentPresenter.IPa
     DebugLog.d("onLoadState:  " + savedState.getBoolean("BUNDLE_TEST_BOOLEAN"));
   }
 
-  public interface IPage extends DRView {
+  public interface Page extends DRView {
     void unbind();
   }
 }

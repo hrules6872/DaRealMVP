@@ -8,7 +8,7 @@ import com.hrules.darealmvp.sample.commons.NotImplementedException;
 import com.hrules.darealmvp.sample.presentation.views.PreferenceActivityView;
 
 public class PreferenceActivityPresenter
-    extends DRPresenter<PreferenceActivityPresenter.IPreferenceView> {
+    extends DRPresenter<PreferenceActivityPresenter.PreferenceView> {
 
   public void onPreferenceClick(Preference preference) {
     switch (preference.getKey()) {
@@ -21,7 +21,7 @@ public class PreferenceActivityPresenter
     }
   }
 
-  public interface IPreferenceView extends DRView {
+  public interface PreferenceView extends DRView {
     void doGotoRepo(String url);
   }
 }

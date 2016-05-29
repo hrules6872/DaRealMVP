@@ -12,8 +12,8 @@ import com.hrules.darealmvp.sample.commons.DebugLog;
 import com.hrules.darealmvp.sample.presentation.presenters.ListActivityPresenter;
 
 @SuppressWarnings("WeakerAccess") public class ListActivityView
-    extends DRAppCompatActivity<ListActivityPresenter, ListActivityPresenter.IListView>
-    implements ListActivityPresenter.IListView {
+    extends DRAppCompatActivity<ListActivityPresenter, ListActivityPresenter.ListView>
+    implements ListActivityPresenter.ListView {
   @Bind(R.id.toolbar) Toolbar toolbar;
   @Bind(R.id.container) FrameLayout container;
 

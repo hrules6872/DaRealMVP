@@ -17,8 +17,8 @@ import com.hrules.darealmvp.sample.presentation.presenters.ListFragmentPresenter
 import java.util.List;
 
 @SuppressWarnings("WeakerAccess") public class ListFragmentView
-    extends DRFragmentV4<ListFragmentPresenter, ListFragmentPresenter.IListFragmentView>
-    implements ListFragmentPresenter.IListFragmentView {
+    extends DRFragmentV4<ListFragmentPresenter, ListFragmentPresenter.ListFragmentView>
+    implements ListFragmentPresenter.ListFragmentView {
   @Bind(R.id.progress) ProgressBar progress;
   @Bind(R.id.recyclerView) RecyclerView recyclerView;
 

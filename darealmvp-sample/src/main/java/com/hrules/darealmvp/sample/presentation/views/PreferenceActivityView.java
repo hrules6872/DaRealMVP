@@ -12,8 +12,8 @@ import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.presentation.presenters.PreferenceActivityPresenter;
 
 public class PreferenceActivityView extends
-    DRPreferenceActivity<PreferenceActivityPresenter, PreferenceActivityPresenter.IPreferenceView>
-    implements PreferenceActivityPresenter.IPreferenceView, Preference.OnPreferenceClickListener {
+    DRPreferenceActivity<PreferenceActivityPresenter, PreferenceActivityPresenter.PreferenceView>
+    implements PreferenceActivityPresenter.PreferenceView, Preference.OnPreferenceClickListener {
   public static final String KEY_PREFS_GOTOREPO = "prefs_gotoRepo";
 
   @SuppressWarnings("WeakerAccess") @Bind(R.id.toolbar) Toolbar toolbar;

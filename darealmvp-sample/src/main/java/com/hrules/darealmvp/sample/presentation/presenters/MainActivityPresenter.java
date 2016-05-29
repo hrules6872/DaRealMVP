@@ -9,7 +9,7 @@ import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.commons.NotImplementedException;
 
-public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMainView> {
+public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.MainView> {
   private static final String BUNDLE_MESSAGE_SHOWED = "BUNDLE_MESSAGE_SHOWED";
   private static final String BUNDLE_TOAST_SHOWED = "BUNDLE_TOAST_SHOWED";
 
@@ -83,7 +83,7 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMa
     }
   }
 
-  public interface IMainView extends DRView {
+  public interface MainView extends DRView {
     void showToast();
 
     void changeMessage(String message);

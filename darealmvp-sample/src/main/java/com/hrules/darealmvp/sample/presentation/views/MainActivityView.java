@@ -15,8 +15,8 @@ import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.presentation.presenters.MainActivityPresenter;
 
 @SuppressWarnings("WeakerAccess") public class MainActivityView
-    extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.IMainView>
-    implements MainActivityPresenter.IMainView {
+    extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.MainView>
+    implements MainActivityPresenter.MainView {
   @Bind(R.id.message) TextView message;
   @Bind(R.id.toolbar) Toolbar toolbar;
   @Bind(R.id.showMessage) Button showMessage;

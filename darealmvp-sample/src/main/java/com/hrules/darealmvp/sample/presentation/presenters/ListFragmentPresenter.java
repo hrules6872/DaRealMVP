@@ -11,14 +11,14 @@ import com.hrules.darealmvp.sample.presentation.adapters.ListFragmentAdapterList
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.IListFragmentView>
+public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ListFragmentView>
     implements ListFragmentAdapterListener {
   private static final String BUNDLE_ITEMS = "BUNDLE_ITEMS";
   private static final String BUNDLE_TEST_BOOLEAN = "BUNDLE_TEST_BOOLEAN";
 
   private List<String> items;
 
-  @Override protected void bind(@NonNull IListFragmentView view) {
+  @Override protected void bind(@NonNull ListFragmentView view) {
     super.bind(view);
   }
 
@@ -80,7 +80,7 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ILi
     getView().onClick(item);
   }
 
-  public interface IListFragmentView extends DRView {
+  public interface ListFragmentView extends DRView {
     void setAdapter(ListFragmentAdapter adapter);
 
     void unbind();

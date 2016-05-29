@@ -12,8 +12,8 @@ import com.hrules.darealmvp.sample.presentation.adapters.UniversalFragmentPagerA
 import com.hrules.darealmvp.sample.presentation.presenters.PagerActivityPresenter;
 
 public class PagerActivityView
-    extends DRAppCompatActivity<PagerActivityPresenter, PagerActivityPresenter.IPager>
-    implements PagerActivityPresenter.IPager {
+    extends DRAppCompatActivity<PagerActivityPresenter, PagerActivityPresenter.Pager>
+    implements PagerActivityPresenter.Pager {
   @Bind(R.id.toolbar) Toolbar toolbar;
   @Bind(R.id.viewPager) ViewPager viewPager;
 
