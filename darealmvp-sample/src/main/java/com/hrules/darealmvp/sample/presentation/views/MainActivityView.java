@@ -1,6 +1,7 @@
 package com.hrules.darealmvp.sample.presentation.views;
 
 import android.content.Intent;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,11 +46,6 @@ import com.hrules.darealmvp.sample.presentation.presenters.MainActivityPresenter
     Toast.makeText(this, getString(R.string.app_welcome), Toast.LENGTH_LONG).show();
   }
 
-  @Override public void changeMessage(String message) {
-    this.message.setText(message);
-    showMessage.setEnabled(false);
-  }
-
   public void showListActivity() {
     startActivity(new Intent(this, ListActivityView.class));
   }
@@ -64,6 +60,11 @@ import com.hrules.darealmvp.sample.presentation.presenters.MainActivityPresenter
 
   @Override public void showDialogFragment() {
     new DialogFragmentView().show(getSupportFragmentManager(), "DialogFragmentView");
+  }
+
+  @Override public void changeMessage(@StringRes int message) {
+    this.message.setText(getString(message));
+    showMessage.setEnabled(false);
   }
 
   @OnClick({

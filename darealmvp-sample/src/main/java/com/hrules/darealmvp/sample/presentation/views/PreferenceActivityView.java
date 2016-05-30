@@ -3,6 +3,7 @@ package com.hrules.darealmvp.sample.presentation.views;
 import android.content.Intent;
 import android.net.Uri;
 import android.preference.Preference;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import butterknife.Bind;
@@ -42,10 +43,6 @@ public class PreferenceActivityView extends
     return true;
   }
 
-  @Override public void doGotoRepo(String url) {
-    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-  }
-
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case android.R.id.home:
@@ -53,5 +50,9 @@ public class PreferenceActivityView extends
         break;
     }
     return super.onOptionsItemSelected(item);
+  }
+
+  @Override public void doGotoRepo(@StringRes int url) {
+    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(url))));
   }
 }

@@ -2,6 +2,7 @@ package com.hrules.darealmvp.sample.presentation.presenters;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.StringRes;
 import android.view.MenuItem;
 import android.widget.Button;
 import com.hrules.darealmvp.DRPresenter;
@@ -45,7 +46,7 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.Mai
   }
 
   private void showMessage() {
-    getView().changeMessage(getViewContext().getString(R.string.try_rotate));
+    getView().changeMessage(R.string.try_rotate);
     messageShowed = true;
   }
 
@@ -86,8 +87,6 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.Mai
   public interface MainView extends DRView {
     void showToast();
 
-    void changeMessage(String message);
-
     void showListActivity();
 
     void showPagerActivity();
@@ -95,5 +94,7 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.Mai
     void showPreferencesActivity();
 
     void showDialogFragment();
+
+    void changeMessage(@StringRes int message);
   }
 }

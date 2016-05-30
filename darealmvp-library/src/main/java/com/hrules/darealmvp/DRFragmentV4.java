@@ -1,6 +1,5 @@
 package com.hrules.darealmvp;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -128,12 +127,4 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
   protected abstract int getLayoutResource();
 
   protected abstract void initializeViews(View view);
-
-  public Context getApplicationContext() {
-    return getActivity().getApplicationContext();
-  }
-
-  public Context getContext() {
-    return getActivity();
-  }
 }

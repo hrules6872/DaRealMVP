@@ -1,6 +1,5 @@
 package com.hrules.darealmvp;
 
-import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -169,8 +168,4 @@ public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends D
   protected abstract int getPreferencesResource();
 
   protected abstract int getLayoutResource();
-
-  public Context getContext() {
-    return this;
-  }
 }

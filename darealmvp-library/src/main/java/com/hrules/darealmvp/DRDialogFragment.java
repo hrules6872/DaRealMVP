@@ -2,7 +2,6 @@ package com.hrules.darealmvp;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -143,12 +142,4 @@ public abstract class DRDialogFragment<P extends DRPresenter<V>, V extends DRVie
   protected abstract int getLayoutResource();
 
   protected abstract void initializeViews(View view);
-
-  public Context getApplicationContext() {
-    return getActivity().getApplicationContext();
-  }
-
-  public Context getContext() {
-    return getActivity();
-  }
 }

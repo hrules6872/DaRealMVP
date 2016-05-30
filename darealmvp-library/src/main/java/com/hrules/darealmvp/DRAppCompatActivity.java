@@ -1,6 +1,5 @@
 package com.hrules.darealmvp;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -97,8 +96,4 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
   protected abstract int getLayoutResource();
 
   protected abstract void initializeViews();
-
-  public Context getContext() {
-    return this;
-  }
 }

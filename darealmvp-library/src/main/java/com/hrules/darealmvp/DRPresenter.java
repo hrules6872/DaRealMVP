@@ -1,6 +1,5 @@
 package com.hrules.darealmvp;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
@@ -76,13 +75,5 @@ public abstract class DRPresenter<V extends DRView> {
     }
 
     return nullView;
-  }
-
-  protected Context getViewContext() {
-    return getView().getContext();
-  }
-
-  protected Context getApplicationContext() {
-    return getView().getApplicationContext();
   }
 }
