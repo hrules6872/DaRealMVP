@@ -99,10 +99,13 @@ DialogFragments (extends DRDialogFragment / DRDialogFragmentV4 / [DRAppCompatDia
     }
     ```
 
+###Composition over inheritance
+
+You can grab an example [here](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/ListFragmentView.java).
+
 ##Usage
 
 Please refer to the [sample](darealmvp-sample) for seeing it in action.
-
 
 ##Importing to your project
 
@@ -113,7 +116,6 @@ dependencies {
     compile 'com.hrules:darealmvp:0.10.0'
 }
 ```
-
 
 Developed by
 -------
