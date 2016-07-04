@@ -1,14 +1,18 @@
 package com.hrules.darealmvp.sample.presentation.views;
 
 import android.content.res.Resources;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import com.hrules.darealmvp.DRFragmentV4;
 import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.commons.DebugLog;
 import com.hrules.darealmvp.sample.presentation.adapters.ListFragmentAdapter;
@@ -16,31 +20,70 @@ import com.hrules.darealmvp.sample.presentation.adapters.commons.ColorDividerIte
 import com.hrules.darealmvp.sample.presentation.presenters.ListFragmentPresenter;
 import java.util.List;
 
-@SuppressWarnings("WeakerAccess") public class ListFragmentView
-    extends DRFragmentV4<ListFragmentPresenter, ListFragmentPresenter.ListFragmentView>
+@SuppressWarnings("WeakerAccess") public class ListFragmentView extends Fragment
     implements ListFragmentPresenter.ListFragmentView {
   @Bind(R.id.progress) ProgressBar progress;
   @Bind(R.id.recyclerView) RecyclerView recyclerView;
 
-  @Override public int getLayoutResource() {
+  // ***
+  // WITHOUT inheritance
+  private ListFragmentPresenter presenter;
+
+  @Nullable @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    preCreateView();
+    return inflater.inflate(getLayoutResource(), container, false);
+  }
+
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    presenter = new ListFragmentPresenter();
+    getPresenter().bind(this);
+    initializeViews(view);
+    if (savedInstanceState != null) {
+      getPresenter().onLoadState(savedInstanceState);
+    }
+    getPresenter().onViewReady();
+  }
+
+  @Override public void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    getPresenter().onSaveState(outState);
+  }
+
+  @Override public void onResume() {
+    super.onResume();
+    getPresenter().onResume();
+  }
+
+  private ListFragmentPresenter getPresenter() {
+    return presenter;
+  }
+  // WITHOUT inheritance
+  // ***
+
+  public int getLayoutResource() {
     return R.layout.fragment_list;
   }
 
-  @SuppressWarnings("deprecation") @Override public void initializeViews(View view) {
+  @SuppressWarnings("deprecation") public void initializeViews(View view) {
     ButterKnife.bind(this, view);
-    recyclerView.setLayoutManager(
-        new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     Resources res = getResources();
-    recyclerView.addItemDecoration(
-        new ColorDividerItemDecoration(res.getColor(android.R.color.darker_gray),
-            res.getDimension(R.dimen.list_divider_size)));
+    recyclerView.addItemDecoration(new ColorDividerItemDecoration(res.getColor(android.R.color.darker_gray),
+        res.getDimension(R.dimen.list_divider_size)));
+  }
+
+  @Override public void onDestroyView() {
+    super.onDestroyView();
+    unbind();
   }
 
   @Override public void setAdapter(ListFragmentAdapter adapter) {
     recyclerView.setAdapter(adapter);
   }
 
-  @Override public void unbind() {
+  public void unbind() {
     ButterKnife.unbind(this);
   }
 
@@ -48,13 +91,12 @@ import java.util.List;
     ((ListFragmentAdapter) recyclerView.getAdapter()).updateItems(items);
   }
 
-  @Override public void preCreateView() {
+  public void preCreateView() {
     DebugLog.d("preCreateView() called");
   }
 
   @Override public void onClick(String item) {
-    Toast.makeText(getActivity(), item + " " + getString(R.string.item_clicked), Toast.LENGTH_SHORT)
-        .show();
+    Toast.makeText(getActivity(), item + " " + getString(R.string.item_clicked), Toast.LENGTH_SHORT).show();
   }
 
   @Override public void showProgress() {

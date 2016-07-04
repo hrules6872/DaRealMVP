@@ -19,7 +19,7 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.Lis
   private List<String> items;
   private ListFragmentAdapter adapter;
 
-  @Override protected void bind(@NonNull ListFragmentView view) {
+  @Override public void bind(@NonNull ListFragmentView view) {
     super.bind(view);
     items = new ArrayList<>();
     adapter = new ListFragmentAdapter((ArrayList<String>) items, this);
@@ -76,18 +76,12 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.Lis
     return items;
   }
 
-  @Override public void unbind() {
-    getView().unbind();
-  }
-
   @Override public void onClick(String item) {
     getView().onClick(item);
   }
 
   public interface ListFragmentView extends DRView {
     void setAdapter(ListFragmentAdapter adapter);
-
-    void unbind();
 
     void updateItems(List<String> items);
 
