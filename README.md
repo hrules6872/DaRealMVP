@@ -11,8 +11,8 @@ Activities (extends DRActivity / [DRAppCompatActivity](darealmvp-sample/src/main
 1. View
 
     ```java
-    public class MainActivityView extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.IMainView>
-        implements MainActivityPresenter.IMainView {
+    public class MainActivityView extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.MainView>
+        implements MainActivityPresenter.MainView {
         
         @Override public int getLayoutResource() {
             return R.layout.activity_main;
@@ -26,8 +26,8 @@ Activities (extends DRActivity / [DRAppCompatActivity](darealmvp-sample/src/main
 2. Presenter
 
     ```java
-    public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.IMainView> {
-        public interface IMainView extends DRView {
+    public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.MainView> {
+        public interface MainView extends DRView {
         }
     }
     ```
@@ -37,8 +37,8 @@ Fragments (extends DRFragment / [DRFragmentV4](darealmvp-sample/src/main/java/co
 1. View
 
     ```java
-    public class MainFragmentView extends DRFragmentV4<MainFragmentPresenter, MainFragmentPresenter.IMainView>
-        implements MainFragmentPresenter.IMainView {
+    public class MainFragmentView extends DRFragmentV4<MainFragmentPresenter, MainFragmentPresenter.MainView>
+        implements MainFragmentPresenter.MainView {
 
         @Override public int getLayoutResource() {
             return R.layout.fragment_main;
@@ -52,12 +52,12 @@ Fragments (extends DRFragment / [DRFragmentV4](darealmvp-sample/src/main/java/co
 2. Presenter
 
     ```java
-    public class MainFragmentPresenter extends DRPresenter<MainFragmentPresenter.IMainView> {
+    public class MainFragmentPresenter extends DRPresenter<MainFragmentPresenter.MainView> {
         @Override public void unbind() {
             getView().unbind();
         }
         
-        public interface IMainView extends DRView {
+        public interface MainView extends DRView {
             void unbind();
         }
     }
@@ -68,8 +68,8 @@ DialogFragments (extends DRDialogFragment / DRDialogFragmentV4 / [DRAppCompatDia
 1. View
 
     ```java
-    public class DialogFragmentView extends DRAppCompatDialogFragment<DialogFragmentPresenter, DialogFragmentPresenter.IDialogView>
-        implements DialogFragmentPresenter.IDialogView {
+    public class DialogFragmentView extends DRAppCompatDialogFragment<DialogFragmentPresenter, DialogFragmentPresenter.DialogView>
+        implements DialogFragmentPresenter.DialogView {
 
         @Override protected AlertDialog.Builder getAlertDialog() {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -88,12 +88,12 @@ DialogFragments (extends DRDialogFragment / DRDialogFragmentV4 / [DRAppCompatDia
 2. Presenter
 
     ```java
-    public class DialogFragmentPresenter extends DRPresenter<DialogFragmentPresenter.IDialogView> {
+    public class DialogFragmentPresenter extends DRPresenter<DialogFragmentPresenter.DialogView> {
         @Override public void unbind() {
             getView().unbind();
         }
         
-        public interface IDialogView extends DRView {
+        public interface DialogView extends DRView {
             void unbind();
         }
     }
