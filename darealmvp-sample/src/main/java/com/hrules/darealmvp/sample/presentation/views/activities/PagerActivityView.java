@@ -14,48 +14,47 @@
  * limitations under the License.
  */
 
-package com.hrules.darealmvp.sample.presentation.views;
+package com.hrules.darealmvp.sample.presentation.views.activities;
 
-import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.DRAppCompatActivity;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.commons.DebugLog;
-import com.hrules.darealmvp.sample.presentation.presenters.ListActivityPresenter;
+import com.hrules.darealmvp.sample.presentation.adapters.UniversalFragmentPagerAdapter;
+import com.hrules.darealmvp.sample.presentation.presenters.activities.PagerActivityPresenter;
+import com.hrules.darealmvp.sample.presentation.views.fragments.PageFragmentView;
 
-@SuppressWarnings("WeakerAccess") public class ListActivityView
-    extends DRAppCompatActivity<ListActivityPresenter, ListActivityPresenter.ListView>
-    implements ListActivityPresenter.ListView {
+public class PagerActivityView
+    extends DRAppCompatActivity<PagerActivityPresenter, PagerActivityPresenter.Pager>
+    implements PagerActivityPresenter.Pager {
   @Bind(R.id.toolbar) Toolbar toolbar;
-  @Bind(R.id.container) FrameLayout container;
+  @Bind(R.id.viewPager) ViewPager viewPager;
 
-  @Override public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    if (savedInstanceState == null) {
-      getSupportFragmentManager().beginTransaction()
-          .replace(container.getId(), new ListFragmentView(), ListFragmentView.class.getName())
-          .commit();
-    }
+  @Override protected int getLayoutResource() {
+    return R.layout.activity_pager;
   }
 
-  @SuppressWarnings("ConstantConditions") @Override public void initializeViews() {
+  @SuppressWarnings("ConstantConditions") @Override protected void initializeViews() {
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
     try {
-      getSupportActionBar().setTitle(getString(R.string.activity_listTitle));
+      getSupportActionBar().setTitle(getString(R.string.activity_pagerTitle));
       getSupportActionBar().setHomeButtonEnabled(true);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       getSupportActionBar().setDisplayShowTitleEnabled(true);
     } catch (Exception ignored) {
     }
-  }
 
-  @Override public int getLayoutResource() {
-    return R.layout.activity_list;
+    Fragment[] fragments = new Fragment[] {
+        PageFragmentView.newInstance(1), PageFragmentView.newInstance(2),
+        PageFragmentView.newInstance(3)
+    };
+    viewPager.setAdapter(
+        new UniversalFragmentPagerAdapter(getSupportFragmentManager(), null, fragments));
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
@@ -65,9 +64,5 @@ import com.hrules.darealmvp.sample.presentation.presenters.ListActivityPresenter
         break;
     }
     return super.onOptionsItemSelected(item);
-  }
-
-  @Override public void preSetContentView() {
-    DebugLog.d("preSetContentView() called");
   }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hrules.darealmvp.sample.presentation.views;
+package com.hrules.darealmvp.sample.presentation.views.fragments;
 
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +23,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.DRFragmentV4;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.presentation.presenters.PageFragmentPresenter;
+import com.hrules.darealmvp.sample.presentation.presenters.fragments.PageFragmentPresenter;
 
 public class PageFragmentView
     extends DRFragmentV4<PageFragmentPresenter, PageFragmentPresenter.Page>

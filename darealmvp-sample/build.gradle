@@ -16,6 +16,8 @@ android {
 dependencies {
   compile supportDependencies.appCompat
   compile supportDependencies.recyclerView
+
   compile projectDependencies.butterKnife
+
   compile project(':darealmvp-library')
 }

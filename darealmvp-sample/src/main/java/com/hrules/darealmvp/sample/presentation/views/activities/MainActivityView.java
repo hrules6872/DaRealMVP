@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hrules.darealmvp.sample.presentation.views;
+package com.hrules.darealmvp.sample.presentation.views.activities;
 
 import android.content.Intent;
 import android.support.annotation.StringRes;
@@ -29,7 +29,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.hrules.darealmvp.DRAppCompatActivity;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.presentation.presenters.MainActivityPresenter;
+import com.hrules.darealmvp.sample.presentation.presenters.activities.MainActivityPresenter;
+import com.hrules.darealmvp.sample.presentation.views.fragments.DialogFragmentView;
 
 @SuppressWarnings("WeakerAccess") public class MainActivityView
     extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.MainView>

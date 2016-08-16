@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hrules.darealmvp.sample.presentation.presenters;
+package com.hrules.darealmvp.sample.presentation.presenters.activities;
 
 import android.preference.Preference;
 import android.support.annotation.StringRes;
@@ -22,7 +22,7 @@ import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.commons.NotImplementedException;
-import com.hrules.darealmvp.sample.presentation.views.PreferenceActivityView;
+import com.hrules.darealmvp.sample.presentation.views.activities.PreferenceActivityView;
 
 public class PreferenceActivityPresenter
     extends DRPresenter<PreferenceActivityPresenter.PreferenceView> {

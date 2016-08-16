@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hrules.darealmvp.sample.presentation.views;
+package com.hrules.darealmvp.sample.presentation.views.fragments;
 
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
@@ -24,7 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.DRAppCompatDialogFragment;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.presentation.presenters.DialogFragmentPresenter;
+import com.hrules.darealmvp.sample.presentation.presenters.fragments.DialogFragmentPresenter;
 
 public class DialogFragmentView
     extends DRAppCompatDialogFragment<DialogFragmentPresenter, DialogFragmentPresenter.Dialog>

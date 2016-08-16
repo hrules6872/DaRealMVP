@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hrules.darealmvp.sample.presentation.views;
+package com.hrules.darealmvp.sample.presentation.views.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -26,10 +26,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.DRPreferenceActivity;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.presentation.presenters.PreferenceActivityPresenter;
+import com.hrules.darealmvp.sample.presentation.presenters.activities.PreferenceActivityPresenter;
 
-public class PreferenceActivityView extends
-    DRPreferenceActivity<PreferenceActivityPresenter, PreferenceActivityPresenter.PreferenceView>
+public class PreferenceActivityView extends DRPreferenceActivity<PreferenceActivityPresenter, PreferenceActivityPresenter.PreferenceView>
     implements PreferenceActivityPresenter.PreferenceView, Preference.OnPreferenceClickListener {
   public static final String KEY_PREFS_GOTOREPO = "prefs_gotoRepo";
 

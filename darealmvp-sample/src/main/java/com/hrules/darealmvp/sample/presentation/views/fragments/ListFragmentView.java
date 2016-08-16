@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hrules.darealmvp.sample.presentation.views;
+package com.hrules.darealmvp.sample.presentation.views.fragments;
 
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -33,7 +33,7 @@ import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.commons.DebugLog;
 import com.hrules.darealmvp.sample.presentation.adapters.ListFragmentAdapter;
 import com.hrules.darealmvp.sample.presentation.adapters.commons.ColorDividerItemDecoration;
-import com.hrules.darealmvp.sample.presentation.presenters.ListFragmentPresenter;
+import com.hrules.darealmvp.sample.presentation.presenters.fragments.ListFragmentPresenter;
 import java.util.List;
 
 @SuppressWarnings("WeakerAccess") public class ListFragmentView extends Fragment

@@ -24,7 +24,7 @@
       android:label="@string/app_name"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".presentation.views.MainActivityView">
+    <activity android:name=".presentation.views.activities.MainActivityView">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -32,9 +32,9 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".presentation.views.ListActivityView"/>
-    <activity android:name=".presentation.views.PreferenceActivityView"/>
-    <activity android:name=".presentation.views.PagerActivityView"/>
+    <activity android:name=".presentation.views.activities.ListActivityView"/>
+    <activity android:name=".presentation.views.activities.PreferenceActivityView"/>
+    <activity android:name=".presentation.views.activities.PagerActivityView"/>
   </application>
 
 </manifest>

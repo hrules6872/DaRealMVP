@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hrules.darealmvp.sample.presentation.presenters;
+package com.hrules.darealmvp.sample.presentation.presenters.fragments;
 
 import android.os.Bundle;
 import com.hrules.darealmvp.DRPresenter;
