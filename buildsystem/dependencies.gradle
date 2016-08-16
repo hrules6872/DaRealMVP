@@ -1,8 +1,8 @@
 ext {
-  androidBuildToolsVersion = '23.0.3'
+  androidBuildToolsVersion = '24.0.1'
   androidBuildMinSDKVersion = '15'
-  androidBuildTargetSDKVersion = '23'
-  androidBuildCompileSDKVersion = 'android-23'
+  androidBuildTargetSDKVersion = '24'
+  androidBuildCompileSDKVersion = 'android-24'
 
   // internal
   demoVersionCode = 100
@@ -12,7 +12,7 @@ ext {
   libraryVersionName = '0.10.0'
 
   // support libraries
-  supportLibraryVersion = '23.2.+'
+  supportLibraryVersion = '24.1.+'
   supportDependencies =
       [recyclerView      : "com.android.support:recyclerview-v7:${supportLibraryVersion}",
        appCompat         : "com.android.support:appcompat-v7:${supportLibraryVersion}",
