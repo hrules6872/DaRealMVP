@@ -6,7 +6,7 @@ DaRealMVP is a library to bring [MVP](https://en.wikipedia.org/wiki/Model%E2%80%
 
 ##How to implement
 
-Activities (extends DRActivity / [DRAppCompatActivity](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/MainActivityView.java) / [DRPreferenceActivity](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/PreferenceActivityView.java)):
+Activities (extends DRActivity / [DRAppCompatActivity](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/MainActivityView.java)):
 
 1. View
 
@@ -113,7 +113,7 @@ Add this dependency to your build.gradle file:
 
 ```java
 dependencies {
-    compile 'com.hrules:darealmvp:0.10.0'
+    compile 'com.hrules:darealmvp:0.11.0'
 }
 ```
 

@@ -8,8 +8,8 @@ ext {
   demoVersionCode = 100
   demoVersionName = '1.0.0'
 
-  libraryVersionCode = 1100
-  libraryVersionName = '0.10.0'
+  libraryVersionCode = 1110
+  libraryVersionName = '0.11.0'
 
   // support libraries
   supportLibraryVersion = '24.1.+'
