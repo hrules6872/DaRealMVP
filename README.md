@@ -6,7 +6,7 @@ DaRealMVP is a library to bring [MVP](https://en.wikipedia.org/wiki/Model%E2%80%
 
 ##How to implement
 
-Activities (extends DRActivity / [DRAppCompatActivity](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/MainActivityView.java)):
+Activities (extends DRActivity / [DRAppCompatActivity](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/activities/MainActivityView.java)):
 
 1. View
 
@@ -32,7 +32,7 @@ Activities (extends DRActivity / [DRAppCompatActivity](darealmvp-sample/src/main
     }
     ```
 
-Fragments (extends DRFragment / [DRFragmentV4](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/MainActivityView.java)):
+Fragments (extends DRFragment / [DRFragmentV4](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/fragments/PageFragmentView.java)):
 
 1. View
 
@@ -63,7 +63,7 @@ Fragments (extends DRFragment / [DRFragmentV4](darealmvp-sample/src/main/java/co
     }
     ```
 
-DialogFragments (extends DRDialogFragment / DRDialogFragmentV4 / [DRAppCompatDialogFragment](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/DialogFragmentView.java)):
+DialogFragments (extends DRDialogFragment / DRDialogFragmentV4 / [DRAppCompatDialogFragment](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/fragments/DialogFragmentView.java)):
 
 1. View
 
@@ -101,7 +101,7 @@ DialogFragments (extends DRDialogFragment / DRDialogFragmentV4 / [DRAppCompatDia
 
 ###Composition over inheritance
 
-You can grab an example [here](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/ListFragmentView.java).
+You can grab an example [here](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/fragments/ListFragmentView.java).
 
 ##Usage
 
