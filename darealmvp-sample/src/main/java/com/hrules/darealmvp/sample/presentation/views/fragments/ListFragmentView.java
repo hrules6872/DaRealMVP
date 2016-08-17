@@ -41,12 +41,11 @@ import java.util.List;
   @Bind(R.id.progress) ProgressBar progress;
   @Bind(R.id.recyclerView) RecyclerView recyclerView;
 
-  // ***
-  // WITHOUT inheritance
   private ListFragmentPresenter presenter;
 
-  @Nullable @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  //region Composition over inheritance
+  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
+      Bundle savedInstanceState) {
     preCreateView();
     return inflater.inflate(getLayoutResource(), container, false);
   }
@@ -75,8 +74,6 @@ import java.util.List;
   private ListFragmentPresenter getPresenter() {
     return presenter;
   }
-  // WITHOUT inheritance
-  // ***
 
   public int getLayoutResource() {
     return R.layout.fragment_list;
@@ -89,6 +86,7 @@ import java.util.List;
     recyclerView.addItemDecoration(new ColorDividerItemDecoration(res.getColor(android.R.color.darker_gray),
         res.getDimension(R.dimen.list_divider_size)));
   }
+  //endregion
 
   @Override public void onDestroyView() {
     super.onDestroyView();

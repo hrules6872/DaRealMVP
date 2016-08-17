@@ -17,6 +17,6 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
   <Preference
-      android:key="prefs_gotoRepo"
+      android:key="@string/prefs_gotoRepoKey"
       android:title="@string/prefs_gotoRepo"/>
 </PreferenceScreen>

@@ -33,7 +33,8 @@
     </activity>
 
     <activity android:name=".presentation.views.activities.ListActivityView"/>
-    <activity android:name=".presentation.views.activities.PreferenceActivityView"/>
+    <activity android:name=".presentation.views.activities.PreferenceActivityView"
+        android:theme="@style/AppThemePreferences"/>
     <activity android:name=".presentation.views.activities.PagerActivityView"/>
   </application>
 

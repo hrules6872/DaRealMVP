@@ -16,46 +16,29 @@
 
 package com.hrules.darealmvp.sample.presentation.views.activities;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.preference.Preference;
-import android.support.annotation.StringRes;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import com.hrules.darealmvp.DRPreferenceActivity;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.presentation.presenters.activities.PreferenceActivityPresenter;
+import com.hrules.darealmvp.sample.presentation.views.activities.support.AppCompatPreferenceActivity;
+import com.hrules.darealmvp.sample.presentation.views.fragments.PreferenceFragmentView;
 
-public class PreferenceActivityView extends DRPreferenceActivity<PreferenceActivityPresenter, PreferenceActivityPresenter.PreferenceView>
-    implements PreferenceActivityPresenter.PreferenceView, Preference.OnPreferenceClickListener {
-  public static final String KEY_PREFS_GOTOREPO = "prefs_gotoRepo";
-
-  @SuppressWarnings("WeakerAccess") @Bind(R.id.toolbar) Toolbar toolbar;
-
-  @Override public int getLayoutResource() {
-    return R.layout.activity_preference;
+public class PreferenceActivityView extends AppCompatPreferenceActivity {
+  @Override protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    initializeViews();
   }
 
-  @Override protected int getPreferencesResource() {
-    return R.xml.preferences;
-  }
+  private void initializeViews() {
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setTitle(getString(R.string.activity_preferencesTitle));
+      actionBar.setHomeButtonEnabled(true);
+      actionBar.setDisplayHomeAsUpEnabled(true);
+      actionBar.setDisplayShowTitleEnabled(true);
+    }
 
-  @SuppressWarnings("deprecation") @Override public void initializeViews() {
-    ButterKnife.bind(this);
-    setSupportActionBar(toolbar);
-    getSupportActionBar().setTitle(getString(R.string.activity_preferencesTitle));
-    getSupportActionBar().setHomeButtonEnabled(true);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    getSupportActionBar().setDisplayShowTitleEnabled(true);
-
-    findPreference(KEY_PREFS_GOTOREPO).setOnPreferenceClickListener(this);
-  }
-
-  @Override public boolean onPreferenceClick(Preference preference) {
-    getPresenter().onPreferenceClick(preference);
-    return true;
+    getFragmentManager().beginTransaction().replace(android.R.id.content, new PreferenceFragmentView()).commit();
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
@@ -65,9 +48,5 @@ public class PreferenceActivityView extends DRPreferenceActivity<PreferenceActiv
         break;
     }
     return super.onOptionsItemSelected(item);
-  }
-
-  @Override public void doGotoRepo(@StringRes int url) {
-    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(url))));
   }
 }

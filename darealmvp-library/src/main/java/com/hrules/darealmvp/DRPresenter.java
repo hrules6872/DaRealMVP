@@ -24,7 +24,7 @@ import java.lang.ref.WeakReference;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public abstract class DRPresenter<V extends DRView> {
+@SuppressWarnings("EmptyMethod") public abstract class DRPresenter<V extends DRView> {
   private WeakReference<V> view;
   private V nullView;
 
@@ -49,7 +49,7 @@ public abstract class DRPresenter<V extends DRView> {
     return (Class<V>) ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
   }
 
-  @CallSuper protected void bind(@NonNull V view) {
+  @CallSuper public void bind(@NonNull V view) {
     this.view = new WeakReference<>(view);
   }
 
