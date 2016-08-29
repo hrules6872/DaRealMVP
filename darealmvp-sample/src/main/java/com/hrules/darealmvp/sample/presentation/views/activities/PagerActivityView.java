@@ -28,8 +28,7 @@ import com.hrules.darealmvp.sample.presentation.adapters.UniversalFragmentPagerA
 import com.hrules.darealmvp.sample.presentation.presenters.activities.PagerActivityPresenter;
 import com.hrules.darealmvp.sample.presentation.views.fragments.PageFragmentView;
 
-public class PagerActivityView
-    extends DRAppCompatActivity<PagerActivityPresenter, PagerActivityPresenter.Pager>
+public class PagerActivityView extends DRAppCompatActivity<PagerActivityPresenter, PagerActivityPresenter.Pager>
     implements PagerActivityPresenter.Pager {
   @Bind(R.id.toolbar) Toolbar toolbar;
   @Bind(R.id.viewPager) ViewPager viewPager;
@@ -50,19 +49,13 @@ public class PagerActivityView
     }
 
     Fragment[] fragments = new Fragment[] {
-        PageFragmentView.newInstance(1), PageFragmentView.newInstance(2),
-        PageFragmentView.newInstance(3)
+        PageFragmentView.newInstance(1), PageFragmentView.newInstance(2), PageFragmentView.newInstance(3)
     };
-    viewPager.setAdapter(
-        new UniversalFragmentPagerAdapter(getSupportFragmentManager(), null, fragments));
+    viewPager.setAdapter(new UniversalFragmentPagerAdapter(getSupportFragmentManager(), null, fragments));
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        onBackPressed();
-        break;
-    }
-    return super.onOptionsItemSelected(item);
+    getPresenter().onOptionsItemSelected(item);
+    return true;
   }
 }

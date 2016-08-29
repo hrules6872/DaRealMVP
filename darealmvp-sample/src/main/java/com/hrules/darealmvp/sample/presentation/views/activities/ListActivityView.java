@@ -16,7 +16,6 @@
 
 package com.hrules.darealmvp.sample.presentation.views.activities;
 
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -34,15 +33,6 @@ import com.hrules.darealmvp.sample.presentation.views.fragments.ListFragmentView
   @Bind(R.id.toolbar) Toolbar toolbar;
   @Bind(R.id.container) FrameLayout container;
 
-  @Override public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    if (savedInstanceState == null) {
-      getSupportFragmentManager().beginTransaction()
-          .replace(container.getId(), new ListFragmentView(), ListFragmentView.class.getName())
-          .commit();
-    }
-  }
-
   @SuppressWarnings("ConstantConditions") @Override public void initializeViews() {
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
@@ -53,22 +43,22 @@ import com.hrules.darealmvp.sample.presentation.views.fragments.ListFragmentView
       getSupportActionBar().setDisplayShowTitleEnabled(true);
     } catch (Exception ignored) {
     }
+
+    getSupportFragmentManager().beginTransaction()
+        .replace(container.getId(), new ListFragmentView(), ListFragmentView.class.getName())
+        .commit();
   }
 
   @Override public int getLayoutResource() {
     return R.layout.activity_list;
   }
 
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        onBackPressed();
-        break;
-    }
-    return super.onOptionsItemSelected(item);
-  }
-
   @Override public void preSetContentView() {
     DebugLog.d("preSetContentView() called");
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    getPresenter().onOptionsItemSelected(item);
+    return true;
   }
 }

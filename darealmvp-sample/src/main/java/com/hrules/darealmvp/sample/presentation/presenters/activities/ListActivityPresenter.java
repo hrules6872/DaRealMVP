@@ -16,10 +16,20 @@
 
 package com.hrules.darealmvp.sample.presentation.presenters.activities;
 
+import android.view.MenuItem;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 
 public class ListActivityPresenter extends DRPresenter<ListActivityPresenter.ListView> {
+  public void onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        getView().onBackPressed();
+        break;
+    }
+  }
+
   public interface ListView extends DRView {
+    void onBackPressed();
   }
 }

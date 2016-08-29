@@ -54,7 +54,6 @@ import com.hrules.darealmvp.sample.presentation.views.fragments.DialogFragmentVi
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
-    super.onOptionsItemSelected(item);
     getPresenter().onOptionsItemSelected(item);
     return true;
   }
