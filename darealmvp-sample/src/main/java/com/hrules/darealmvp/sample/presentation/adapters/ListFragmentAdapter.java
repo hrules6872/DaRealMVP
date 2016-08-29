@@ -21,7 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.sample.R;
 import java.util.ArrayList;
@@ -36,8 +36,7 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
     ListFragmentAdapter.listener = listener;
   }
 
-  @Override
-  public ListFragmentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  @Override public ListFragmentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
     return new ViewHolder(view);
   }
@@ -51,7 +50,7 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
   }
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
-    @Bind(R.id.text1) TextView text1;
+    @BindView(R.id.text1) TextView text1;
 
     public ViewHolder(View itemView) {
       super(itemView);

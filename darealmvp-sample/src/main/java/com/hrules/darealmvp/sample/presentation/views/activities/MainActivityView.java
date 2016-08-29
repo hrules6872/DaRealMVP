@@ -24,7 +24,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.hrules.darealmvp.DRAppCompatActivity;
@@ -35,9 +35,9 @@ import com.hrules.darealmvp.sample.presentation.views.fragments.DialogFragmentVi
 @SuppressWarnings("WeakerAccess") public class MainActivityView
     extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.MainView>
     implements MainActivityPresenter.MainView {
-  @Bind(R.id.message) TextView message;
-  @Bind(R.id.toolbar) Toolbar toolbar;
-  @Bind(R.id.showMessage) Button showMessage;
+  @BindView(R.id.message) TextView message;
+  @BindView(R.id.toolbar) Toolbar toolbar;
+  @BindView(R.id.showMessage) Button showMessage;
 
   @Override public int getLayoutResource() {
     return R.layout.activity_main;

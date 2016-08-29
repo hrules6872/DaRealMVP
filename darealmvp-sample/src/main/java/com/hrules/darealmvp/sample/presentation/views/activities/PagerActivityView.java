@@ -20,7 +20,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.DRAppCompatActivity;
 import com.hrules.darealmvp.sample.R;
@@ -30,8 +30,8 @@ import com.hrules.darealmvp.sample.presentation.views.fragments.PageFragmentView
 
 public class PagerActivityView extends DRAppCompatActivity<PagerActivityPresenter, PagerActivityPresenter.Pager>
     implements PagerActivityPresenter.Pager {
-  @Bind(R.id.toolbar) Toolbar toolbar;
-  @Bind(R.id.viewPager) ViewPager viewPager;
+  @BindView(R.id.toolbar) Toolbar toolbar;
+  @BindView(R.id.viewPager) ViewPager viewPager;
 
   @Override protected int getLayoutResource() {
     return R.layout.activity_pager;

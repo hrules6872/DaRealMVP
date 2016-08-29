@@ -19,7 +19,7 @@ package com.hrules.darealmvp.sample.presentation.views.activities;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.hrules.darealmvp.DRAppCompatActivity;
 import com.hrules.darealmvp.sample.R;
@@ -30,8 +30,8 @@ import com.hrules.darealmvp.sample.presentation.views.fragments.ListFragmentView
 @SuppressWarnings("WeakerAccess") public class ListActivityView
     extends DRAppCompatActivity<ListActivityPresenter, ListActivityPresenter.ListView>
     implements ListActivityPresenter.ListView {
-  @Bind(R.id.toolbar) Toolbar toolbar;
-  @Bind(R.id.container) FrameLayout container;
+  @BindView(R.id.toolbar) Toolbar toolbar;
+  @BindView(R.id.container) FrameLayout container;
 
   @SuppressWarnings("ConstantConditions") @Override public void initializeViews() {
     ButterKnife.bind(this);

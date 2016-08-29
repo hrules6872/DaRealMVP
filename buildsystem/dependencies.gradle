@@ -18,5 +18,9 @@ ext {
                          supportAnnotations: "com.android.support:support-annotations:${supportLibraryVersion}"]
 
   // project dependencies
-  projectDependencies = [butterKnife: "com.jakewharton:butterknife:7.+"]
+  butterKnifeVersion = '8.+'
+  projectDependencies = [butterKnife: "com.jakewharton:butterknife:${butterKnifeVersion}"]
+
+  // apt dependencies
+  aptDependencies = [butterKnife: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"]
 }

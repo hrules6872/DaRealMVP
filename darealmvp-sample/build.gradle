@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
   compileSdkVersion androidBuildCompileSDKVersion
@@ -11,13 +12,22 @@ android {
     versionCode demoVersionCode
     versionName demoVersionName
   }
+
+  packagingOptions {
+    pickFirst 'META-INF/services/javax.annotation.processing.Processor'
+  }
 }
 
 dependencies {
+  compile project(':darealmvp-library')
+
+  // support
   compile supportDependencies.appCompat
   compile supportDependencies.recyclerView
 
+  // project
   compile projectDependencies.butterKnife
 
-  compile project(':darealmvp-library')
+  // apt
+  compile aptDependencies.butterKnife
 }

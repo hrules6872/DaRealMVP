@@ -19,18 +19,20 @@ package com.hrules.darealmvp.sample.presentation.views.fragments;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.hrules.darealmvp.DRFragmentV4;
 import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.presentation.presenters.fragments.PageFragmentPresenter;
 
-public class PageFragmentView
-    extends DRFragmentV4<PageFragmentPresenter, PageFragmentPresenter.Page>
+public class PageFragmentView extends DRFragmentV4<PageFragmentPresenter, PageFragmentPresenter.Page>
     implements PageFragmentPresenter.Page {
-  @Bind(R.id.text) TextView text;
+  @BindView(R.id.text) TextView text;
 
   private static final String ARG_SECTION_NUMBER = "ARG_SECTION_NUMBER";
+
+  private Unbinder unbinder;
 
   public PageFragmentView() {
   }
@@ -48,12 +50,14 @@ public class PageFragmentView
   }
 
   @Override protected void initializeViews(View view) {
-    ButterKnife.bind(this, view);
+    unbinder = ButterKnife.bind(this, view);
 
     text.setText(getString(R.string.pager_pageNumber, getArguments().getInt(ARG_SECTION_NUMBER)));
   }
 
   @Override public void unbind() {
-    ButterKnife.unbind(this);
+    if (unbinder != null) {
+      unbinder.unbind();
+    }
   }
 }

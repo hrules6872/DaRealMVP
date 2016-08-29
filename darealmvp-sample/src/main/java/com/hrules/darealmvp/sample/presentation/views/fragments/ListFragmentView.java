@@ -27,8 +27,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.commons.DebugLog;
 import com.hrules.darealmvp.sample.presentation.adapters.ListFragmentAdapter;
@@ -38,10 +39,11 @@ import java.util.List;
 
 @SuppressWarnings("WeakerAccess") public class ListFragmentView extends Fragment
     implements ListFragmentPresenter.ListFragmentView {
-  @Bind(R.id.progress) ProgressBar progress;
-  @Bind(R.id.recyclerView) RecyclerView recyclerView;
+  @BindView(R.id.progress) ProgressBar progress;
+  @BindView(R.id.recyclerView) RecyclerView recyclerView;
 
   private ListFragmentPresenter presenter;
+  private Unbinder unbinder;
 
   //region Composition over inheritance
   @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,7 +82,7 @@ import java.util.List;
   }
 
   @SuppressWarnings("deprecation") public void initializeViews(View view) {
-    ButterKnife.bind(this, view);
+    unbinder = ButterKnife.bind(this, view);
     recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     Resources res = getResources();
     recyclerView.addItemDecoration(new ColorDividerItemDecoration(res.getColor(android.R.color.darker_gray),
@@ -98,7 +100,9 @@ import java.util.List;
   }
 
   public void unbind() {
-    ButterKnife.unbind(this);
+    if (unbinder != null) {
+      unbinder.unbind();
+    }
   }
 
   @Override public void updateItems(List<String> items) {
