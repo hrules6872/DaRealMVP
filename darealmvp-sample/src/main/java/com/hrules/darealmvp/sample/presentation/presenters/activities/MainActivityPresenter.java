@@ -24,7 +24,6 @@ import android.widget.Button;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.commons.NotImplementedException;
 
 public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.MainView> {
   private static final String BUNDLE_MESSAGE_SHOWED = "BUNDLE_MESSAGE_SHOWED";
@@ -73,7 +72,7 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.Mai
         break;
 
       default:
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
   }
 
@@ -96,7 +95,7 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.Mai
         break;
 
       default:
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
   }
 

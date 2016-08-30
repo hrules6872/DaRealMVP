@@ -21,7 +21,6 @@ import android.support.annotation.StringRes;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.R;
-import com.hrules.darealmvp.sample.commons.NotImplementedException;
 
 public class PreferenceFragmentPresenter extends DRPresenter<PreferenceFragmentPresenter.PreferenceFragmentView> {
   public void onPreferenceChange(Preference preference) {
@@ -29,7 +28,7 @@ public class PreferenceFragmentPresenter extends DRPresenter<PreferenceFragmentP
     if (preference.getContext().getString(R.string.prefs_gotoRepoKey).equals(key)) {
       getView().doGotoRepo(R.string.app_repositoryUrl);
     } else {
-      throw new NotImplementedException();
+      throw new UnsupportedOperationException();
     }
   }
 
