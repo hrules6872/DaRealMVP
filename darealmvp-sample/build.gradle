@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
   compileSdkVersion androidBuildCompileSDKVersion
@@ -11,10 +10,6 @@ android {
     targetSdkVersion androidBuildTargetSDKVersion
     versionCode demoVersionCode
     versionName demoVersionName
-  }
-
-  packagingOptions {
-    pickFirst 'META-INF/services/javax.annotation.processing.Processor'
   }
 }
 
@@ -28,6 +23,6 @@ dependencies {
   // project
   compile projectDependencies.butterKnife
 
-  // apt
-  compile aptDependencies.butterKnife
+  // others
+  compile otherDependencies.butterKnife
 }

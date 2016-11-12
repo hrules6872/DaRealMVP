@@ -1,5 +1,5 @@
 ext {
-  androidBuildToolsVersion = '24.0.2'
+  androidBuildToolsVersion = '25.0.0'
   androidBuildMinSDKVersion = '15'
   androidBuildTargetSDKVersion = '24'
   androidBuildCompileSDKVersion = 'android-24'
@@ -12,7 +12,7 @@ ext {
   libraryVersionName = '0.12.0'
 
   // support libraries
-  supportLibraryVersion = '24.1.+'
+  supportLibraryVersion = '25.0.+'
   supportDependencies = [recyclerView      : "com.android.support:recyclerview-v7:${supportLibraryVersion}",
                          appCompat         : "com.android.support:appcompat-v7:${supportLibraryVersion}",
                          supportAnnotations: "com.android.support:support-annotations:${supportLibraryVersion}"]
@@ -21,6 +21,6 @@ ext {
   butterKnifeVersion = '8.+'
   projectDependencies = [butterKnife: "com.jakewharton:butterknife:${butterKnifeVersion}"]
 
-  // apt dependencies
-  aptDependencies = [butterKnife: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"]
+  // other dependencies
+  otherDependencies = [butterKnife: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"]
 }
