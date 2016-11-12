@@ -46,9 +46,7 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
 
     presenter.bind((V) this);
     initializeViews();
-    if (savedInstanceState != null) {
-      presenter.onLoadState(savedInstanceState);
-    }
+    presenter.onLoadState(savedInstanceState);
     presenter.onViewReady();
   }
 

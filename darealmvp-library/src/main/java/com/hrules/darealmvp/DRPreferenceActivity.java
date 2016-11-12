@@ -31,13 +31,14 @@ import android.view.ViewGroup;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-@Deprecated public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends DRView> extends PreferenceActivity
-    implements DRView {
+@Deprecated public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends DRView>
+    extends PreferenceActivity implements DRView {
   private AppCompatDelegate appCompatDelegate;
 
   private P presenter;
 
-  @SuppressWarnings({ "unchecked", "deprecation" }) @Override protected void onCreate(Bundle savedInstanceState) {
+  @SuppressWarnings({ "unchecked", "deprecation" }) @Override
+  protected void onCreate(Bundle savedInstanceState) {
     getDelegate().installViewFactory();
     getDelegate().onCreate(savedInstanceState);
     preSetContentView();
@@ -58,9 +59,7 @@ import java.lang.reflect.Type;
 
     presenter.bind((V) this);
     initializeViews();
-    if (savedInstanceState != null) {
-      presenter.onLoadState(savedInstanceState);
-    }
+    presenter.onLoadState(savedInstanceState);
     presenter.onViewReady();
   }
 

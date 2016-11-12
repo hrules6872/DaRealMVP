@@ -56,8 +56,10 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.Mai
   }
 
   @Override public void onLoadState(Bundle savedState) {
-    messageShowed = savedState.getBoolean(BUNDLE_MESSAGE_SHOWED);
-    toastShowed = savedState.getBoolean(BUNDLE_TOAST_SHOWED);
+    if (savedState != null) {
+      messageShowed = savedState.getBoolean(BUNDLE_MESSAGE_SHOWED);
+      toastShowed = savedState.getBoolean(BUNDLE_TOAST_SHOWED);
+    }
   }
 
   private void showMessage() {

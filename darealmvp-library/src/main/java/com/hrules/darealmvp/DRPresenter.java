@@ -19,6 +19,7 @@ package com.hrules.darealmvp;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.ParameterizedType;
@@ -63,10 +64,10 @@ import java.lang.reflect.Type;
   protected void onPause() {
   }
 
-  protected void onSaveState(Bundle outState) {
+  protected void onSaveState(@Nullable Bundle outState) {
   }
 
-  protected void onLoadState(Bundle savedState) {
+  protected void onLoadState(@Nullable Bundle savedState) {
   }
 
   protected void onStart() {

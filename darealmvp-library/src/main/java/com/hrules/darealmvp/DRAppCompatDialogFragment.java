@@ -72,9 +72,7 @@ public abstract class DRAppCompatDialogFragment<P extends DRPresenter<V>, V exte
     if (view != null) {
       initializeViews(view);
     }
-    if (savedInstanceState != null) {
-      presenter.onLoadState(savedInstanceState);
-    }
+    presenter.onLoadState(savedInstanceState);
     presenter.onViewReady();
   }
 

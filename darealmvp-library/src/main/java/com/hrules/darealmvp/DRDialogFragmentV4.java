@@ -72,9 +72,7 @@ public abstract class DRDialogFragmentV4<P extends DRPresenter<V>, V extends DRV
     if (view != null) {
       initializeViews(view);
     }
-    if (savedInstanceState != null) {
-      presenter.onLoadState(savedInstanceState);
-    }
+    presenter.onLoadState(savedInstanceState);
     presenter.onViewReady();
   }
 

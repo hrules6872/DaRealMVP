@@ -75,8 +75,10 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.Lis
   }
 
   @Override public void onLoadState(Bundle savedState) {
-    items = savedState.getStringArrayList(BUNDLE_ITEMS);
-    DebugLog.d("onLoadState:  " + savedState.getBoolean("BUNDLE_TEST_BOOLEAN"));
+    if (savedState != null) {
+      items = savedState.getStringArrayList(BUNDLE_ITEMS);
+      DebugLog.d("onLoadState:  " + savedState.getBoolean("BUNDLE_TEST_BOOLEAN"));
+    }
   }
 
   @Override public void onViewReady() {

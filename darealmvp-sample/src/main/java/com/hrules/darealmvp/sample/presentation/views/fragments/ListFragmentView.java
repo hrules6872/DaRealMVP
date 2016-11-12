@@ -57,9 +57,7 @@ import java.util.List;
     presenter = new ListFragmentPresenter();
     getPresenter().bind(this);
     initializeViews(view);
-    if (savedInstanceState != null) {
-      getPresenter().onLoadState(savedInstanceState);
-    }
+    getPresenter().onLoadState(savedInstanceState);
     getPresenter().onViewReady();
   }
 
@@ -83,10 +81,12 @@ import java.util.List;
 
   @SuppressWarnings("deprecation") public void initializeViews(View view) {
     unbinder = ButterKnife.bind(this, view);
-    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+    recyclerView.setLayoutManager(
+        new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     Resources res = getResources();
-    recyclerView.addItemDecoration(new ColorDividerItemDecoration(res.getColor(android.R.color.darker_gray),
-        res.getDimension(R.dimen.list_divider_size)));
+    recyclerView.addItemDecoration(
+        new ColorDividerItemDecoration(res.getColor(android.R.color.darker_gray),
+            res.getDimension(R.dimen.list_divider_size)));
   }
   //endregion
 
@@ -114,7 +114,8 @@ import java.util.List;
   }
 
   @Override public void onClick(String item) {
-    Toast.makeText(getActivity(), item + " " + getString(R.string.item_clicked), Toast.LENGTH_SHORT).show();
+    Toast.makeText(getActivity(), item + " " + getString(R.string.item_clicked), Toast.LENGTH_SHORT)
+        .show();
   }
 
   @Override public void showProgress() {

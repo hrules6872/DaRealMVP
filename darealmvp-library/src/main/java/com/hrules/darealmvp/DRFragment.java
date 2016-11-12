@@ -59,9 +59,7 @@ public abstract class DRFragment<P extends DRPresenter<V>, V extends DRView> ext
 
     presenter.bind((V) this);
     initializeViews(view);
-    if (savedInstanceState != null) {
-      presenter.onLoadState(savedInstanceState);
-    }
+    presenter.onLoadState(savedInstanceState);
     presenter.onViewReady();
   }
 

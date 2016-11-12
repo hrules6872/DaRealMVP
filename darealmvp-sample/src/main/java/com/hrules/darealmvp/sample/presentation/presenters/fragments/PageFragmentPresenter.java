@@ -34,7 +34,9 @@ public class PageFragmentPresenter extends DRPresenter<PageFragmentPresenter.Pag
   }
 
   @Override public void onLoadState(Bundle savedState) {
-    DebugLog.d("onLoadState:  " + savedState.getBoolean("BUNDLE_TEST_BOOLEAN"));
+    if (savedState != null) {
+      DebugLog.d("onLoadState:  " + savedState.getBoolean("BUNDLE_TEST_BOOLEAN"));
+    }
   }
 
   public interface Page extends DRView {
