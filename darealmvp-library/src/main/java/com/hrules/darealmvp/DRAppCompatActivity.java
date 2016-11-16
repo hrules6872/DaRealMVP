@@ -23,8 +23,7 @@ import android.util.Log;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DRView>
-    extends AppCompatActivity implements DRView {
+public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DRView> extends AppCompatActivity implements DRView {
 
   private P presenter;
 
@@ -46,8 +45,7 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
 
     presenter.bind((V) this);
     initializeViews();
-    presenter.onLoadState(savedInstanceState);
-    presenter.onViewReady();
+    presenter.onViewReady(savedInstanceState);
   }
 
   @SuppressWarnings("unchecked") private P internalGetPresenter()
@@ -65,7 +63,7 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
     return (P) Class.forName(presenterClass.toString().split(" ")[1]).newInstance();
   }
 
-  @SuppressWarnings("unchecked") public P getPresenter() {
+  @SuppressWarnings("unchecked") protected P getPresenter() {
     return presenter;
   }
 
@@ -73,35 +71,9 @@ public abstract class DRAppCompatActivity<P extends DRPresenter<V>, V extends DR
     this.presenter = presenter;
   }
 
-  @Override protected void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    getPresenter().onSaveState(outState);
-  }
-
-  @Override protected void onResume() {
-    super.onResume();
-    getPresenter().onResume();
-  }
-
-  @Override protected void onStart() {
-    super.onStart();
-    getPresenter().onStart();
-  }
-
-  @Override protected void onStop() {
-    super.onStop();
-    getPresenter().onStop();
-  }
-
-  @Override protected void onPause() {
-    super.onPause();
-    getPresenter().onPause();
-  }
-
   @Override protected void onDestroy() {
     super.onDestroy();
     getPresenter().unbind();
-    getPresenter().onDestroy();
   }
 
   protected void preSetContentView() {

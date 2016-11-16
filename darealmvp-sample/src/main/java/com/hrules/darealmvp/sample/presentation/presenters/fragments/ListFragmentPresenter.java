@@ -19,6 +19,7 @@ package com.hrules.darealmvp.sample.presentation.presenters.fragments;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.commons.DebugLog;
@@ -27,21 +28,34 @@ import com.hrules.darealmvp.sample.presentation.adapters.ListFragmentAdapterList
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ListFragmentView>
-    implements ListFragmentAdapterListener {
+public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ListFragmentView> implements ListFragmentAdapterListener {
   private static final String BUNDLE_ITEMS = "BUNDLE_ITEMS";
   private static final String BUNDLE_TEST_BOOLEAN = "BUNDLE_TEST_BOOLEAN";
 
-  private List<String> items;
+  private List<String> items = new ArrayList<>();
   private ListFragmentAdapter adapter;
 
   @Override public void bind(@NonNull ListFragmentView view) {
     super.bind(view);
-    items = new ArrayList<>();
     adapter = new ListFragmentAdapter((ArrayList<String>) items, this);
   }
 
-  @Override public void onResume() {
+  @Override public void onViewReady(@Nullable Bundle savedInstanceState) {
+    super.onViewReady(savedInstanceState);
+    getView().setAdapter(adapter);
+
+    if (savedInstanceState != null) {
+      items = savedInstanceState.getStringArrayList(BUNDLE_ITEMS);
+      DebugLog.d("savedInstanceState:  " + savedInstanceState.getBoolean("BUNDLE_TEST_BOOLEAN"));
+    }
+  }
+
+  @Override public void unbind() {
+    getView().unbind();
+    super.unbind();
+  }
+
+  public void onResume() {
     if (!items.isEmpty()) {
       getView().hideProgress();
       getView().updateItems(items);
@@ -68,22 +82,10 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.Lis
     }
   }
 
-  @Override public void onSaveState(Bundle outState) {
+  public void onSaveInstanceState(Bundle outState) {
     outState.putStringArrayList(BUNDLE_ITEMS, (ArrayList<String>) items);
     outState.putBoolean(BUNDLE_TEST_BOOLEAN, true);
-    DebugLog.d("onSaveState");
-  }
-
-  @Override public void onLoadState(Bundle savedState) {
-    if (savedState != null) {
-      items = savedState.getStringArrayList(BUNDLE_ITEMS);
-      DebugLog.d("onLoadState:  " + savedState.getBoolean("BUNDLE_TEST_BOOLEAN"));
-    }
-  }
-
-  @Override public void onViewReady() {
-    super.onViewReady();
-    getView().setAdapter(adapter);
+    DebugLog.d("onSaveInstanceState");
   }
 
   private ArrayList<String> retrieveItems() {
@@ -108,5 +110,7 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.Lis
     void showProgress();
 
     void hideProgress();
+
+    void unbind();
   }
 }

@@ -29,8 +29,7 @@ import android.view.ViewGroup;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public abstract class DRDialogFragmentV4<P extends DRPresenter<V>, V extends DRView>
-    extends DialogFragment implements DRView {
+public abstract class DRDialogFragmentV4<P extends DRPresenter<V>, V extends DRView> extends DialogFragment implements DRView {
 
   private P presenter;
 
@@ -39,8 +38,7 @@ public abstract class DRDialogFragmentV4<P extends DRPresenter<V>, V extends DRV
     return getAlertDialog().create();
   }
 
-  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-      Bundle savedInstanceState) {
+  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     int layoutId = getLayoutResource();
     if (!getShowsDialog()) {
       preCreateView();
@@ -54,8 +52,7 @@ public abstract class DRDialogFragmentV4<P extends DRPresenter<V>, V extends DRV
     initializePresenter(view, savedInstanceState);
   }
 
-  @SuppressWarnings("unchecked")
-  private void initializePresenter(View view, @Nullable Bundle savedInstanceState) {
+  @SuppressWarnings("unchecked") private void initializePresenter(View view, @Nullable Bundle savedInstanceState) {
     if (presenter == null) {
       try {
         presenter = internalGetPresenter();
@@ -72,8 +69,7 @@ public abstract class DRDialogFragmentV4<P extends DRPresenter<V>, V extends DRV
     if (view != null) {
       initializeViews(view);
     }
-    presenter.onLoadState(savedInstanceState);
-    presenter.onViewReady();
+    presenter.onViewReady(savedInstanceState);
   }
 
   @SuppressWarnings("unchecked") private P internalGetPresenter()
@@ -99,48 +95,6 @@ public abstract class DRDialogFragmentV4<P extends DRPresenter<V>, V extends DRV
     this.presenter = presenter;
   }
 
-  @Override public void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    if (presenter != null) {
-      presenter.onSaveState(outState);
-    }
-  }
-
-  @Override public void onResume() {
-    super.onResume();
-    if (presenter != null) {
-      presenter.onResume();
-    }
-  }
-
-  @Override public void onStart() {
-    super.onStart();
-    if (presenter != null) {
-      presenter.onStart();
-    }
-  }
-
-  @Override public void onStop() {
-    super.onStop();
-    if (presenter != null) {
-      presenter.onStop();
-    }
-  }
-
-  @Override public void onDestroy() {
-    super.onDestroy();
-    if (presenter != null) {
-      presenter.onDestroy();
-    }
-  }
-
-  @Override public void onPause() {
-    super.onPause();
-    if (presenter != null) {
-      presenter.onPause();
-    }
-  }
-
   @Override public void onDestroyView() {
     super.onDestroyView();
     if (presenter != null) {
@@ -155,5 +109,5 @@ public abstract class DRDialogFragmentV4<P extends DRPresenter<V>, V extends DRV
 
   protected abstract int getLayoutResource();
 
-  protected abstract void initializeViews(View view);
+  protected abstract void initializeViews(@NonNull View view);
 }

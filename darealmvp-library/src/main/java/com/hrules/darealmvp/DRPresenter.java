@@ -29,7 +29,7 @@ import java.lang.reflect.Type;
   private WeakReference<V> view;
   private V nullView;
 
-  public DRPresenter() {
+  protected DRPresenter() {
     try {
       nullView = NullView.of(internalGetViewInterface());
     } catch (Exception e) {
@@ -54,33 +54,11 @@ import java.lang.reflect.Type;
     this.view = new WeakReference<>(view);
   }
 
-  protected void unbind() {
-
-  }
-
-  protected void onResume() {
-  }
-
-  protected void onPause() {
-  }
-
-  protected void onSaveState(@Nullable Bundle outState) {
-  }
-
-  protected void onLoadState(@Nullable Bundle savedState) {
-  }
-
-  protected void onStart() {
-  }
-
-  protected void onStop() {
-  }
-
-  @CallSuper protected void onDestroy() {
+  @CallSuper public void unbind() {
     this.view = null;
   }
 
-  protected void onViewReady() {
+  public void onViewReady(@Nullable Bundle savedInstanceState) {
   }
 
   protected V getView() {

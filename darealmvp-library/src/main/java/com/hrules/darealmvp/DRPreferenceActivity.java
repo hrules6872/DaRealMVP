@@ -31,14 +31,13 @@ import android.view.ViewGroup;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-@Deprecated public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends DRView>
-    extends PreferenceActivity implements DRView {
+@Deprecated public abstract class DRPreferenceActivity<P extends DRPresenter<V>, V extends DRView> extends PreferenceActivity
+    implements DRView {
   private AppCompatDelegate appCompatDelegate;
 
   private P presenter;
 
-  @SuppressWarnings({ "unchecked", "deprecation" }) @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  @SuppressWarnings({ "unchecked", "deprecation" }) @Override protected void onCreate(Bundle savedInstanceState) {
     getDelegate().installViewFactory();
     getDelegate().onCreate(savedInstanceState);
     preSetContentView();
@@ -59,8 +58,7 @@ import java.lang.reflect.Type;
 
     presenter.bind((V) this);
     initializeViews();
-    presenter.onLoadState(savedInstanceState);
-    presenter.onViewReady();
+    presenter.onViewReady(savedInstanceState);
   }
 
   @SuppressWarnings("unchecked") private P internalGetPresenter()
@@ -88,7 +86,7 @@ import java.lang.reflect.Type;
 
   @Override protected void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    getPresenter().onSaveState(outState);
+    getDelegate().onSaveInstanceState(outState);
   }
 
   @Override protected void onPostCreate(Bundle savedInstanceState) {
@@ -127,7 +125,6 @@ import java.lang.reflect.Type;
   @Override protected void onPostResume() {
     super.onPostResume();
     getDelegate().onPostResume();
-    getPresenter().onResume();
   }
 
   @Override protected void onTitleChanged(CharSequence title, int color) {
@@ -143,24 +140,17 @@ import java.lang.reflect.Type;
   @Override protected void onStop() {
     super.onStop();
     getDelegate().onStop();
-    getPresenter().onStop();
-  }
-
-  @Override protected void onPause() {
-    super.onPause();
-    getPresenter().onPause();
   }
 
   @Override protected void onStart() {
     super.onStart();
-    getPresenter().onStart();
+    getDelegate().onStart();
   }
 
   @Override protected void onDestroy() {
     super.onDestroy();
     getDelegate().onDestroy();
     getPresenter().unbind();
-    getPresenter().onDestroy();
   }
 
   public void invalidateOptionsMenu() {

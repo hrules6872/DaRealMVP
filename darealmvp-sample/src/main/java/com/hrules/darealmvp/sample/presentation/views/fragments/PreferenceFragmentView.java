@@ -65,7 +65,7 @@ public class PreferenceFragmentView extends PreferenceFragment
     return true;
   }
 
-  @Override public void doGotoRepo(@StringRes int url) {
+  public void doGotoRepo(@StringRes int url) {
     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(url))));
   }
 }

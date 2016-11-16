@@ -37,8 +37,7 @@ import com.hrules.darealmvp.sample.presentation.adapters.commons.ColorDividerIte
 import com.hrules.darealmvp.sample.presentation.presenters.fragments.ListFragmentPresenter;
 import java.util.List;
 
-@SuppressWarnings("WeakerAccess") public class ListFragmentView extends Fragment
-    implements ListFragmentPresenter.ListFragmentView {
+@SuppressWarnings("WeakerAccess") public class ListFragmentView extends Fragment implements ListFragmentPresenter.ListFragmentView {
   @BindView(R.id.progress) ProgressBar progress;
   @BindView(R.id.recyclerView) RecyclerView recyclerView;
 
@@ -46,8 +45,7 @@ import java.util.List;
   private Unbinder unbinder;
 
   //region Composition over inheritance
-  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-      Bundle savedInstanceState) {
+  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     preCreateView();
     return inflater.inflate(getLayoutResource(), container, false);
   }
@@ -57,13 +55,12 @@ import java.util.List;
     presenter = new ListFragmentPresenter();
     getPresenter().bind(this);
     initializeViews(view);
-    getPresenter().onLoadState(savedInstanceState);
-    getPresenter().onViewReady();
+    getPresenter().onViewReady(savedInstanceState);
   }
 
   @Override public void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    getPresenter().onSaveState(outState);
+    getPresenter().onSaveInstanceState(outState);
   }
 
   @Override public void onResume() {
@@ -81,22 +78,21 @@ import java.util.List;
 
   @SuppressWarnings("deprecation") public void initializeViews(View view) {
     unbinder = ButterKnife.bind(this, view);
-    recyclerView.setLayoutManager(
-        new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
+    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     Resources res = getResources();
     recyclerView.addItemDecoration(
-        new ColorDividerItemDecoration(res.getColor(android.R.color.darker_gray),
-            res.getDimension(R.dimen.list_divider_size)));
+        new ColorDividerItemDecoration(res.getColor(android.R.color.darker_gray), res.getDimension(R.dimen.list_divider_size)));
   }
   //endregion
 
-  @Override public void onDestroyView() {
-    super.onDestroyView();
-    unbind();
+  public void preCreateView() {
+    DebugLog.d("preCreateView() called");
   }
 
-  @Override public void setAdapter(ListFragmentAdapter adapter) {
-    recyclerView.setAdapter(adapter);
+  @Override public void onDestroyView() {
+    super.onDestroyView();
+    getPresenter().unbind();
   }
 
   public void unbind() {
@@ -105,25 +101,24 @@ import java.util.List;
     }
   }
 
-  @Override public void updateItems(List<String> items) {
+  public void setAdapter(ListFragmentAdapter adapter) {
+    recyclerView.setAdapter(adapter);
+  }
+
+  public void updateItems(List<String> items) {
     ((ListFragmentAdapter) recyclerView.getAdapter()).updateItems(items);
   }
 
-  public void preCreateView() {
-    DebugLog.d("preCreateView() called");
+  public void onClick(String item) {
+    Toast.makeText(getActivity(), item + " " + getString(R.string.item_clicked), Toast.LENGTH_SHORT).show();
   }
 
-  @Override public void onClick(String item) {
-    Toast.makeText(getActivity(), item + " " + getString(R.string.item_clicked), Toast.LENGTH_SHORT)
-        .show();
-  }
-
-  @Override public void showProgress() {
+  public void showProgress() {
     progress.setVisibility(View.VISIBLE);
     recyclerView.setVisibility(View.GONE);
   }
 
-  @Override public void hideProgress() {
+  public void hideProgress() {
     progress.setVisibility(View.GONE);
     recyclerView.setVisibility(View.VISIBLE);
   }

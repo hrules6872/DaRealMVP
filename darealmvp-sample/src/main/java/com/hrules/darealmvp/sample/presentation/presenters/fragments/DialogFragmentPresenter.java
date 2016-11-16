@@ -22,6 +22,7 @@ import com.hrules.darealmvp.DRView;
 public class DialogFragmentPresenter extends DRPresenter<DialogFragmentPresenter.Dialog> {
   @Override public void unbind() {
     getView().unbind();
+    super.unbind();
   }
 
   public interface Dialog extends DRView {

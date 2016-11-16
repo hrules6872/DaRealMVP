@@ -17,6 +17,7 @@
 package com.hrules.darealmvp.sample.presentation.views.fragments;
 
 import android.content.DialogInterface;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.TextView;
@@ -27,8 +28,7 @@ import com.hrules.darealmvp.DRAppCompatDialogFragment;
 import com.hrules.darealmvp.sample.R;
 import com.hrules.darealmvp.sample.presentation.presenters.fragments.DialogFragmentPresenter;
 
-public class DialogFragmentView
-    extends DRAppCompatDialogFragment<DialogFragmentPresenter, DialogFragmentPresenter.Dialog>
+public class DialogFragmentView extends DRAppCompatDialogFragment<DialogFragmentPresenter, DialogFragmentPresenter.Dialog>
     implements DialogFragmentPresenter.Dialog {
   @BindView(R.id.text) TextView text;
 
@@ -57,13 +57,14 @@ public class DialogFragmentView
     return R.layout.fragment_dialog;
   }
 
-  @Override protected void initializeViews(View view) {
+  @Override protected void initializeViews(@NonNull View view) {
     // a DialogFragment can still optionally be used as a normal fragment
     unbinder = ButterKnife.bind(this, view);
+
     text.setText(getString(R.string.app_name));
   }
 
-  @Override public void unbind() {
+  public void unbind() {
     if (unbinder != null) {
       unbinder.unbind();
     }

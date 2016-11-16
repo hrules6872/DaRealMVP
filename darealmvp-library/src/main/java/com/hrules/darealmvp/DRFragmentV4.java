@@ -27,13 +27,11 @@ import android.view.ViewGroup;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> extends Fragment
-    implements DRView {
+public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> extends Fragment implements DRView {
 
   private P presenter;
 
-  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-      Bundle savedInstanceState) {
+  @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     preCreateView();
     return inflater.inflate(getLayoutResource(), container, false);
   }
@@ -43,8 +41,7 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
     initializePresenter(view, savedInstanceState);
   }
 
-  @SuppressWarnings("unchecked")
-  private void initializePresenter(View view, @Nullable Bundle savedInstanceState) {
+  @SuppressWarnings("unchecked") private void initializePresenter(View view, @Nullable Bundle savedInstanceState) {
     if (presenter == null) {
       try {
         presenter = internalGetPresenter();
@@ -58,9 +55,10 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
     }
 
     presenter.bind((V) this);
-    initializeViews(view);
-    presenter.onLoadState(savedInstanceState);
-    presenter.onViewReady();
+    if (view != null) {
+      initializeViews(view);
+    }
+    presenter.onViewReady(savedInstanceState);
   }
 
   @SuppressWarnings("unchecked") private P internalGetPresenter()
@@ -78,54 +76,12 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
     return (P) Class.forName(presenterClass.toString().split(" ")[1]).newInstance();
   }
 
-  @SuppressWarnings("unchecked") public P getPresenter() {
+  @SuppressWarnings("unchecked") protected P getPresenter() {
     return presenter;
   }
 
   public void setPresenter(@NonNull P presenter) {
     this.presenter = presenter;
-  }
-
-  @Override public void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    if (presenter != null) {
-      presenter.onSaveState(outState);
-    }
-  }
-
-  @Override public void onResume() {
-    super.onResume();
-    if (presenter != null) {
-      presenter.onResume();
-    }
-  }
-
-  @Override public void onStart() {
-    super.onStart();
-    if (presenter != null) {
-      presenter.onStart();
-    }
-  }
-
-  @Override public void onStop() {
-    super.onStop();
-    if (presenter != null) {
-      presenter.onStop();
-    }
-  }
-
-  @Override public void onDestroy() {
-    super.onDestroy();
-    if (presenter != null) {
-      presenter.onDestroy();
-    }
-  }
-
-  @Override public void onPause() {
-    super.onPause();
-    if (presenter != null) {
-      presenter.onPause();
-    }
   }
 
   @Override public void onDestroyView() {
@@ -140,5 +96,5 @@ public abstract class DRFragmentV4<P extends DRPresenter<V>, V extends DRView> e
 
   protected abstract int getLayoutResource();
 
-  protected abstract void initializeViews(View view);
+  protected abstract void initializeViews(@NonNull View view);
 }

@@ -18,6 +18,7 @@ package com.hrules.darealmvp.sample.presentation.presenters.activities;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -29,15 +30,37 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.Mai
   private static final String BUNDLE_MESSAGE_SHOWED = "BUNDLE_MESSAGE_SHOWED";
   private static final String BUNDLE_TOAST_SHOWED = "BUNDLE_TOAST_SHOWED";
 
-  private boolean messageShowed;
-  private boolean toastShowed;
+  private boolean messageShowed = false;
+  private boolean toastShowed = false;
 
-  @Override public void onResume() {
+  @Override public void onViewReady(@Nullable Bundle savedInstanceState) {
+    super.onViewReady(savedInstanceState);
+    if (savedInstanceState != null) {
+      messageShowed = savedInstanceState.getBoolean(BUNDLE_MESSAGE_SHOWED);
+      toastShowed = savedInstanceState.getBoolean(BUNDLE_TOAST_SHOWED);
+    }
+
     if (messageShowed) {
       showMessage();
     }
     if (!toastShowed) {
       showToast();
+    }
+  }
+
+  public void onSaveInstanceState(Bundle outState) {
+    outState.putBoolean(BUNDLE_MESSAGE_SHOWED, messageShowed);
+    outState.putBoolean(BUNDLE_TOAST_SHOWED, toastShowed);
+  }
+
+  public void onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.action_preferences:
+        getView().showPreferencesActivity();
+        break;
+
+      default:
+        throw new UnsupportedOperationException();
     }
   }
 
@@ -50,32 +73,9 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.Mai
     }, 1000);
   }
 
-  @Override public void onSaveState(Bundle outState) {
-    outState.putBoolean(BUNDLE_MESSAGE_SHOWED, messageShowed);
-    outState.putBoolean(BUNDLE_TOAST_SHOWED, toastShowed);
-  }
-
-  @Override public void onLoadState(Bundle savedState) {
-    if (savedState != null) {
-      messageShowed = savedState.getBoolean(BUNDLE_MESSAGE_SHOWED);
-      toastShowed = savedState.getBoolean(BUNDLE_TOAST_SHOWED);
-    }
-  }
-
   private void showMessage() {
     getView().changeMessage(R.string.try_rotate);
     messageShowed = true;
-  }
-
-  public void onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case R.id.action_preferences:
-        getView().showPreferencesActivity();
-        break;
-
-      default:
-        throw new UnsupportedOperationException();
-    }
   }
 
   public void onClickButton(Button button) {

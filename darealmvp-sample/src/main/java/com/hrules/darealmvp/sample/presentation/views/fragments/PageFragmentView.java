@@ -17,6 +17,7 @@
 package com.hrules.darealmvp.sample.presentation.views.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -49,13 +50,18 @@ public class PageFragmentView extends DRFragmentV4<PageFragmentPresenter, PageFr
     return R.layout.fragment_page;
   }
 
-  @Override protected void initializeViews(View view) {
+  @Override protected void initializeViews(@NonNull View view) {
     unbinder = ButterKnife.bind(this, view);
 
     text.setText(getString(R.string.pager_pageNumber, getArguments().getInt(ARG_SECTION_NUMBER)));
   }
 
-  @Override public void unbind() {
+  @Override public void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    getPresenter().onSaveInstanceState(outState);
+  }
+
+  public void unbind() {
     if (unbinder != null) {
       unbinder.unbind();
     }

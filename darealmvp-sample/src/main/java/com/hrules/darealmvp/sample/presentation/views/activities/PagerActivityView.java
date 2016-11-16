@@ -39,6 +39,7 @@ public class PagerActivityView extends DRAppCompatActivity<PagerActivityPresente
 
   @SuppressWarnings("ConstantConditions") @Override protected void initializeViews() {
     ButterKnife.bind(this);
+
     setSupportActionBar(toolbar);
     try {
       getSupportActionBar().setTitle(getString(R.string.activity_pagerTitle));

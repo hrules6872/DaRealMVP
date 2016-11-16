@@ -17,6 +17,7 @@
 package com.hrules.darealmvp.sample.presentation.views.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -33,8 +34,7 @@ import com.hrules.darealmvp.sample.presentation.presenters.activities.MainActivi
 import com.hrules.darealmvp.sample.presentation.views.fragments.DialogFragmentView;
 
 @SuppressWarnings("WeakerAccess") public class MainActivityView
-    extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.MainView>
-    implements MainActivityPresenter.MainView {
+    extends DRAppCompatActivity<MainActivityPresenter, MainActivityPresenter.MainView> implements MainActivityPresenter.MainView {
   @BindView(R.id.message) TextView message;
   @BindView(R.id.toolbar) Toolbar toolbar;
   @BindView(R.id.showMessage) Button showMessage;
@@ -50,7 +50,13 @@ import com.hrules.darealmvp.sample.presentation.views.fragments.DialogFragmentVi
 
   @Override public void initializeViews() {
     ButterKnife.bind(this);
+
     setSupportActionBar(toolbar);
+  }
+
+  @Override protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    getPresenter().onSaveInstanceState(outState);
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
@@ -58,7 +64,7 @@ import com.hrules.darealmvp.sample.presentation.views.fragments.DialogFragmentVi
     return true;
   }
 
-  @Override public void showToast() {
+  public void showToast() {
     Toast.makeText(this, getString(R.string.app_welcome), Toast.LENGTH_LONG).show();
   }
 
@@ -66,19 +72,19 @@ import com.hrules.darealmvp.sample.presentation.views.fragments.DialogFragmentVi
     startActivity(new Intent(this, ListActivityView.class));
   }
 
-  @Override public void showPagerActivity() {
+  public void showPagerActivity() {
     startActivity(new Intent(this, PagerActivityView.class));
   }
 
-  @Override public void showPreferencesActivity() {
+  public void showPreferencesActivity() {
     startActivity(new Intent(this, PreferenceActivityView.class));
   }
 
-  @Override public void showDialogFragment() {
+  public void showDialogFragment() {
     new DialogFragmentView().show(getSupportFragmentManager(), "DialogFragmentView");
   }
 
-  @Override public void changeMessage(@StringRes int message) {
+  public void changeMessage(@StringRes int message) {
     this.message.setText(getString(message));
     showMessage.setEnabled(false);
   }

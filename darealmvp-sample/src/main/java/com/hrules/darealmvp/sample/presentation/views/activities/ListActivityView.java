@@ -28,13 +28,13 @@ import com.hrules.darealmvp.sample.presentation.presenters.activities.ListActivi
 import com.hrules.darealmvp.sample.presentation.views.fragments.ListFragmentView;
 
 @SuppressWarnings("WeakerAccess") public class ListActivityView
-    extends DRAppCompatActivity<ListActivityPresenter, ListActivityPresenter.ListView>
-    implements ListActivityPresenter.ListView {
+    extends DRAppCompatActivity<ListActivityPresenter, ListActivityPresenter.ListView> implements ListActivityPresenter.ListView {
   @BindView(R.id.toolbar) Toolbar toolbar;
   @BindView(R.id.container) FrameLayout container;
 
   @SuppressWarnings("ConstantConditions") @Override public void initializeViews() {
     ButterKnife.bind(this);
+
     setSupportActionBar(toolbar);
     try {
       getSupportActionBar().setTitle(getString(R.string.activity_listTitle));

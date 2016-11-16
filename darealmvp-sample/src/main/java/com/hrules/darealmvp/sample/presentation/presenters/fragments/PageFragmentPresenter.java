@@ -17,6 +17,7 @@
 package com.hrules.darealmvp.sample.presentation.presenters.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.commons.DebugLog;
@@ -24,19 +25,21 @@ import com.hrules.darealmvp.sample.commons.DebugLog;
 public class PageFragmentPresenter extends DRPresenter<PageFragmentPresenter.Page> {
   private static final String BUNDLE_TEST_BOOLEAN = "BUNDLE_TEST_BOOLEAN";
 
+  @Override public void onViewReady(@Nullable Bundle savedInstanceState) {
+    super.onViewReady(savedInstanceState);
+    if (savedInstanceState != null) {
+      DebugLog.d("savedInstanceState:  " + savedInstanceState.getBoolean("BUNDLE_TEST_BOOLEAN"));
+    }
+  }
+
   @Override public void unbind() {
     getView().unbind();
+    super.unbind();
   }
 
-  @Override public void onSaveState(Bundle outState) {
+  public void onSaveInstanceState(Bundle outState) {
     outState.putBoolean(BUNDLE_TEST_BOOLEAN, true);
-    DebugLog.d("onSaveState");
-  }
-
-  @Override public void onLoadState(Bundle savedState) {
-    if (savedState != null) {
-      DebugLog.d("onLoadState:  " + savedState.getBoolean("BUNDLE_TEST_BOOLEAN"));
-    }
+    DebugLog.d("onSaveInstanceState");
   }
 
   public interface Page extends DRView {

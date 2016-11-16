@@ -55,6 +55,7 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
     public ViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
+
       itemView.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View v) {
           if (ListFragmentAdapter.listener != null) {
