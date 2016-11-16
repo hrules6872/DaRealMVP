@@ -27,6 +27,7 @@ import com.hrules.darealmvp.sample.presentation.adapters.ListFragmentAdapter;
 import com.hrules.darealmvp.sample.presentation.adapters.ListFragmentAdapterListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.ListFragmentView> implements ListFragmentAdapterListener {
   private static final String BUNDLE_ITEMS = "BUNDLE_ITEMS";
@@ -67,7 +68,7 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.Lis
 
         @Override protected List<String> doInBackground(Void... params) {
           try {
-            Thread.sleep(3000);
+            Thread.sleep(TimeUnit.SECONDS.toMillis(3));
           } catch (InterruptedException ignored) {
           }
           items = retrieveItems();
