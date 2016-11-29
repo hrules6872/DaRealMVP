@@ -54,23 +54,19 @@ import java.util.List;
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     presenter = new ListFragmentPresenter();
-    getPresenter().bind(this);
+    presenter.bind(this);
     initializeViews(view);
-    getPresenter().onViewReady(savedInstanceState);
+    presenter.onViewReady(savedInstanceState);
   }
 
   @Override public void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    getPresenter().onSaveInstanceState(outState);
+    presenter.onSaveInstanceState(outState);
   }
 
   @Override public void onResume() {
     super.onResume();
-    getPresenter().onResume();
-  }
-
-  private ListFragmentPresenter getPresenter() {
-    return presenter;
+    presenter.onResume();
   }
 
   public int getLayoutResource() {
@@ -93,6 +89,7 @@ import java.util.List;
 
   @Override public void onDestroyView() {
     super.onDestroyView();
+    presenter.unbind();
     if (unbinder != null) {
       unbinder.unbind();
     }
