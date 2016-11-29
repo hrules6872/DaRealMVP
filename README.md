@@ -53,13 +53,7 @@ Fragments (extends DRFragment / [DRFragmentV4](darealmvp-sample/src/main/java/co
 
     ```java
     public class MainFragmentPresenter extends DRPresenter<MainFragmentPresenter.MainView> {
-        @Override public void unbind() {
-            getView().unbind();
-            super.unbind();
-        }
-        
         public interface MainView extends DRView {
-            void unbind();
         }
     }
     ```
@@ -90,13 +84,7 @@ DialogFragments (extends DRDialogFragment / DRDialogFragmentV4 / [DRAppCompatDia
 
     ```java
     public class DialogFragmentPresenter extends DRPresenter<DialogFragmentPresenter.DialogView> {
-        @Override public void unbind() {
-            getView().unbind();
-            super.unbind();
-        }
-        
         public interface DialogView extends DRView {
-            void unbind();
         }
     }
     ```
