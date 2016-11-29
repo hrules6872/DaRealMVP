@@ -42,9 +42,11 @@ public class DialogFragmentView extends DRAppCompatDialogFragment<DialogFragment
 
     builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
       public void onClick(DialogInterface dialog, int whichButton) {
+        // getPresenter.onClick(whichButton);
       }
     }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
       public void onClick(DialogInterface dialog, int whichButton) {
+        // getPresenter.onClick(whichButton);
       }
     });
 
@@ -64,7 +66,8 @@ public class DialogFragmentView extends DRAppCompatDialogFragment<DialogFragment
     text.setText(getString(R.string.app_name));
   }
 
-  public void unbind() {
+  @Override public void onDestroyView() {
+    super.onDestroyView();
     if (unbinder != null) {
       unbinder.unbind();
     }

@@ -17,13 +17,14 @@
 package com.hrules.darealmvp.sample.presentation.presenters.fragments;
 
 import android.preference.Preference;
+import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 import com.hrules.darealmvp.sample.R;
 
 public class PreferenceFragmentPresenter extends DRPresenter<PreferenceFragmentPresenter.PreferenceFragmentView> {
-  public void onPreferenceChange(Preference preference) {
+  public void onPreferenceChange(@NonNull Preference preference) {
     String key = preference.getKey();
     if (preference.getContext().getString(R.string.prefs_gotoRepoKey).equals(key)) {
       getView().doGotoRepo(R.string.app_repositoryUrl);

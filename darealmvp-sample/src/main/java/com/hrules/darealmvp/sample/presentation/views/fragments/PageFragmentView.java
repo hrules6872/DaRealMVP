@@ -35,9 +35,6 @@ public class PageFragmentView extends DRFragmentV4<PageFragmentPresenter, PageFr
 
   private Unbinder unbinder;
 
-  public PageFragmentView() {
-  }
-
   public static PageFragmentView newInstance(int page) {
     PageFragmentView fragment = new PageFragmentView();
     Bundle args = new Bundle();
@@ -61,7 +58,8 @@ public class PageFragmentView extends DRFragmentV4<PageFragmentPresenter, PageFr
     getPresenter().onSaveInstanceState(outState);
   }
 
-  public void unbind() {
+  @Override public void onDestroyView() {
+    super.onDestroyView();
     if (unbinder != null) {
       unbinder.unbind();
     }

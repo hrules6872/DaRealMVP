@@ -16,6 +16,8 @@
 
 package com.hrules.darealmvp.sample.presentation.adapters;
 
+import android.support.annotation.NonNull;
+
 public interface ListFragmentAdapterListener {
-  void onClick(String item);
+  void onClick(@NonNull String item);
 }

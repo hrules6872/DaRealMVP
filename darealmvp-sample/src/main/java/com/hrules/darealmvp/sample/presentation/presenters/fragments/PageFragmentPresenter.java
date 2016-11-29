@@ -17,6 +17,7 @@
 package com.hrules.darealmvp.sample.presentation.presenters.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
@@ -32,17 +33,11 @@ public class PageFragmentPresenter extends DRPresenter<PageFragmentPresenter.Pag
     }
   }
 
-  @Override public void unbind() {
-    getView().unbind();
-    super.unbind();
-  }
-
-  public void onSaveInstanceState(Bundle outState) {
+  public void onSaveInstanceState(@NonNull Bundle outState) {
     outState.putBoolean(BUNDLE_TEST_BOOLEAN, true);
     DebugLog.d("onSaveInstanceState");
   }
 
   public interface Page extends DRView {
-    void unbind();
   }
 }

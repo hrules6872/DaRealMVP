@@ -18,6 +18,7 @@ package com.hrules.darealmvp.sample.presentation.views.fragments;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -76,7 +77,7 @@ import java.util.List;
     return R.layout.fragment_list;
   }
 
-  @SuppressWarnings("deprecation") public void initializeViews(View view) {
+  @SuppressWarnings("deprecation") public void initializeViews(@NonNull View view) {
     unbinder = ButterKnife.bind(this, view);
 
     recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -92,24 +93,20 @@ import java.util.List;
 
   @Override public void onDestroyView() {
     super.onDestroyView();
-    getPresenter().unbind();
-  }
-
-  public void unbind() {
     if (unbinder != null) {
       unbinder.unbind();
     }
   }
 
-  public void setAdapter(ListFragmentAdapter adapter) {
+  public void setAdapter(@NonNull ListFragmentAdapter adapter) {
     recyclerView.setAdapter(adapter);
   }
 
-  public void updateItems(List<String> items) {
+  public void updateItems(@NonNull List<String> items) {
     ((ListFragmentAdapter) recyclerView.getAdapter()).updateItems(items);
   }
 
-  public void onClick(String item) {
+  public void onClick(@NonNull String item) {
     Toast.makeText(getActivity(), item + " " + getString(R.string.item_clicked), Toast.LENGTH_SHORT).show();
   }
 

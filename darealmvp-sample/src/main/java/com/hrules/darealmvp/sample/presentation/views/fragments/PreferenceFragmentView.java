@@ -21,6 +21,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.view.View;
 import com.hrules.darealmvp.sample.R;
@@ -36,10 +38,10 @@ public class PreferenceFragmentView extends PreferenceFragment
     addPreferencesFromResource(getPreferenceResource());
   }
 
-  @Override public void onViewCreated(View view, Bundle savedInstanceState) {
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     presenter = new PreferenceFragmentPresenter();
-    getPresenter().bind(this);
+    presenter.bind(this);
     initializeViews();
   }
 
@@ -47,21 +49,17 @@ public class PreferenceFragmentView extends PreferenceFragment
     bindPreference(findPreference(getString(R.string.prefs_gotoRepoKey)));
   }
 
-  private PreferenceFragmentPresenter getPresenter() {
-    return presenter;
-  }
-
   private int getPreferenceResource() {
     return R.xml.preferences;
   }
   //endregion
 
-  private void bindPreference(Preference preference) {
+  private void bindPreference(@NonNull Preference preference) {
     preference.setOnPreferenceClickListener(this);
   }
 
   @Override public boolean onPreferenceClick(Preference preference) {
-    getPresenter().onPreferenceChange(preference);
+    presenter.onPreferenceChange(preference);
     return true;
   }
 

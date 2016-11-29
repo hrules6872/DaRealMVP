@@ -16,12 +16,13 @@
 
 package com.hrules.darealmvp.sample.presentation.presenters.activities;
 
+import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import com.hrules.darealmvp.DRPresenter;
 import com.hrules.darealmvp.DRView;
 
 public class PagerActivityPresenter extends DRPresenter<PagerActivityPresenter.Pager> {
-  public void onOptionsItemSelected(MenuItem item) {
+  public void onOptionsItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
       case android.R.id.home:
         getView().onBackPressed();

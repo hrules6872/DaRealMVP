@@ -51,11 +51,6 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.Lis
     }
   }
 
-  @Override public void unbind() {
-    getView().unbind();
-    super.unbind();
-  }
-
   public void onResume() {
     if (!items.isEmpty()) {
       getView().hideProgress();
@@ -83,7 +78,7 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.Lis
     }
   }
 
-  public void onSaveInstanceState(Bundle outState) {
+  public void onSaveInstanceState(@NonNull Bundle outState) {
     outState.putStringArrayList(BUNDLE_ITEMS, (ArrayList<String>) items);
     outState.putBoolean(BUNDLE_TEST_BOOLEAN, true);
     DebugLog.d("onSaveInstanceState");
@@ -97,21 +92,19 @@ public class ListFragmentPresenter extends DRPresenter<ListFragmentPresenter.Lis
     return items;
   }
 
-  @Override public void onClick(String item) {
+  @Override public void onClick(@NonNull String item) {
     getView().onClick(item);
   }
 
   public interface ListFragmentView extends DRView {
-    void setAdapter(ListFragmentAdapter adapter);
+    void setAdapter(@NonNull ListFragmentAdapter adapter);
 
-    void updateItems(List<String> items);
+    void updateItems(@NonNull List<String> items);
 
-    void onClick(String item);
+    void onClick(@NonNull String item);
 
     void showProgress();
 
     void hideProgress();
-
-    void unbind();
   }
 }

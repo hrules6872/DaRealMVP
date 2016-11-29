@@ -16,6 +16,7 @@
 
 package com.hrules.darealmvp.sample.presentation.adapters;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,7 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
   private static List<String> items;
   private static ListFragmentAdapterListener listener;
 
-  public ListFragmentAdapter(ArrayList<String> items, ListFragmentAdapterListener listener) {
+  public ListFragmentAdapter(@NonNull ArrayList<String> items, @NonNull ListFragmentAdapterListener listener) {
     ListFragmentAdapter.items = items;
     ListFragmentAdapter.listener = listener;
   }
@@ -49,10 +50,10 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
     return items.size();
   }
 
-  public static class ViewHolder extends RecyclerView.ViewHolder {
+  static class ViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.text1) TextView text1;
 
-    public ViewHolder(View itemView) {
+    ViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
 
@@ -66,7 +67,7 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
     }
   }
 
-  public void updateItems(List<String> items) {
+  public void updateItems(@NonNull List<String> items) {
     ListFragmentAdapter.items = items;
     notifyDataSetChanged();
   }

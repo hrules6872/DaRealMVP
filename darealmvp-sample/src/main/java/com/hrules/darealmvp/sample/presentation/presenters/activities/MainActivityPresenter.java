@@ -18,6 +18,7 @@ package com.hrules.darealmvp.sample.presentation.presenters.activities;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.view.MenuItem;
@@ -53,7 +54,7 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.Mai
     outState.putBoolean(BUNDLE_TOAST_SHOWED, toastShowed);
   }
 
-  public void onOptionsItemSelected(MenuItem item) {
+  public void onOptionsItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_preferences:
         getView().showPreferencesActivity();
@@ -78,7 +79,7 @@ public class MainActivityPresenter extends DRPresenter<MainActivityPresenter.Mai
     messageShowed = true;
   }
 
-  public void onClickButton(Button button) {
+  public void onClickButton(@NonNull Button button) {
     switch (button.getId()) {
       case R.id.showMessage:
         showMessage();
