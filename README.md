@@ -4,7 +4,7 @@ DaRealMVP
 
 DaRealMVP is a library to bring [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) pattern (from my point of view) to your Android apps so easy and reducing the boilerplate-code.
 
-##How to implement
+### How to implement
 
 Activities (extends DRActivity / [DRAppCompatActivity](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/activities/MainActivityView.java)):
 
@@ -89,15 +89,15 @@ DialogFragments (extends DRDialogFragment / DRDialogFragmentV4 / [DRAppCompatDia
     }
     ```
 
-###Composition over inheritance
+### Composition over inheritance
 
 You can grab an example [here](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/fragments/ListFragmentView.java) (or also [here](darealmvp-sample/src/main/java/com/hrules/darealmvp/sample/presentation/views/fragments/PreferenceFragmentView.java)).
 
-##Usage
+### Usage
 
 Please refer to the [sample](darealmvp-sample) for seeing it in action.
 
-##Importing to your project
+### Importing to your project
 
 Add this dependency to your build.gradle file:
 
