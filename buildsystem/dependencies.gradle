@@ -5,8 +5,13 @@ ext {
   androidBuildCompileSDKVersion = 'android-25'
 
   // internal
-  libraryVersionCode = 1140
-  libraryVersionName = '0.14.0'
+  libraryVersionMajor = 0
+  libraryVersionMinor = 20
+  libraryVersionPatch = 0
+  libraryVersionBuild = 0
+
+  libraryVersionCode = libraryVersionMajor * 1000000 + libraryVersionMinor * 10000 + libraryVersionPatch * 100 + libraryVersionBuild
+  libraryVersionName = "${libraryVersionMajor}.${libraryVersionMinor}.${libraryVersionPatch}"
 
   // support libraries
   supportLibraryVersion = '25.3.+'
