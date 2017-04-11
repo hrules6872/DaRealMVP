@@ -5,22 +5,11 @@ ext {
   androidBuildCompileSDKVersion = 'android-25'
 
   // internal
-  demoVersionCode = 100
-  demoVersionName = '1.0.0'
-
   libraryVersionCode = 1140
   libraryVersionName = '0.14.0'
 
   // support libraries
   supportLibraryVersion = '25.3.+'
-  supportDependencies = [recyclerView      : "com.android.support:recyclerview-v7:${supportLibraryVersion}",
-                         appCompat         : "com.android.support:appcompat-v7:${supportLibraryVersion}",
+  supportDependencies = [appCompat         : "com.android.support:appcompat-v7:${supportLibraryVersion}",
                          supportAnnotations: "com.android.support:support-annotations:${supportLibraryVersion}"]
-
-  // project dependencies
-  butterKnifeVersion = '8.5.+'
-  projectDependencies = [butterKnife: "com.jakewharton:butterknife:${butterKnifeVersion}"]
-
-  // other dependencies
-  otherDependencies = [butterKnife: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"]
 }

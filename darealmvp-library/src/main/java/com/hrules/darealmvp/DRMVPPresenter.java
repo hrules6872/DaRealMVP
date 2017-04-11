@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. Héctor de Isidro - hrules6872
+ * Copyright (c) 2017. Héctor de Isidro - hrules6872
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,28 +16,25 @@
 
 package com.hrules.darealmvp;
 
-import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-@SuppressWarnings("EmptyMethod") public abstract class DRPresenter<V extends DRView> {
+public abstract class DRMVPPresenter<V extends DRMVPView> {
   private WeakReference<V> view;
   private V nullView;
 
-  protected DRPresenter() {
+  protected DRMVPPresenter() {
     try {
-      nullView = NullView.of(internalGetViewInterface());
+      nullView = NullView.of(internalGetViewInterfaceClass());
     } catch (Exception e) {
-      Log.e("DRPresenter", e.getMessage(), e);
+      throw new IllegalArgumentException();
     }
   }
 
-  @SuppressWarnings("unchecked") private Class<V> internalGetViewInterface() {
+  @SuppressWarnings("unchecked") private Class<V> internalGetViewInterfaceClass() {
     Class clazz = getClass();
     Type genericSuperclass;
     for (; ; ) {
@@ -56,9 +53,6 @@ import java.lang.reflect.Type;
 
   @CallSuper public void unbind() {
     this.view = null;
-  }
-
-  public void onViewReady(@Nullable Bundle savedInstanceState) {
   }
 
   protected V getView() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. Héctor de Isidro - hrules6872
+ * Copyright (c) 2017. Héctor de Isidro - hrules6872
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,8 +29,7 @@ class NullView {
   }
 
   @SuppressWarnings("unchecked") public static <T> T of(Class<T> interfaceClass) {
-    return (T) newProxyInstance(interfaceClass.getClassLoader(), new Class[] { interfaceClass },
-        DEFAULT_VALUE);
+    return (T) newProxyInstance(interfaceClass.getClassLoader(), new Class[] { interfaceClass }, DEFAULT_VALUE);
   }
 
   private static class DefaultValueInvocationHandler implements InvocationHandler {

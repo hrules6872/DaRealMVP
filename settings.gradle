@@ -1,1 +1,1 @@
-include ':darealmvp-sample', ':darealmvp-library'
+include ':darealmvp-library'
