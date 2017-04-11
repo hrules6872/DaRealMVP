@@ -15,6 +15,7 @@ dependencies {
 ### Examples
 
 [BaseAppCompatActivity example](https://gist.github.com/hrules6872/9654271c11c0f3c742a58355dc635f11)
+
 [BaseFragmentV4 example](https://gist.github.com/hrules6872/66ea3fed040ab0c75e11c1a45b8c2360)
 
 ### Important
