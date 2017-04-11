@@ -12,6 +12,16 @@ dependencies {
 }
 ```
 
+### Examples
+
+[BaseAppCompatActivity example](https://gist.github.com/hrules6872/9654271c11c0f3c742a58355dc635f11)
+[BaseFragmentV4 example](https://gist.github.com/hrules6872/66ea3fed040ab0c75e11c1a45b8c2360)
+
+### Important
+
+[Deprecated version](https://github.com/hrules6872/DaRealMVP/tree/deprecated)
+
+
 Developed by
 -------
 Héctor de Isidro - hrules6872 [![Twitter](http://img.shields.io/badge/contact-@hector6872-blue.svg?style=flat)](http://twitter.com/hector6872)
