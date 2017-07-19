@@ -14,7 +14,6 @@ ext {
   libraryVersionName = "${libraryVersionMajor}.${libraryVersionMinor}.${libraryVersionPatch}"
 
   // support libraries
-  supportLibraryVersion = '25.3.+'
-  supportDependencies = [appCompat         : "com.android.support:appcompat-v7:${supportLibraryVersion}",
-                         supportAnnotations: "com.android.support:support-annotations:${supportLibraryVersion}"]
+  supportLibraryVersion = '25.4.+'
+  supportDependencies = [supportAnnotations: "com.android.support:support-annotations:${supportLibraryVersion}"]
 }
