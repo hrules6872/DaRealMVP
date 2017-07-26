@@ -21,7 +21,7 @@
   @CallSuper @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(getLayoutResId());
-    presenter = MVPUtils.getDeclaredPresenter(getClass());
+    presenter = DRMVPUtils.getDeclaredPresenter(getClass());
     presenter.bind((V) this);
   }
 

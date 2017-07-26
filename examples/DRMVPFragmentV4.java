@@ -22,7 +22,7 @@
   }
 
   @CallSuper @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-    presenter = MVPUtils.getDeclaredPresenter(getClass());
+    presenter = DRMVPUtils.getDeclaredPresenter(getClass());
     presenter.bind((V) this);
   }
 
