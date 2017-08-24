@@ -15,6 +15,9 @@
  */
 
 public class DRMVPUtils {
+  private DRMVPUtils() {
+  }
+  
   @SuppressWarnings("unchecked") public static <P> P getDeclaredPresenter(@NonNull Class clazz) {
     Type genericSuperclass;
     for (; ; ) {
