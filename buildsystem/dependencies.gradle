@@ -21,8 +21,8 @@ ext {
   androidBuildCompileSDKVersion = 'android-25'
 
   // internal
-  libraryVersionMajor = 0
-  libraryVersionMinor = 20
+  libraryVersionMajor = 1
+  libraryVersionMinor = 0
   libraryVersionPatch = 0
   libraryVersionBuild = 0
 
