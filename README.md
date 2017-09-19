@@ -8,7 +8,7 @@ Add this dependency to your build.gradle file:
 
 ```java
 dependencies {
-    compile 'com.hrules:darealmvp:0.20.0'
+    compile 'com.hrules:darealmvp:1.0.0'
 }
 ```
 
@@ -31,7 +31,7 @@ Héctor de Isidro - hrules6872 [![Twitter](http://img.shields.io/badge/contact-@
 
 License
 -------
-    Copyright 2016 Héctor de Isidro - hrules6872
+    Copyright 2017 Héctor de Isidro - hrules6872
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
