@@ -17,7 +17,7 @@
 @SuppressWarnings("unchecked") public abstract class DRMVPFragmentV4<P extends DRMVPPresenter<V>, V extends DRMVPView> extends Fragment {
   private P presenter;
 
-  @CallSuper @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  @CallSuper @Override public @Nullable View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     return inflater.inflate(getLayoutResId(), container, false);
   }
 

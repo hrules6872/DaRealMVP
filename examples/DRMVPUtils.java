@@ -17,8 +17,8 @@
 public class DRMVPUtils {
   private DRMVPUtils() {
   }
-  
-  @SuppressWarnings("unchecked") public static <P> P getDeclaredPresenter(@NonNull Class clazz) {
+
+  @SuppressWarnings("unchecked") public static @NonNull <P> P getDeclaredPresenter(@NonNull Class clazz) {
     Type genericSuperclass;
     for (; ; ) {
       genericSuperclass = clazz.getGenericSuperclass();

@@ -15,7 +15,7 @@
  */
 
 ext {
-  androidBuildToolsVersion = '25.0.2'
+  androidBuildToolsVersion = '26.0.1'
   androidBuildMinSDKVersion = '15'
   androidBuildTargetSDKVersion = '25'
   androidBuildCompileSDKVersion = 'android-25'
@@ -30,6 +30,6 @@ ext {
   libraryVersionName = "${libraryVersionMajor}.${libraryVersionMinor}.${libraryVersionPatch}"
 
   // support libraries
-  supportLibraryVersion = '25.4.+'
+  supportLibraryVersion = '26.1.+'
   supportDependencies = [supportAnnotations: "com.android.support:support-annotations:${supportLibraryVersion}"]
 }

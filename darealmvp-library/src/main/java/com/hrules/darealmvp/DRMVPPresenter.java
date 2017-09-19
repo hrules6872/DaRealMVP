@@ -34,7 +34,7 @@ public abstract class DRMVPPresenter<V extends DRMVPView> {
     }
   }
 
-  @SuppressWarnings("unchecked") private Class<V> internalGetViewInterfaceClass() {
+  @SuppressWarnings("unchecked") private @NonNull Class<V> internalGetViewInterfaceClass() {
     Class clazz = getClass();
     Type genericSuperclass;
     for (; ; ) {
@@ -55,7 +55,7 @@ public abstract class DRMVPPresenter<V extends DRMVPView> {
     this.view = null;
   }
 
-  protected V getView() {
+  protected @NonNull V getView() {
     if (view != null) {
       V viewReferent = view.get();
       if (viewReferent != null) {

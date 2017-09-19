@@ -16,6 +16,7 @@
 
 package com.hrules.darealmvp;
 
+import android.support.annotation.NonNull;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
@@ -28,12 +29,12 @@ class NullView {
   private NullView() {
   }
 
-  @SuppressWarnings("unchecked") public static <T> T of(Class<T> interfaceClass) {
+  @SuppressWarnings("unchecked") static <T> T of(@NonNull Class<T> interfaceClass) {
     return (T) newProxyInstance(interfaceClass.getClassLoader(), new Class[] { interfaceClass }, DEFAULT_VALUE);
   }
 
   private static class DefaultValueInvocationHandler implements InvocationHandler {
-    @Override public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    @Override public Object invoke(@NonNull Object proxy, @NonNull Method method, @NonNull Object[] args) throws Throwable {
       return defaultValue(method.getReturnType());
     }
   }
